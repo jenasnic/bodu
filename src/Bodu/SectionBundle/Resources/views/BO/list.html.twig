@@ -1,0 +1,57 @@
+{#
+    Allows to list all available sections. It allows to add/edit/delete section.
+    Required :
+    - sectionList : list of all sections available (as Section).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block body %}
+
+    <h1>Gestion des pages</h1>
+
+    <a class="link-button" href="{{ path('bodu_section_bo_edit') }}">
+        <img width="16" height="16" border="0" title="Ajouter une page" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
+        <span>Ajouter une page</span>
+    </a>
+
+    <div class="sep-15"></div>
+
+    {# Display all section found #}
+    <table class="bo-table">
+
+        <thead>
+            <tr>
+                <th class="bo-table-id">ID</th>
+                <th class="bo-table-label">Nom</th>
+                <th class="bo-table-label">Lien (pour le menu)</th>
+                <th class="bo-table-action"><img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" /></th>
+                <th class="bo-table-action"><img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" /></th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for section in sectionList %}
+            <tr{% if loop.index is even %} class="odd"{% endif %}>
+                <td class="bo-table-id">{{ section.id }}</td>
+                <td class="bo-table-label">{{ section.name }}</td>
+                <td class="bo-table-label">{{ path('bodu_section_fo_display', { 'id' : section.id}) }}</td>
+                <td class="bo-table-action">
+                    <a href="{{ path('bodu_section_bo_edit', { 'id': section.id }) }}" >
+                        <img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" />
+                    </a>
+                </td>
+                <td class="bo-table-action">
+                    <a href="{{ path('bodu_section_bo_delete', { 'id': section.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
+                        <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" />
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="sep-20"></div>
+
+{% endblock %}

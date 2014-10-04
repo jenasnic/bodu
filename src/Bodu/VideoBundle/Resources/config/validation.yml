@@ -1,0 +1,8 @@
+Bodu\VideoBundle\Entity\Video:
+    properties:
+        name:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"
+        vimeoLink:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"

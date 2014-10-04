@@ -1,0 +1,17 @@
+bodu_news_fo:
+    pattern:  /news/{id}
+    defaults: { _controller: "BoduNewsBundle:NewsFO:display", id: 0 }
+
+bodu_news_bo_list:
+    pattern:  /admin/news/list
+    defaults: { _controller: "BoduNewsBundle:NewsBO:listNews" }
+
+bodu_news_bo_edit:
+    pattern:  /admin/news/edit/{id}
+    defaults: { _controller: "BoduNewsBundle:NewsBO:editNews", id: 0 }
+
+bodu_news_bo_delete:
+    pattern:  /admin/news/delete/{id}
+    defaults: { _controller: "BoduNewsBundle:NewsBO:deleteNews" }
+    requirements:
+        id: \d+

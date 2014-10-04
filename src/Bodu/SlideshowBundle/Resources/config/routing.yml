@@ -1,0 +1,30 @@
+bodu_slideshow_fo_display:
+    pattern:  /ajax/slideshow/{id}
+    defaults: { _controller: "BoduSlideshowBundle:SlideshowFO:display" }
+
+bodu_slideshow_bo_list:
+    pattern:  /admin/slideshow/list
+    defaults: { _controller: "BoduSlideshowBundle:SlideshowBO:listSlideshow" }
+
+bodu_slideshow_bo_edit:
+    pattern:  /admin/slideshow/edit/{id}
+    defaults: { _controller: "BoduSlideshowBundle:SlideshowBO:editSlideshow", id: 0 }
+
+bodu_slideshow_bo_delete:
+    pattern:  /admin/slideshow/delete/{id}
+    defaults: { _controller: "BoduSlideshowBundle:SlideshowBO:deleteSlideshow" }
+    requirements:
+        id: \d+
+
+bodu_slideshow_bo_picture_edit:
+    pattern:  /admin/slideshow/picture/{slideshowId}/edit/{pictureId}
+    defaults: { _controller: "BoduSlideshowBundle:PictureBO:editPicture", pictureId: 0 }
+    requirements:
+        slideshowId: \d+
+
+bodu_slideshow_bo_picture_delete:
+    pattern:  /admin/slideshow/picture/{slideshowId}/delete/{pictureId}
+    defaults: { _controller: "BoduSlideshowBundle:PictureBO:deletePicture" }
+    requirements:
+        slideshowId: \d+
+        pictureId: \d+

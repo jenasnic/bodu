@@ -1,0 +1,48 @@
+{#
+    Display section for front-office
+    Required :
+    - section : section we want to display with all its slideshow... (as Section)
+#}
+
+{% extends "::master.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/slick.css') }}" />
+
+    {% if (section.skin) %}
+        <link rel="stylesheet" type="text/css" href="{{ asset(section.skin.cssFile) }}" />
+    {% endif %}
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/slick.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/section.js') }}"></script>
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="section">
+
+        <div id="section-menu">
+
+            <ul>
+            {# Browse each slideshow and display them #}
+            {% for slideshow in section.slideshows %}
+                <li data-slideshow-id="{{ slideshow.id }}" class="slideshow-item">{{ slideshow.name }}</li>
+            {% endfor %}
+            </ul>
+
+        </div>
+
+        <div id="section-content">
+            {# This content will be loaded using Ajax (depending on selected slideshow) #}
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <div class="sep-20"></div>
+    
+
+{% endblock %}

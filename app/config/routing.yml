@@ -1,0 +1,37 @@
+
+login:
+    pattern: /login
+    defaults: { _controller: "BoduSecurityBundle:Security:login" }
+login_check:
+    pattern: /login_check
+logout:
+    pattern: /logout
+
+bodu_home:
+    resource: "@BoduHomeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bodu_menu:
+    resource: "@BoduMenuBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bodu_news:
+    resource: "@BoduNewsBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bodu_section:
+    resource: "@BoduSectionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bodu_skin:
+    resource: "@BoduSkinBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bodu_slideshow:
+    resource: "@BoduSlideshowBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bodu_video:
+    resource: "@BoduVideoBundle/Resources/config/routing.yml"
+    prefix:   /
+

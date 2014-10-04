@@ -1,0 +1,45 @@
+{#
+    Allows to edit skin.
+    Required :
+    - skinToEdit : FormView element based on SkinType object (i.e. skin to edit).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block body %}
+
+    {% form_theme skinToEdit ':forms:custom_errors.html.twig' %}
+
+    {% if (skinToEdit.vars.value.id) %}
+    <h1>Modification du skin</h1>
+    {% else %}
+    <h1>Ajout d'un skin</h1>
+    {% endif %}
+
+    <form action="{{ path('bodu_skin_bo_edit', { 'id': skinToEdit.vars.value.id }) }}" method="post" {{ form_enctype(skinToEdit) }}>
+
+        <div class="field-set">
+
+            {{ form_label(skinToEdit.name, "Nom du skin") }}
+            {{ form_widget(skinToEdit.name, { 'attr': {'class': 'field-M'}, 'max_length' : '255' }) }}
+            {{ form_errors(skinToEdit.name) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(skinToEdit.cssFile, "Fichier CSS") }}
+            {{ form_widget(skinToEdit.cssFile, { 'attr': {'class': 'field-M'} }) }}
+            {{ form_errors(skinToEdit.cssFile) }}
+
+            {{ form_rest(skinToEdit) }}
+
+        </div>
+
+        <div class="sep-20"></div>
+
+        <input type="submit" class="button" value="Enregistrer" />
+
+    </form>
+
+    <div class="sep-20"></div>
+
+{% endblock %}

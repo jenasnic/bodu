@@ -1,0 +1,290 @@
+
+*{margin:0;padding:0;}
+
+body {background: url("images/backgroundMain.jpg") 0 0 repeat;}
+
+body,td,th,div {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11px;
+}
+
+img {border:none;}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+
+
+/*********************/
+/* CSS for structure */
+/*********************/
+
+#page {
+    margin: 0 auto;
+    width: 960px;
+}
+
+#header {
+    min-height: 40px;
+    padding: 10px 20px;
+}
+
+#menu ul li {
+    background: url('images/menuBulletOff.png') no-repeat left bottom;
+    cursor: pointer;
+    float: left;
+    height: 12px;
+    list-style: none;
+    margin: 0 0 0 20px;
+    padding: 0 0 0 20px;
+    width: 100px;
+}
+
+#menu ul li.activ {background: url('images/menuBulletOn.png') no-repeat left bottom;}
+
+#menu ul li a {
+    color: #fff;
+    font-size: 14px;
+}
+
+#menu ul li a:hover {font-weight: bold;}
+
+#menu ul li.activ a {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.page-separator {
+    background: url("images/separatorGrey.png") no-repeat;
+    display: block;
+    height: 2px;
+    width: 960px;
+}
+
+
+
+/***********************/
+/* CSS for home banner */
+/***********************/
+
+#banner-container {
+    margin: 0 auto;
+    width: 900px;
+}
+
+#banner-list .slick-prev {
+    background: url("images/slideshow/slideshowPrevious.png") no-repeat;
+    height: 40px;
+    left: -30px;
+    top: 240px;
+}
+#banner-list .slick-next {
+    background: url("images/slideshow/slideshowNext.png") no-repeat;
+    height: 40px;
+    right: -30px;
+    top: 240px;
+}
+
+#banner-list .slick-dots button {background: url("images/bannerDotOff.png") no-repeat;}
+#banner-list .slick-dots .slick-active button {background: url("images/bannerDotOn.png") no-repeat;}
+
+
+
+/*******************/
+/* CSS for section */
+/*******************/
+
+#section-menu, #section-content {
+    float: left;
+    padding: 0 5px 0 15px;
+}
+
+#section-menu {width: 160px;}
+#section-content {width: 760px;}
+
+li.slideshow-item {
+    background: url("images/slideshow/slideshowSelectionOff.png") no-repeat;
+    color: #888;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    list-style: none;
+    margin: 5px;
+    padding: 3px 0 3px 30px;
+}
+
+li.slideshow-item.activ {
+    background: url("images/slideshow/slideshowSelectionOn.png") no-repeat;
+    color: #fff;
+    font-style: italic;
+}
+
+
+
+/*********************/
+/* CSS for slideshow */
+/*********************/
+
+#slideshow-container {width: 760px;}
+#slideshow-container ul {margin: 0; padding: 0;}
+
+/* CSS for horizontal thumbnails on top */
+#slideshow-container.top #slideshow-thumbnail {margin: 0 auto; width: 575px;}
+#slideshow-container.top #slideshow-picture {margin: 20px auto; width: 575px;}
+
+/* CSS for vertical thumbnails on left */
+#slideshow-container.left #slideshow-thumbnail {float:left; width: 110px;}
+#slideshow-container.left #slideshow-picture {float: left; padding: 5px 5px 0 45px; width: 600px;}
+
+#picture-list, .picture-item div.container {height: 481px; width: 570px;}
+.picture-item div.container img {margin: 0 auto;}
+
+#picture-list .slick-prev {
+    background: url("images/slideshow/slideshowPrevious.png") no-repeat;
+    height: 40px;
+    left: -30px;
+    top: 185px;
+}
+#picture-list .slick-next {
+    background: url("images/slideshow/slideshowNext.png") no-repeat;
+    height: 40px;
+    right: -27px;
+    top: 185px;
+}
+
+#thumbnail-list {width: 585px;}
+#thumbnail-list .slick-prev {background: url("images/slideshow/thumbnailHorizontalPrevious.png") no-repeat;}
+#thumbnail-list .slick-next {background: url("images/slideshow/thumbnailHorizontalNext.png") no-repeat;}
+#thumbnail-list .slick-prev {left: -18px; top: 30px;}
+#thumbnail-list .slick-next {right: -15px; top: 30px;}
+#thumbnail-list .thumbnail-item {padding: 0;}
+
+#slideshow-container.left #thumbnail-list {width: 110px;}
+#slideshow-container.left #thumbnail-list .slick-prev {background: url("images/slideshow/thumbnailVerticalPrevious.png") no-repeat;}
+#slideshow-container.left #thumbnail-list .slick-next {background: url("images/slideshow/thumbnailVerticalNext.png") no-repeat;}
+#slideshow-container.left #thumbnail-list .slick-prev {left: 20px; top: 430px;}
+#slideshow-container.left #thumbnail-list .slick-next {right: 20px; top: 430px;}
+#slideshow-container.left #thumbnail-list .thumbnail-item {height: 71px; padding: 5px 0; width: 110px;}
+
+
+
+/****************/
+/* CSS for news */
+/****************/
+
+#news-list {padding: 0 20px;}
+
+.news-item {
+    background: url("images/backgroundBlock.png") repeat;
+    float: left;
+    margin: 0 20px 20px 20px;
+    padding: 0 0 20px 0;
+    position: relative;
+    width: 880px;
+}
+
+.news-item.small {width: 420px;}
+
+.news-item h2 {
+    background: url("images/backgroundBlock.png") repeat;
+    color: #afafaf;
+    font-size: 16px;
+    padding: 3px 10px;
+}
+
+.news-picture {
+    float: left;
+    margin: 10px;
+}
+
+.news-content {
+    color: #c8c8c8;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    text-align: justify;
+}
+
+.news-item a.news-link {
+    background: url("images/seeMoreOff.jpg") no-repeat;
+    bottom: 10px;
+    display: block;
+    height: 17px;
+    position: absolute;
+    right: 10px;
+    width: 99px;
+}
+
+.news-item a.news-link:hover {background: url("images/seeMoreOn.jpg") no-repeat;}
+
+
+
+/******************/
+/* CSS for videos */
+/******************/
+
+#video ul {margin: 0; padding: 0;}
+
+#video-menu {
+    background: url("images/backgroundBlock.png");
+    float: left;
+    width: 180px;
+}
+
+span.video-menu-title {
+    background: url("images/video/videoBackgroundTitle.png") repeat-x;
+    color: #afafaf;
+    display: block;
+    font-size: 16px;
+    padding: 10px 10px 3px 10px;
+}
+
+li.video-menu-item {
+    background: url("images/video/videoSelectionOff.png") no-repeat;
+    color: #888;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    list-style: none;
+    margin: 15px 5px;
+    padding: 3px 0 3px 30px;
+}
+
+li.video-menu-item.activ {
+    background: url("images/video/videoSelectionOn.png") no-repeat;
+    color: #fff;
+    font-style: italic;
+}
+
+#video-content {
+    float: left;
+    width: 780px;
+}
+
+#video-slideshow {
+    margin: 0 auto;
+    width: 698px;
+}
+
+.video-item {width: 698px;}
+
+.video-player {
+    border: 4px solid #969696;
+    height: 350px;
+    margin: 0 20px;
+    width: 650px;
+}
+
+.video-description {
+    background: url("images/backgroundBlock.png");
+    color: #fff;
+    display: none;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 20px;
+    padding: 20px;
+}
+

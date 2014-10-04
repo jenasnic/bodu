@@ -1,0 +1,148 @@
+{#
+    Allows to edit section.
+    Required :
+    - sectionToEdit : FormView element based on SectionType object (i.e. section to edit).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery.cleditor.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery.cleditor.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#bodu_sectionbundle_section_description").cleditor({height: 170});
+        });
+    </script>
+
+    {# For existing slideshow => add script to order pictures #}
+    {% if (sectionToEdit.vars.value.id) %}
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery-ui-1.10.4.custom.css') }}" />
+
+        <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-ui-1.10.4.custom.min.js') }}"></script>
+        <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("#slideshow-list").sortable({
+                update: function(event, ui) {
+                    $("#ordered-slideshow-list").val($('#slideshow-list').sortable('serialize'));
+                }
+            });
+            $("#slideshow-list").disableSelection();
+        });
+
+    </script>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block body %}
+
+    {% form_theme sectionToEdit ':forms:custom_errors.html.twig' %}
+
+    {% if (sectionToEdit.vars.value.id) %}
+    <h1>Modification de la page</h1>
+    {% else %}
+    <h1>Ajout d'une page</h1>
+    {% endif %}
+
+    <form action="{{ path('bodu_section_bo_edit', { 'id': sectionToEdit.vars.value.id }) }}" method="post" {{ form_enctype(sectionToEdit) }}>
+
+        <div class="field-set">
+
+            {% if (sectionToEdit.vars.value.id) %}
+                <div class="right">
+                    <label class="label-inline">Lien de la page (FO) : </label>
+                    <span class="f-n13">{{ path('bodu_section_fo_display', { 'id' : sectionToEdit.vars.value.id}) }}</span>
+                </div>
+            {% endif %}
+
+            <div class="clear"></div>
+
+            {{ form_label(sectionToEdit.name, "Nom de la page") }}
+            {{ form_widget(sectionToEdit.name, { 'attr': {'class': 'field-L'}, 'max_length' : '255' }) }}
+            {{ form_errors(sectionToEdit.name) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(sectionToEdit.description, "Description") }}
+            {{ form_widget(sectionToEdit.description) }}
+            {{ form_errors(sectionToEdit.description) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(sectionToEdit.skin, "Skin associé") }}
+            {{ form_widget(sectionToEdit.skin, { 'attr': {'class': 'field-M'} }) }}
+            {{ form_errors(sectionToEdit.skin) }}
+
+            {{ form_rest(sectionToEdit) }}
+
+        </div>
+
+        <div class="sep-20"></div>
+
+        {# For existing section => we can also order slideshow ... #}
+        {% if (sectionToEdit.vars.value.id) %}
+
+            <div class="field-set">
+
+                <a class="link-button" href="{{ path('bodu_slideshow_bo_edit') }}">
+                    <img width="16" height="16" border="0" title="Ajouter un diaporama" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
+                    <span>Ajouter un diaporama</span>
+                </a>
+
+                <div class="sep-15"></div>
+
+                {# Display all slideshows linked to section #}
+                <table class="bo-table bo-sortable-table">
+
+                    <thead>
+                        <tr>
+                            <th class="bo-table-id">ID</th>
+                            <th class="bo-table-label">Nom</th>
+                            <th class="bo-table-action"><img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" /></th>
+                            <th class="bo-table-action"><img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" /></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="slideshow-list">
+                    {% for slideshow in sectionToEdit.vars.value.slideshows %}
+                        <tr id="slideshow-list-{{ slideshow.id }}">
+                            <td class="bo-table-id">{{ slideshow.id }}</td>
+                            <td class="bo-table-label">{{ slideshow.name }}</td>
+                            <td class="bo-table-action">
+                                <a href="{{ path('bodu_slideshow_bo_edit', { 'id': slideshow.id }) }}" >
+                                    <img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" />
+                                </a>
+                            </td>
+                            <td class="bo-table-action">
+                                <a href="{{ path('bodu_slideshow_bo_delete', { 'id': slideshow.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
+                                    <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" />
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+
+                {# Hidden field to save slideshow order #}
+                <input id="ordered-slideshow-list" name="ordered-slideshow-list" type="hidden" value="" />
+
+            </div>
+
+            <div class="sep-20"></div>
+
+        {% endif %}
+
+        <input type="submit" class="button" value="Enregistrer" />
+
+    </form>
+
+    <div class="sep-20"></div>
+
+{% endblock %}

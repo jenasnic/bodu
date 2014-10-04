@@ -1,0 +1,63 @@
+{#
+    Display slideshow for front-office :
+    - vertically => thumbnail on left, pictures on right
+    - horizontally => thumbnail on top, pictures on bottom
+    NOTE : This view is call using Ajax and doesn't inherit template.
+    Required :
+    - slideshow : slideshow to display (as Slideshow)
+#}
+
+{# Define javascript used to initalize slideshow after Ajax call #}
+<script type="text/javascript">
+function initAjaxSlideshow() {
+
+    $('#thumbnail-list').slick({
+        infinite : true,
+        slide : 'li',
+        slidesToShow : 5,
+        vertical : {{ (slideshow.thumbnailPosition == 'left') ? 'true' : 'false' }}
+    });
+
+    $('#picture-list').slick({
+        centerMode : true,
+        centerPadding : '0px',
+        slide : 'li',
+        slidesToShow : 1,
+    });
+}
+</script>
+
+<div id="slideshow-container" class="{{ slideshow.thumbnailPosition }}">
+
+    <div id="slideshow-thumbnail">
+
+        <ul id="thumbnail-list">
+        {# Browse each thumbnail to build carousel #}
+        {% for picture in slideshow.pictures %}
+            <li data-index="{{ loop.index0 }}" class="thumbnail-item">
+                <img src="{{ picture.thumbnailUrl }}" alt="{{ picture.name }}" width="107" height="71" />
+            </li>
+        {% endfor %}
+        </ul>
+
+    </div>
+
+    <div id="slideshow-picture">
+
+        {% set cssStyleToUse = slideshow.activBorder ? 'border: ' ~ slideshow.thicknessValue ~ 'px solid #' ~ slideshow.borderColor ~';' : '' %}
+
+        <ul id="picture-list">
+        {# Browse each picture to build main slideshow #}
+        {% for picture in slideshow.pictures %}
+            <li class="picture-item">
+                <div class="container">
+                    <img src="{{ picture.pictureUrl }}" alt="{{ picture.name }}" style="{{ cssStyleToUse }}"
+                            width="{{ picture.vertical ? '320' : '560' }}" height="{{ picture.vertical ? '471' : '374' }}" />
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+
+    </div>
+
+</div>

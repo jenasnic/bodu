@@ -1,0 +1,21 @@
+bodu_home_fo:
+    pattern:  /
+    defaults: { _controller: "BoduHomeBundle:HomeFO:home" }
+
+bodu_home_bo:
+    pattern:  /admin
+    defaults: { _controller: "BoduHomeBundle:HomeBO:home" }
+
+bodu_home_bo_banner_list:
+    pattern:  /admin/home/banner/list
+    defaults: { _controller: "BoduHomeBundle:HomeBO:listBanner" }
+
+bodu_home_bo_banner_edit:
+    pattern:  /admin/home/banner/edit/{id}
+    defaults: { _controller: "BoduHomeBundle:HomeBO:editBanner", id: 0 }
+
+bodu_home_bo_banner_delete:
+    pattern:  /admin/home/banner/delete/{id}
+    defaults: { _controller: "BoduHomeBundle:HomeBO:deleteBanner" }
+    requirements:
+        id: \d+

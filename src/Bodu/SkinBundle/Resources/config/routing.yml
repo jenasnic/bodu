@@ -1,0 +1,13 @@
+bodu_skin_bo_list:
+    pattern:  /admin/skin/list
+    defaults: { _controller: "BoduSkinBundle:SkinBO:listSkin" }
+
+bodu_skin_bo_edit:
+    pattern:  /admin/skin/edit/{id}
+    defaults: { _controller: "BoduSkinBundle:SkinBO:editSkin", id: 0 }
+
+bodu_skin_bo_delete:
+    pattern:  /admin/skin/delete/{id}
+    defaults: { _controller: "BoduSkinBundle:SkinBO:deleteSkin" }
+    requirements:
+        id: \d+

@@ -1,0 +1,81 @@
+{#
+    Allows to list all banners for home page. It allows to add/edit/delete/sort home banners.
+    Required :
+    - bannerList : list of all banners available (as Banner).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery-ui-1.10.4.custom.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-ui-1.10.4.custom.min.js') }}"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("#banner-list").sortable({
+                update: function(event, ui) {
+                    $("#ordered-banner-list").val($('#banner-list').sortable('serialize'));
+                }
+            });
+            $("#banner-list").disableSelection();
+        });
+
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Gestion des bannières</h1>
+
+    <a class="link-button" href="{{ path('bodu_home_bo_banner_edit') }}">
+        <img width="16" height="16" border="0" title="Ajouter une bannière" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
+        <span>Ajouter une bannière</span>
+    </a>
+
+    <div class="sep-15"></div>
+
+    {# Display all menu found #}
+    <table class="bo-table bo-sortable-table">
+
+        <thead>
+            <tr>
+                <th class="bo-table-id">ID</th>
+                <th class="bo-table-label">Libellé</th>
+                <th class="bo-table-action"><img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" /></th>
+                <th class="bo-table-action"><img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" /></th>
+            </tr>
+        </thead>
+
+        <tbody id="banner-list">
+        {% for banner in bannerList %}
+            <tr id="banner-list-{{ banner.id }}">
+                <td class="bo-table-id">{{ banner.id }}</td>
+                <td class="bo-table-label">{{ banner.title }}</td>
+                <td class="bo-table-action">
+                    <a href="{{ path('bodu_home_bo_banner_edit', { 'id': banner.id }) }}" >
+                        <img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" />
+                    </a>
+                </td>
+                <td class="bo-table-action">
+                    <a href="{{ path('bodu_home_bo_banner_delete', { 'id': banner.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
+                        <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" />
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="sep-20"></div>
+
+    {# Form to save menu order #}
+    <form action="{{ path('bodu_home_bo_banner_list') }}" method="post">
+        <input id="ordered-banner-list" name="ordered-banner-list" type="hidden" value="" />
+        <input type="submit" class="button" value="Enregistrer" />
+    </form>
+
+{% endblock %}

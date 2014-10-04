@@ -1,0 +1,7 @@
+parameters:
+#    bodu_home.example.class: Bodu\HomeBundle\Example
+
+services:
+#    bodu_home.example:
+#        class: %bodu_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

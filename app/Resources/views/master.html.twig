@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
+<head>
+
+    <meta charset="UTF-8" />
+    <title>{% block title %}Site photo de Patrick Bodu{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('resources/images/favicon.ico') }}" />
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/common.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/global.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-1.11.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/global.js') }}"></script>
+
+    {% block header %}{% endblock %}
+
+</head>
+
+<body>
+
+    <div id="page">
+
+        <div id="header">
+            <img src="{{ asset('resources/images/logo.png') }}" />
+        </div>
+
+        <div class="sep-10"></div>
+
+        <div id="menu">
+            {# IMPORTANT : We need to send root request info to identify activ menu #}
+            {{ render(controller("BoduMenuBundle:MenuFO:display", {rootCurrentPath: currentPath, rootUri : app.request.uri})) }}
+        </div>
+
+        <div class="sep-10"></div>
+        <div class="page-separator"></div>
+        <div class="sep-30"></div>
+
+        <div id="content">
+            {% block body %}{% endblock %}
+        </div>
+
+        <div class="sep-20"></div>
+
+    </div>
+
+</body>
+
+</html>

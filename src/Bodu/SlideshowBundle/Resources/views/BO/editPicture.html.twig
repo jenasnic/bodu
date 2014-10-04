@@ -1,0 +1,67 @@
+{#
+    Allows to edit picture.
+    Required :
+    - pictureToEdit : FormView element based on PictureType object (i.e. picture to edit).
+    - slideshow : slideshow we want to add picture as Slideshow object.
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block body %}
+
+    {% form_theme pictureToEdit ':forms:custom_errors.html.twig' %}
+
+    {% if (pictureToEdit.vars.value.id) %}
+    <h1>Modification de l'image</h1>
+    {% else %}
+    <h1>Ajout d'une image</h1>
+    {% endif %}
+
+    <form action="{{ path('bodu_slideshow_bo_picture_edit', { 'slideshowId': slideshow.id, 'pictureId' : pictureToEdit.vars.value.id }) }}" method="post" {{ form_enctype(pictureToEdit) }}>
+
+        <div class="field-set">
+
+            {{ form_label(pictureToEdit.name, "Nom de l'image") }}
+            {{ form_widget(pictureToEdit.name, { 'attr': {'class': 'field-M'}, 'max_length' : '255' }) }}
+            {{ form_errors(pictureToEdit.name) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_widget(pictureToEdit.vertical) }}
+            {{ form_label(pictureToEdit.vertical, "Image verticale") }}
+            {{ form_errors(pictureToEdit.vertical) }}
+            <span class="comment">Permet d'indiquer que l'image chargée est une image "verticale" et non "horizontale" (les tailles utilisées diffèrent...)</span>
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(pictureToEdit.pictureFile, "Image principale") }}
+            <span class="comment">La taille de l'image utilisée pour les diaporamas est : 560 X 374 pour les images horizontales et 320 X 471 pour les images verticales</span>
+            {% if (pictureToEdit.vars.value.pictureUrl) %}
+                <span class="comment">L'image actuellement chargée est : {{ pictureToEdit.vars.value.pictureUrl }}</span>
+            {% endif %}
+                {{ form_widget(pictureToEdit.pictureFile) }}
+            {{ form_errors(pictureToEdit.pictureFile) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(pictureToEdit.thumbnailFile, "Vignette associée") }}
+            <span class="comment">La taille de l'image utilisée pour les vignettes est : 107 X 71</span>
+            {% if (pictureToEdit.vars.value.thumbnailUrl) %}
+                <span class="comment">L'image actuellement chargée est : {{ pictureToEdit.vars.value.thumbnailUrl }}</span>
+            {% endif %}
+            {{ form_widget(pictureToEdit.thumbnailFile) }}
+            {{ form_errors(pictureToEdit.thumbnailFile) }}
+
+            {{ form_rest(pictureToEdit) }}
+
+        </div>
+
+        <div class="sep-20"></div>
+
+        <input type="submit" class="button" value="Enregistrer" />
+
+    </form>
+
+    <div class="sep-20"></div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+parameters:
+#    bodu_menu.example.class: Bodu\MenuBundle\Example
+
+services:
+#    bodu_menu.example:
+#        class: %bodu_menu.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

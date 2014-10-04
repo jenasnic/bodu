@@ -1,0 +1,70 @@
+{#
+    Allows to edit video.
+    Required :
+    - videoToEdit : FormView element based on VideoType object (i.e. video to edit).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery.cleditor.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery.cleditor.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#bodu_videobundle_video_description").cleditor({height: 170});
+        });
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    {% form_theme videoToEdit ':forms:custom_errors.html.twig' %}
+
+    {% if (videoToEdit.vars.value.id) %}
+    <h1>Modification de la vidéo</h1>
+    {% else %}
+    <h1>Ajout d'une vidéo</h1>
+    {% endif %}
+
+    <form action="{{ path('bodu_video_bo_edit', { 'id': videoToEdit.vars.value.id }) }}" method="post" {{ form_enctype(videoToEdit) }}>
+
+        <div class="field-set">
+
+            {{ form_label(videoToEdit.name, "Nom de la vidéo") }}
+            {{ form_widget(videoToEdit.name, { 'attr': {'class': 'field-M'}, 'max_length' : '255' }) }}
+            {{ form_errors(videoToEdit.name) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(videoToEdit.description, "Description") }}
+            {{ form_widget(videoToEdit.description) }}
+            {{ form_errors(videoToEdit.description) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(videoToEdit.vimeoLink, "Lien Vimeo") }}
+            {{ form_widget(videoToEdit.vimeoLink, { 'attr': {'class': 'field-L'} }) }}
+            {{ form_errors(videoToEdit.vimeoLink) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_widget(videoToEdit.published) }}
+            {{ form_label(videoToEdit.published, "Publication") }}
+            {{ form_errors(videoToEdit.published) }}
+
+            {{ form_rest(videoToEdit) }}
+
+        </div>
+
+        <div class="sep-20"></div>
+
+        <input type="submit" class="button" value="Enregistrer" />
+
+    </form>
+
+    <div class="sep-20"></div>
+
+{% endblock %}

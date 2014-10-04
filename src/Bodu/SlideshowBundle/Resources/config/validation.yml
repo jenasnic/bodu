@@ -1,0 +1,20 @@
+Bodu\SlideshowBundle\Entity\Picture:
+    properties:
+        name:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"
+            - Length:
+                max: 255
+                maxMessage: "Ce champ est limité à 255 caractères"
+
+Bodu\SlideshowBundle\Entity\Slideshow:
+    properties:
+        name:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"
+            - Length:
+                max: 255
+                maxMessage: "Ce champ est limité à 255 caractères"
+        thumbnailPosition:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"

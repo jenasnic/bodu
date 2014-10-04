@@ -1,0 +1,390 @@
+
+*{margin:0;padding:0;}
+
+body {background: url("images/admin/background.png") 0 0 repeat-x #999;}
+
+body,td,th,div,input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+
+img {border:none;}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+
+
+/*********************/
+/* CSS for structure */
+/*********************/
+
+#page {
+    margin: 0 auto;
+    min-height: 200px;
+    width: 960px;
+}
+
+#header {
+    font-size: 12px;
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+#bo-top {
+    background: url("images/admin/backgroundTitle.png") 0 0 repeat-x;
+    color: #ddd;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 30px;
+    height: 40px;
+    padding: 20px;
+    position: relative;
+}
+
+#bo-top span {
+    position: absolute;
+    bottom: 10px;
+    font-size: 12px;
+    right: 10px;
+}
+
+#bo-top span, #bo-top span a {color: #ddd;}
+#bo-top span a:hover {text-decoration: underline;}
+
+#header li a {
+    background-color: #007BA8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #ddd;
+    font-weight:bold;
+    padding: 5px 10px;
+}
+
+#header li a:hover {
+    background-color: #ddd;
+    color: #007BA8;
+}
+
+#header ul li {
+    float:left;
+    list-style: none;
+    margin: 0 10px;
+}
+
+#header ul li.first {margin-left: 0;}
+#header ul li.last {margin-right: 0;}
+
+.bo-separator {
+    background-color: #ddd;
+    height: 2px;
+    width: 100%;
+}
+
+#login-form {
+    background-color: #DBE2E6;
+    border: 1px solid #78A5BB;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 25px;
+    width: 155px;
+}
+
+h1 {
+    background-color: #9abbcc;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 20px auto 30px;
+    padding: 5px 20px;
+    text-align: center;
+    width: 700px
+}
+
+
+
+/************************/
+/* CSS for table (list) */
+/************************/
+
+.bo-table {border-collapse: collapse; width: 100%;}
+.bo-table thead tr {background: #9ABBCC;}
+.bo-table th {padding: 5px;}
+.bo-table tbody tr {background-color: #ddd;}
+.bo-table tbody tr.odd {background-color: #ccc;}
+.bo-table th, .bo-table td {border: 1px solid #eee;}
+.bo-table td.bo-table-id, .bo-table td.bo-table-action, .bo-table td.bo-table-date, .bo-table td.bo-table-field {text-align: center;}
+.bo-table td.bo-table-label {padding: 4px 10px;}
+.bo-table td.bo-table-hidden {display:none;}
+
+.bo-table tfoot tr {
+    background-color: #999;
+    font-weight: bold;
+    height: 30px;
+    vertical-align: bottom;
+}
+
+.bo-table tfoot tr td {padding: 5px;}
+
+.bo-table td.bo-table-field input {margin: 2px;}
+
+/* Specific CSS for sortable table */
+
+.bo-sortable-table th, .bo-sortable-table td {border: none;}
+.bo-sortable-table tr {border: 1px dotted #333;}
+.bo-sortable-table tbody tr {background-color: #ddd;}
+
+.bo-sortable-table tbody .sortable-header-row {
+    text-align: center;
+    height: 30px;
+    font-weight: bold;
+    background-color: #ababab;
+}
+
+/* Specific CSS for other lines */
+
+.bo-table tbody tr.obsolete {
+    background-color:#ecb1b1;
+    font-style: italic;
+}
+
+.bo-table tbody tr.separator {
+    background-color:#FFF3D1;
+    font-weight: bold;
+}
+
+.bo-table tbody td.disabled {
+    background: url("images/admin/disabled.png") no-repeat scroll right center transparent;
+    font-style: italic;
+    color: #980202;
+}
+
+
+
+/*********************/
+/* CSS for field-set */
+/*********************/
+
+div.field-set {
+    background-color: #DBE2E6;
+    border: 1px solid #78A5BB;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+}
+
+span.field-set-title {
+    background-color: #ddd;
+    border: 1px solid #78A5BB;
+    border-radius: 5px;
+    display: block;
+    font-weight: bold;
+    left: 20px;
+    padding: 5px 10px;
+    position: absolute;
+    top: -15px;
+}
+
+.field-set-separator {
+    height: 1px;
+    background-color: #78A5BB;
+    width: 100%;
+    margin: 15px 0;
+}
+
+
+
+/****************/
+/* CSS for link */
+/****************/
+
+a.link-button {
+    border-radius: 5px;
+    color: #333;
+    display: inline-block;
+    padding: 5px 10px;
+    position: relative;
+}
+
+a.link-button span {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0 0 0 35px;
+}
+
+a.link-button img {
+    background-color: #FFAC4C;
+    border: 1px solid #FF8800;
+    border-radius: 4px;
+    padding: 2px 5px;
+    position: absolute;
+    top: 2px;
+}
+
+a.link-button:hover img {background-color: #FF8800;}
+
+.bo-back-link {
+    background: url("../images/admin/back.png") no-repeat;
+    color: #777;
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+/****************/
+/* CSS for form */
+/****************/
+
+label {
+    display: block;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+label.label-inline {display: inline-block;}
+
+input[type="radio"] {margin-left:10px;}
+
+input[type="checkbox"] + label, input[type="radio"] + label {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+input[type="text"], input[type="password"], textarea, select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+textarea {
+    height: 100px;
+    max-width: 905px;
+    min-width: 905px;
+    width: 905px;
+}
+
+input[type="submit"], input[type="button"], input[type="reset"], button {
+    background-color: #FFAC4C;
+    border: 1px solid #FF8800;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover, input[type="reset"]:hover, button:hover {background-color: #FF8800;}
+input[type="submit"]:disabled, input[type="button"]:disabled, input[type="reset"]:disabled, disabled {background-color: #888;}
+
+input[type="file"] {
+    background-color: #bbb;
+    border-radius: 5px;
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    width: 400px;
+}
+
+input[readonly] {background-color: #BBBBBB;}
+
+.field-XS {
+    text-align: right;
+    width: 35px;
+}
+
+.field-S {width: 100px;}
+.field-M {width: 200px;}
+.field-L {width: 350px;}
+.field-XL {width: 730px;}
+
+/* Override style for date picker */
+.ui-datepicker-trigger {
+    background: none;
+    border-radius: none;
+    padding: 0;
+}
+
+
+
+/*************/
+/* Other CSS */
+/*************/
+
+span.error {
+    color: #980202;
+    display: block;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+span.comment {
+    display: block;
+    color: #555;
+    font-style: italic;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.bo-log-message, .bo-warning-message, .bo-error-message {
+    border-radius: 10px;
+    font-style: italic;
+    font-size: 15px;
+    margin:10px 0;
+    padding: 20px;
+    text-align: center;
+}
+
+.bo-log-message {
+    background-color: #9ED17B;
+    border: 1px solid #394C29;
+    color: #394C29;
+}
+
+.bo-warning-message {
+    background-color: #F9E487;
+    border:1px solid #A0720D;
+    color: #A0720D;
+}
+
+.bo-error-message {
+    background-color: #ECB1B1;
+    border: 1px solid #980202;
+    color: #980202;
+}
+
+
+
+/******************************/
+/* Specific CSS for slideshow */
+/******************************/
+
+#slideshow-search {
+    width: 700px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.no-section {
+    color: #980202;
+    font-style: italic;
+}
+
+#slideshow-border {
+    border: 1px solid #78a5bb;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 450px;
+}
+
+#slideshow-border span.error {margin-bottom: 10px;}
+#slideshow-border div.left span.error {display: inline-block;}
+
+

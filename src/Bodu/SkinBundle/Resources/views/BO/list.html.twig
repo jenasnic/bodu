@@ -1,0 +1,55 @@
+{#
+    Allows to list all available skins. It allows to add/edit/delete skin.
+    Required :
+    - skinList : list of all skins available (as Skin).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block body %}
+
+    <h1>Gestion des skins</h1>
+
+    <a class="link-button" href="{{ path('bodu_skin_bo_edit') }}">
+        <img width="16" height="16" border="0" title="Ajouter un skin" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
+        <span>Ajouter un skin</span>
+    </a>
+
+    <div class="sep-15"></div>
+
+    {# Display all skin found #}
+    <table class="bo-table">
+
+        <thead>
+            <tr>
+                <th class="bo-table-id">ID</th>
+                <th class="bo-table-label">Nom</th>
+                <th class="bo-table-action"><img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" /></th>
+                <th class="bo-table-action"><img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" /></th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for skin in skinList %}
+            <tr{% if loop.index is even %} class="odd"{% endif %}>
+                <td class="bo-table-id">{{ skin.id }}</td>
+                <td class="bo-table-label">{{ skin.name }}</td>
+                <td class="bo-table-action">
+                    <a href="{{ path('bodu_skin_bo_edit', { 'id': skin.id }) }}" >
+                        <img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" />
+                    </a>
+                </td>
+                <td class="bo-table-action">
+                    <a href="{{ path('bodu_skin_bo_delete', { 'id': skin.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
+                        <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" />
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="sep-20"></div>
+
+{% endblock %}

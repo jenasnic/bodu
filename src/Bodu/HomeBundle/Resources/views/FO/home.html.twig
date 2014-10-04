@@ -1,0 +1,53 @@
+{#
+    Display slideshow for front-office with vertical thumbnail on left.
+    NOTE : This view is call using Ajax and doesn't inherit template.
+    Required :
+    - slideshow : array of news (as News)
+#}
+
+{% extends "::master.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/slick.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/slick.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/section.js') }}"></script>
+
+    {# Define javascript used to initalize slideshow after Ajax call #}
+    <script type="text/javascript">
+    $(document).ready(function() {
+    
+        $('#banner-list').slick({
+            centerMode : true,
+            centerPadding : '0px',
+            dots : true,
+            fade : true,
+            slide : 'li',
+            slidesToShow : 1,
+            speed: 500,
+        });
+    });
+
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<div id="banner-container">
+
+    <ul id="banner-list">
+    {# Browse each picture to build main slideshow #}
+    {% for banner in bannerList %}
+        <li>
+            <img src="{{ banner.pictureUrl }}" alt="{{ banner.title }}" width="900" height="548" />
+        </li>
+    {% endfor %}
+    </ul>
+
+</div>
+
+<div class="sep-30"></div>
+
+{% endblock %}

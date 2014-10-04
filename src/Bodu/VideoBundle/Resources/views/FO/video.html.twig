@@ -1,0 +1,55 @@
+{#
+    Display videos for front-office
+    Required :
+    - videoList : array of videos (as Video)
+#}
+
+{% extends "::master.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery-ui-1.10.4.custom.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/slick.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-ui-1.10.4.custom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/slick.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/video.js') }}"></script>
+
+{% endblock %}
+
+{% block body %}
+
+<div id="video">
+
+    <div id="video-menu">
+        <span class="video-menu-title">VIDEOS</span>
+        <ul>
+        {% for video in videoList %}
+            <li data-index="{{ loop.index0 }}" class="video-menu-item">{{ video.name }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <div id="video-content">
+
+        <div id="video-slideshow">
+
+            {% for video in videoList %}
+                <div id="video-{{ loop.index0 }}" class="video-item">
+                    <div class="video-player">
+                        <iframe src="{{ video.vimeoLink }}?title=0&color=00a2dc" 
+                            width="650" height="350" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    </div>
+                    <div class="video-description">{{ video.description|raw }}</div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="clear"></div>
+
+</div>
+
+{% endblock %}

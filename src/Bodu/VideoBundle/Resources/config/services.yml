@@ -1,0 +1,7 @@
+parameters:
+#    bodu_video.example.class: Bodu\VideoBundle\Example
+
+services:
+#    bodu_video.example:
+#        class: %bodu_video.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

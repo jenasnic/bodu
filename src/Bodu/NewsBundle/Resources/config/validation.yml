@@ -1,0 +1,14 @@
+Bodu\NewsBundle\Entity\News:
+    properties:
+        title:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"
+            - Length:
+                max: 255
+                maxMessage: "Ce champ est limité à 255 caractères"
+        date:
+            - Date: 
+                message: "La date saisie n'est pas valide"
+        size:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"

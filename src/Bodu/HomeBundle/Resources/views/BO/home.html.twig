@@ -1,0 +1,23 @@
+{% extends "::admin.html.twig" %}
+
+{% block body %}
+
+<h1>Administration du site</h1>
+
+<div class="sep-20"></div>
+
+<div class="field-set">
+
+    <ul>
+        <li class="padding-5"><a class="f-b12 c-orange" href="{{ path('bodu_home_bo_banner_list') }}">Bannières</a></li>
+        <li class="padding-5"><a class="f-b12 c-orange" href="{{ path('bodu_menu_bo_list') }}">Menus</a></li>
+        <li class="padding-5"><a class="f-b12 c-orange" href="{{ path('bodu_skin_bo_list') }}">Skins</a></li>
+        <li class="padding-5"><a class="f-b12 c-orange" href="{{ path('bodu_section_bo_list') }}">Pages (diaporamas)</a></li>
+        <li class="padding-5"><a class="f-b12 c-orange" href="{{ path('bodu_slideshow_bo_list') }}">Diaporamas</a></li>
+        <li class="padding-5"><a class="f-b12 c-orange" href="{{ path('bodu_news_bo_list') }}">Actualités</a></li>
+        <li class="padding-5"><a class="f-b12 c-orange" href="{{ path('bodu_video_bo_list') }}">Vidéos</a></li>
+    </ul>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{#
+    Display menu for front-office.
+    NOTE : We need currentPath to identify activ menu (matching current URL with menu URL).
+    Required :
+    - menuList : array of menu items (as Menu).
+    - rootCurrentPath : current path of initial request as String (due to inclusion in TWIG template => sub request...).
+    - rootUri : URI path of initial request as String (due to inclusion in TWIG template => sub request...).
+#}
+
+<ul>
+{% for menu in menuList %}
+    <li class="{{ (menu.url == rootCurrentPath or menu.url == rootUri) ? 'activ' : '' }}">
+        <a href="{{ menu.url }}">{{ menu.name }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+<div class="clear"></div>

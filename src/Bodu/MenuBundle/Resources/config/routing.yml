@@ -1,0 +1,17 @@
+bodu_menu_fo:
+    pattern:  /layout/menu
+    defaults: { _controller: "BoduMenuBundle:MenuFO:display" }
+
+bodu_menu_bo_list:
+    pattern:  /admin/menu/list
+    defaults: { _controller: "BoduMenuBundle:MenuBO:listMenu" }
+
+bodu_menu_bo_edit:
+    pattern:  /admin/menu/edit/{id}
+    defaults: { _controller: "BoduMenuBundle:MenuBO:editMenu", id: 0 }
+
+bodu_menu_bo_delete:
+    pattern:  /admin/menu/delete/{id}
+    defaults: { _controller: "BoduMenuBundle:MenuBO:deleteMenu" }
+    requirements:
+        id: \d+

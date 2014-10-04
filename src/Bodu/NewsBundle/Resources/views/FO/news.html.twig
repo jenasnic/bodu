@@ -1,0 +1,33 @@
+{#
+    Display news for front-office
+    Required :
+    - newsList : array of news (as News)
+#}
+
+{% extends "::master.html.twig" %}
+
+{% block body %}
+
+<div id="news-list">
+
+    {% for news in newsList %}
+        <div class="news-item {% if (news.size == 'small') %}small{% endif %}">
+            <h2>{{ news.title }}</h2>
+            {% if (news.pictureUrl) %}
+                <div class="news-picture">
+                    <img src="{{ news.pictureUrl }}" alt="-" width="{{ news.size == 'small' ? '140' : '270' }}" height="140" />
+                </div>
+            {% endif %}
+            <div class="news-content">
+                {{ news.content|raw }}
+            </div>
+            <div class="clear"></div>
+            {% if (news.link) %}<a href="{{ news.link }}" target="_blank" class="news-link" ></a>{% endif %}
+        </div>
+    {% endfor %}
+
+    <div class="sep-20"></div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+bodu_video_fo:
+    pattern:  /videos
+    defaults: { _controller: "BoduVideoBundle:VideoFO:display" }
+
+bodu_video_bo_list:
+    pattern:  /admin/video/list
+    defaults: { _controller: "BoduVideoBundle:VideoBO:listVideo" }
+
+bodu_video_bo_edit:
+    pattern:  /admin/video/edit/{id}
+    defaults: { _controller: "BoduVideoBundle:VideoBO:editVideo", id: 0 }
+
+bodu_video_bo_delete:
+    pattern:  /admin/video/delete/{id}
+    defaults: { _controller: "BoduVideoBundle:VideoBO:deleteVideo" }
+    requirements:
+        id: \d+

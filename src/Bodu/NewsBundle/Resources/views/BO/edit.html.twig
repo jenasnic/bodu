@@ -1,0 +1,100 @@
+{#
+    Allows to edit news.
+    Required :
+    - newsToEdit : Form element based on NewsType object (i.e. news to edit).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery-ui-1.10.4.custom.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery.cleditor.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-ui-1.10.4.custom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery.cleditor.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#bodu_newsbundle_news_date").datepicker({ dateFormat: "dd/mm/yy" });
+            $("#bodu_newsbundle_news_content").cleditor({height: 170});
+        });
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    {% form_theme newsToEdit ':forms:custom_errors.html.twig' %}
+
+    {% if (newsToEdit.vars.value.id) %}
+    <h1>Modification de l'actualité</h1>
+    {% else %}
+    <h1>Ajout d'une actualité</h1>
+    {% endif %}
+
+    <form action="{{ path('bodu_news_bo_edit', { 'id': newsToEdit.vars.value.id }) }}" method="post" {{ form_enctype(newsToEdit) }}>
+
+        <div class="field-set">
+
+            {{ form_label(newsToEdit.title, "Titre") }}
+            {{ form_widget(newsToEdit.title, { 'attr': {'class': 'field-L'}, 'max_length' : '255' }) }}
+            {{ form_errors(newsToEdit.title) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(newsToEdit.content, "Contenu") }}
+            {{ form_widget(newsToEdit.content) }}
+            {{ form_errors(newsToEdit.content) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(newsToEdit.date, "Date") }}
+            {{ form_widget(newsToEdit.date, { 'attr': {'class': 'datepicker'} }) }}
+            {{ form_errors(newsToEdit.date) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(newsToEdit.link, "Lien") }}
+            {{ form_widget(newsToEdit.link, { 'attr': {'class': 'field-L'} }) }}
+            {{ form_errors(newsToEdit.link) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(newsToEdit.size, "Taille de la news") }}
+            <span class="comment">
+                Permet d'indiquer le mode d'affichage de l'actualité :<br/>
+                - Pleine largeur : l'actualité est affichée sur une ligne occupant toute la largeur de la page<br/>
+                - Taille réduité : la largeur de l'actualité est réduite à la moitié de la largeur de la page (cela permet d'afficher 2 actualités "réduites" sur une même ligne)<br/>
+            </span>
+            {{ form_widget(newsToEdit.size) }}
+            {{ form_errors(newsToEdit.size) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_widget(newsToEdit.published) }}
+            {{ form_label(newsToEdit.published, "Publication") }}
+            {{ form_errors(newsToEdit.published) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(newsToEdit.pictureFile, "Image") }}
+            <span class="comment">La taille de l'image utilisée pour les news est : 270 X 140 pour les news "pleine largeur" et 140 X 140 pour les news "taille réduite"</span>
+            {% if (newsToEdit.vars.value.pictureUrl) %}
+                <span class="comment">L'image actuellement chargée est : {{ newsToEdit.vars.value.pictureUrl }}</span>
+            {% endif %}
+            {{ form_widget(newsToEdit.pictureFile) }}
+            {{ form_errors(newsToEdit.pictureFile) }}
+
+            {{ form_rest(newsToEdit) }}
+
+        </div>
+
+        <div class="sep-20"></div>
+
+        <input type="submit" class="button" value="Enregistrer" />
+
+    </form>
+
+    <div class="sep-20"></div>
+
+{% endblock %}
