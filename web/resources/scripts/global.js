@@ -87,7 +87,7 @@ var global = {
     cancelEvent : function(event) {
         event = $.event.fix(event);
         event.preventDefault();
-    },  
+    }
 };
 
 /**
