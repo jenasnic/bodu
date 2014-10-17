@@ -149,7 +149,7 @@ $.fn.extend({
                 else {
 
                     expandableElement.show();
-                    expandLinkElement.html(lessText);                
+                    expandLinkElement.html(lessText);
                 }
             }
         });
@@ -200,7 +200,7 @@ $.fn.extend({
                         'max-height' : size + 'px',
                         'overflow' :'hidden'
                     });
-                    expandLinkElement.html(moreText);                
+                    expandLinkElement.html(moreText);
                 }
             }
         });

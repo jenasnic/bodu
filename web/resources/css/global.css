@@ -229,17 +229,9 @@ li.slideshow-item.activ {
 #video ul {margin: 0; padding: 0;}
 
 #video-menu {
-    background: url("images/backgroundBlock.png");
     float: left;
+    padding: 0 5px 0 15px;
     width: 180px;
-}
-
-span.video-menu-title {
-    background: url("images/video/videoBackgroundTitle.png") repeat-x;
-    color: #afafaf;
-    display: block;
-    font-size: 16px;
-    padding: 10px 10px 3px 10px;
 }
 
 li.video-menu-item {
@@ -261,7 +253,7 @@ li.video-menu-item.activ {
 
 #video-content {
     float: left;
-    width: 780px;
+    width: 760px;
 }
 
 #video-slideshow {
