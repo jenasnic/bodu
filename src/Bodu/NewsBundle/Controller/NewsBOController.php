@@ -123,7 +123,7 @@ class NewsBOController extends Controller
                     if (file_exists($fileToDelete) && is_file($fileToDelete))
                         unlink($fileToDelete);
 
-                    $this->getRequest()->getSession()->getFlashBag()->add('bo-log-message', 'Suppression de l\actu OK');
+                    $this->getRequest()->getSession()->getFlashBag()->add('bo-log-message', 'Suppression de l\'actu OK');
                 }
             }
             catch (Exception $e)
