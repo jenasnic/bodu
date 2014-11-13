@@ -113,7 +113,7 @@
                     {% for slideshow in sectionToEdit.vars.value.slideshows %}
                         <tr id="slideshow-list-{{ slideshow.id }}">
                             <td class="bo-table-id">{{ slideshow.id }}</td>
-                            <td class="bo-table-label">{{ slideshow.name }}</td>
+                            <td class="bo-table-label {% if not slideshow.published %}disabled{% endif %}">{{ slideshow.name }}</td>
                             <td class="bo-table-action">
                                 <a href="{{ path('bodu_slideshow_bo_edit', { 'id': slideshow.id }) }}" >
                                     <img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" />
