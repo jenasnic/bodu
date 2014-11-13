@@ -57,6 +57,12 @@
 
             <div class="field-set-separator"></div>
 
+            {{ form_widget(slideshowToEdit.published) }}
+            {{ form_label(slideshowToEdit.published, "Publication") }}
+            {{ form_errors(slideshowToEdit.published) }}
+
+            <div class="field-set-separator"></div>
+
             {{ form_widget(slideshowToEdit.activBorder) }}
             {{ form_label(slideshowToEdit.activBorder, "Activer la bordure") }}
 

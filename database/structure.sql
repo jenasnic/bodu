@@ -129,6 +129,7 @@ CREATE TABLE `slideshow` (
   `section_id` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `published` tinyint(1) NOT NULL,
   `activBorder` tinyint(1) NOT NULL,
   `borderColor` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
   `thicknessValue` int(11) DEFAULT NULL,

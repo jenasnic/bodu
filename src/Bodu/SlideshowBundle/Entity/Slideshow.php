@@ -39,6 +39,13 @@ class Slideshow
     /**
      * @var boolean
      *
+     * @ORM\Column(name="published", type="boolean")
+     */
+    private $published;
+
+    /**
+     * @var boolean
+     *
      * @ORM\Column(name="activBorder", type="boolean")
      */
     private $activBorder;
@@ -148,6 +155,29 @@ class Slideshow
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return News
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean
+     */
+    public function getPublished()
+    {
+        return $this->published;
     }
 
     /**

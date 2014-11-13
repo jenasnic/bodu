@@ -85,14 +85,14 @@ INSERT INTO `section` (`id`, `skin_id`, `name`, `description`) VALUES
 -- Contenu de la table `slideshow`
 --
 
-INSERT INTO `slideshow` (`id`, `section_id`, `name`, `description`, `activBorder`, `borderColor`, `thicknessValue`, `thumbnailPosition`, `rank`) VALUES
-(1, 3, 'Couleur (vertical)', 'Diaporama avec des photos en couleur 01...', 1, 'ff0000', 2, 'left', 1),
-(2, 3, 'Autre couleur en vertical', 'Diaporama avec des photos en couleur 02...', 1, '00ff00', 4, 'left', 2),
-(3, 3, 'Couleur (horizontal)', 'Diaporama avec des photos en couleur 03...', 1, '0000ff', 2, 'top', 3),
-(4, 3, 'Autre couleur en horizontal', 'Diaporama avec des photos en couleur 04...', 0, NULL, 0, 'top', 4),
-(5, 1, 'N&B vertical', 'Diaporama avec des photos en noir et blanc 01...', 1, 'ffffff', 2, 'left', 1),
-(6, 1, 'N&B horizontal', 'Diaporama avec des photos en noir et blanc 01...', 0, NULL, 0, 'top', 2),
-(7, 1, 'Un autre diaporama en noir et blanc', 'Diaporama avec des photos en noir et blanc 01...', 1, '000000', 2, 'top', 3);
+INSERT INTO `slideshow` (`id`, `section_id`, `name`, `description`, `published`, `activBorder`, `borderColor`, `thicknessValue`, `thumbnailPosition`, `rank`) VALUES
+(1, 3, 'Couleur (vertical)', 'Diaporama avec des photos en couleur 01...', 1, 1, 'ff0000', 2, 'left', 1),
+(2, 3, 'Autre couleur en vertical', 'Diaporama avec des photos en couleur 02...', 1, 1, '00ff00', 4, 'left', 2),
+(3, 3, 'Couleur (horizontal)', 'Diaporama avec des photos en couleur 03...', 1, 1, '0000ff', 2, 'top', 3),
+(4, 3, 'Autre couleur en horizontal', 'Diaporama avec des photos en couleur 04...', 1, 0, NULL, 0, 'top', 4),
+(5, 1, 'N&B vertical', 'Diaporama avec des photos en noir et blanc 01...', 1, 1, 'ffffff', 2, 'left', 1),
+(6, 1, 'N&B horizontal', 'Diaporama avec des photos en noir et blanc 01...', 1, 0, NULL, 0, 'top', 2),
+(7, 1, 'Un autre diaporama en noir et blanc', 'Diaporama avec des photos en noir et blanc 01...', 1, 1, '000000', 2, 'top', 3);
 
 -- --------------------------------------------------------
 

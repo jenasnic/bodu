@@ -17,6 +17,7 @@ class SlideshowType extends AbstractType
         $builder
             ->add('name', 'text', array('required' => false))
             ->add('description', 'textarea', array('required' => false))
+            ->add('published', 'checkbox', array('required' => false))
             ->add('activBorder', 'checkbox', array('required' => false))
             ->add('borderColor', 'text', array('required' => false))
             ->add('thicknessValue', 'choice', array(

@@ -28,7 +28,9 @@
             <ul>
             {# Browse each slideshow and display them #}
             {% for slideshow in section.slideshows %}
-                <li data-slideshow-id="{{ slideshow.id }}" class="slideshow-item">{{ slideshow.name }}</li>
+                {% if (slideshow.published) %}
+                    <li data-slideshow-id="{{ slideshow.id }}" class="slideshow-item">{{ slideshow.name }}</li>
+                {% endif %}
             {% endfor %}
             </ul>
 

@@ -70,7 +70,7 @@
         {% for slideshow in slideshowList %}
             <tr{% if loop.index is even %} class="odd"{% endif %}>
                 <td class="bo-table-id">{{ slideshow.id }}</td>
-                <td class="bo-table-label">{{ slideshow.name }}</td>
+                <td class="bo-table-label {% if not slideshow.published %}disabled{% endif %}">{{ slideshow.name }}</td>
                 {% set sectionName = (slideshow.section is empty ? '<span class="no-section">- Aucune -</span>' : slideshow.section.name) %}
                 <td class="bo-table-label">{{ sectionName|raw }}</td>
                 <td class="bo-table-action">
