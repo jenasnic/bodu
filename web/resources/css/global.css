@@ -170,13 +170,11 @@ li.slideshow-item.activ {
 
 
 
-/****************/
-/* CSS for news */
-/****************/
+/**************************************/
+/* CSS for news + link (contact page) */
+/**************************************/
 
-#news-list {padding: 0 20px;}
-
-.news-item {
+.news-item, .link-item {
     background: url("images/backgroundBlock.png") repeat;
     float: left;
     margin: 0 20px 20px 20px;
@@ -186,20 +184,21 @@ li.slideshow-item.activ {
 }
 
 .news-item.small {width: 420px;}
+.link-item {width: 380px;}
 
-.news-item h2 {
+.news-item h2, .link-item h2 {
     background: url("images/backgroundBlock.png") repeat;
     color: #afafaf;
     font-size: 16px;
     padding: 3px 10px;
 }
 
-.news-picture {
+.news-picture, .link-picture {
     float: left;
     margin: 10px;
 }
 
-.news-content {
+.news-content, .link-content {
     color: #c8c8c8;
     font-size: 12px;
     line-height: 15px;
@@ -208,7 +207,7 @@ li.slideshow-item.activ {
     text-align: justify;
 }
 
-.news-item a.news-link {
+a.more-link {
     background: url("images/seeMoreOff.jpg") no-repeat;
     bottom: 10px;
     display: block;
@@ -218,7 +217,30 @@ li.slideshow-item.activ {
     width: 99px;
 }
 
-.news-item a.news-link:hover {background: url("images/seeMoreOn.jpg") no-repeat;}
+a.more-link:hover {background: url("images/seeMoreOn.jpg") no-repeat;}
+
+.contact-title {
+    color: #e1e1e1;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 10px 10px 53px;
+    position: relative;
+}
+
+.contact-title img {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.contact-link {
+    color: #828282;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 80px;
+    text-decoration: underline;
+}
 
 
 

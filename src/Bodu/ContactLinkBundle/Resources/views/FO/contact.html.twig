@@ -12,30 +12,36 @@
     <img src="{{ asset('resources/images/contact.png') }}" alt="">Contact
 </span>
 
+<div class="sep-10"></div>
+
 <a class="contact-link" href="mailto:patrick@bodu.fr">patrick@bodu.fr</a>
 
 <div class="sep-20"></div>
 
 {% if (linkList|length > 0) %}
 
+    <div class="sep-10"></div>
+
     <span class="contact-title">
         <img src="{{ asset('resources/images/link.png') }}" alt="">Liens sites web
     </span>
 
-    <div id="link-list">
+    <div class="sep-30"></div>
+
+    <div class="padding-hor-20">
     {% for link in linkList %}
         <div class="link-item">
             <h2>{{ link.title }}</h2>
             {% if (link.pictureUrl) %}
                 <div class="link-picture">
-                    <img src="{{ link.pictureUrl }}" alt="-" />
+                    <img src="{{ link.pictureUrl }}" alt="-" width="160" height="80" />
                 </div>
             {% endif %}
             <div class="link-content">
                 {{ link.content|raw }}
             </div>
             <div class="clear"></div>
-            {% if (link.link) %}<a href="{{ link.link }}" target="_blank" class="link-link" ></a>{% endif %}
+            {% if (link.link) %}<a href="{{ link.link }}" target="_blank" class="more-link" ></a>{% endif %}
         </div>
     {% endfor %}
     </div>

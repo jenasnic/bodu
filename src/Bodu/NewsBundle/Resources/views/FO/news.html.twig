@@ -8,7 +8,7 @@
 
 {% block body %}
 
-<div id="news-list">
+<div class="padding-hor-60">
 
     {% for news in newsList %}
         <div class="news-item {% if (news.size == 'small') %}small{% endif %}">
@@ -22,7 +22,7 @@
                 {{ news.content|raw }}
             </div>
             <div class="clear"></div>
-            {% if (news.link) %}<a href="{{ news.link }}" target="_blank" class="news-link" ></a>{% endif %}
+            {% if (news.link) %}<a href="{{ news.link }}" target="_blank" class="more-link" ></a>{% endif %}
         </div>
     {% endfor %}
 
