@@ -1,0 +1,7 @@
+parameters:
+#    bodu_contact_link.example.class: Bodu\ContactLinkBundle\Example
+
+services:
+#    bodu_contact_link.example:
+#        class: %bodu_contact_link.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

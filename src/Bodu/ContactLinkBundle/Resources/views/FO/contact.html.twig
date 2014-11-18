@@ -1,0 +1,47 @@
+{#
+    Display contact + link for front-office
+    Required :
+    - linkList : array of link (as ContactLink)
+#}
+
+{% extends "::master.html.twig" %}
+
+{% block body %}
+
+<span class="contact-title">
+    <img src="{{ asset('resources/images/contact.png') }}" alt="">Contact
+</span>
+
+<a class="contact-link" href="mailto:patrick@bodu.fr">patrick@bodu.fr</a>
+
+<div class="sep-20"></div>
+
+{% if (linkList|length > 0) %}
+
+    <span class="contact-title">
+        <img src="{{ asset('resources/images/link.png') }}" alt="">Liens sites web
+    </span>
+
+    <div id="link-list">
+    {% for link in linkList %}
+        <div class="link-item">
+            <h2>{{ link.title }}</h2>
+            {% if (link.pictureUrl) %}
+                <div class="link-picture">
+                    <img src="{{ link.pictureUrl }}" alt="-" />
+                </div>
+            {% endif %}
+            <div class="link-content">
+                {{ link.content|raw }}
+            </div>
+            <div class="clear"></div>
+            {% if (link.link) %}<a href="{{ link.link }}" target="_blank" class="link-link" ></a>{% endif %}
+        </div>
+    {% endfor %}
+    </div>
+
+    <div class="sep-20"></div>
+
+{% endif %}
+
+{% endblock %}

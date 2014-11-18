@@ -1,0 +1,74 @@
+{#
+    Allows to edit contact link.
+    Required :
+    - linkToEdit : Form element based on ContactLinkType object (i.e. link to edit).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery.cleditor.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery.cleditor.min.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#bodu_contactlinkbundle_contactlink_content").cleditor({height: 170});
+        });
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    {% form_theme linkToEdit ':forms:custom_errors.html.twig' %}
+
+    {% if (linkToEdit.vars.value.id) %}
+    <h1>Modification du lien</h1>
+    {% else %}
+    <h1>Ajout d'un lien</h1>
+    {% endif %}
+
+    <form action="{{ path('bodu_contact_link_bo_edit', { 'id': linkToEdit.vars.value.id }) }}" method="post" {{ form_enctype(linkToEdit) }}>
+
+        <div class="field-set">
+
+            {{ form_label(linkToEdit.title, "Titre") }}
+            {{ form_widget(linkToEdit.title, { 'attr': {'class': 'field-L'}, 'max_length' : '255' }) }}
+            {{ form_errors(linkToEdit.title) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(linkToEdit.content, "Contenu") }}
+            {{ form_widget(linkToEdit.content) }}
+            {{ form_errors(linkToEdit.content) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(linkToEdit.link, "Lien") }}
+            {{ form_widget(linkToEdit.link, { 'attr': {'class': 'field-L'} }) }}
+            {{ form_errors(linkToEdit.link) }}
+
+            <div class="field-set-separator"></div>
+
+            {{ form_label(linkToEdit.pictureFile, "Image") }}
+            <span class="comment">La taille de l'image utilisée pour les liens de la page de contact est : ??? X ???</span>
+            {% if (linkToEdit.vars.value.pictureUrl) %}
+                <span class="comment">L'image actuellement chargée est : {{ linkToEdit.vars.value.pictureUrl }}</span>
+            {% endif %}
+            {{ form_widget(linkToEdit.pictureFile) }}
+            {{ form_errors(linkToEdit.pictureFile) }}
+
+            {{ form_rest(linkToEdit) }}
+
+        </div>
+
+        <div class="sep-20"></div>
+
+        <input type="submit" class="button" value="Enregistrer" />
+
+    </form>
+
+    <div class="sep-20"></div>
+
+{% endblock %}

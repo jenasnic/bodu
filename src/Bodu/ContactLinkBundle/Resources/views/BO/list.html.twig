@@ -1,0 +1,83 @@
+{#
+    Allows to list all contact link available. It allows to add/edit/delete contact link.
+    Required :
+    - linkList : list of all link available (as ContactLink).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery-ui-1.10.4.custom.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-ui-1.10.4.custom.min.js') }}"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("#link-list").sortable({
+                update: function(event, ui) {
+                    $("#ordered-link-list").val($('#link-list').sortable('serialize'));
+                }
+            });
+            $("#link-list").disableSelection();
+        });
+
+    </script>
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Gestion des liens (page Contact)</h1>
+
+    <a class="link-button" href="{{ path('bodu_contact_link_bo_edit') }}">
+        <img width="16" height="16" border="0" title="Ajouter un lien" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
+        <span>Ajouter un lien</span>
+    </a>
+
+    <div class="sep-15"></div>
+
+    {# Display all link found #}
+    <table class="bo-table bo-sortable-table">
+
+        <thead>
+            <tr>
+                <th class="bo-table-id">ID</th>
+                <th class="bo-table-label">Titre</th>
+                <th class="bo-table-label">Lien</th>
+                <th class="bo-table-action"><img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" /></th>
+                <th class="bo-table-action"><img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" /></th>
+            </tr>
+        </thead>
+
+        <tbody id="link-list">
+        {% for link in linkList %}
+            <tr id="link-list-{{ link.id }}">
+                <td class="bo-table-id">{{ link.id }}</td>
+                <td class="bo-table-label">{{ link.title }}</td>
+                <td class="bo-table-label">{{ link.link }}</td>
+                <td class="bo-table-action">
+                    <a href="{{ path('bodu_contact_link_bo_edit', { 'id': link.id }) }}" >
+                        <img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" />
+                    </a>
+                </td>
+                <td class="bo-table-action">
+                    <a href="{{ path('bodu_contact_link_bo_delete', { 'id': link.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
+                        <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" />
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="sep-20"></div>
+
+    {# Form to save link order #}
+    <form action="{{ path('bodu_contact_link_bo_list') }}" method="post">
+        <input id="ordered-link-list" name="ordered-link-list" type="hidden" value="" />
+        <input type="submit" class="button" value="Enregistrer" />
+    </form>
+
+{% endblock %}

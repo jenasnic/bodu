@@ -35,3 +35,7 @@ bodu_video:
     resource: "@BoduVideoBundle/Resources/config/routing.yml"
     prefix:   /
 
+bodu_contact_link:
+    resource: "@BoduContactLinkBundle/Resources/config/routing.yml"
+    prefix:   /
+

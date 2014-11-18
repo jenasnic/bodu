@@ -156,6 +156,25 @@ CREATE TABLE `video` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `contactLink`
+--
+
+DROP TABLE IF EXISTS `contactLink`;
+CREATE TABLE `contactLink` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pictureUrl` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `rank` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
 --
 -- Contraintes pour les tables exportées
 --

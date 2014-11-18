@@ -1,0 +1,11 @@
+Bodu\ContactLinkBundle\Entity\ContactLink:
+    properties:
+        title:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"
+            - Length:
+                max: 255
+                maxMessage: "Ce champ est limité à 255 caractères"
+        link:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"

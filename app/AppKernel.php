@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Bodu\SectionBundle\BoduSectionBundle(),
             new Bodu\SecurityBundle\BoduSecurityBundle(),
             new Bodu\VideoBundle\BoduVideoBundle(),
+            new Bodu\ContactLinkBundle\BoduContactLinkBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
