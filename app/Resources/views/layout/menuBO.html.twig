@@ -1,0 +1,19 @@
+
+{% set menuList = [
+    {label : 'Home', path : 'bodu_home_bo_banner_list', start : 'bodu_home_'},
+    {label : 'Menus', path : 'bodu_menu_bo_list', start : 'bodu_menu_'},
+    {label : 'Créer Diaporamas', path : 'bodu_slideshow_bo_list', start : 'bodu_slideshow_'},
+    {label : 'Gestion Diaporamas', path : 'bodu_section_bo_list', start : 'bodu_section_'},
+    {label : 'Vidéos', path : 'bodu_video_bo_list', start : 'bodu_video_'},
+    {label : 'Actualités', path : 'bodu_news_bo_list', start : 'bodu_news_'},
+    {label : 'Skins', path : 'bodu_skin_bo_list', start : 'bodu_skin_'},
+    {label : 'Lien/contact', path : 'bodu_contact_link_bo_list', start : 'bodu_contact_link_'},
+] %}
+
+<div id="bo-menu">
+    <ul>
+    {% for menu in menuList %}
+        {% set isActivMenu = (app.request.attributes.get('_route') starts with menu.start) %}
+        <li><a href="{{ path(menu.path) }}" class="{{ isActivMenu ? 'activ' : '' }}">{{ menu.label }}</a></li>
+    {% endfor %}
+</div>

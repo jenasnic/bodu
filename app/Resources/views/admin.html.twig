@@ -28,18 +28,7 @@
                 <img src="{{ asset('resources/images/admin/logo.png') }}" alt="Back Office" />
                 <span><a href="{{ path('bodu_home_fo') }}">Retour au site</a> | <a href="{{ path('logout') }}">Déconnexion</a></span>
             </div>
-            <div id="bo-menu">
-                <ul>
-                    <li class="first"><a href="{{ path('bodu_home_bo_banner_list') }}">Home</a></li>
-                    <li><a href="{{ path('bodu_menu_bo_list') }}">Menus</a></li>
-                    <li><a href="{{ path('bodu_slideshow_bo_list') }}">Créer Diaporamas</a></li>
-                    <li><a href="{{ path('bodu_section_bo_list') }}">Gestion Diaporamas</a></li>
-                    <li><a href="{{ path('bodu_video_bo_list') }}">Vidéos</a></li>
-                    <li><a href="{{ path('bodu_news_bo_list') }}">Actualités</a></li>
-                    <li><a href="{{ path('bodu_skin_bo_list') }}">Skins</a></li>
-                    <li class="last"><a href="{{ path('bodu_contact_link_bo_list') }}">Lien/contact</a></li>
-                </ul>
-            </div>
+            {% include 'layout/menuBO.html.twig' %}
             <div class="clear"></div>
             <div class="sep-grey"></div>
 

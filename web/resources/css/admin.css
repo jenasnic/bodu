@@ -73,9 +73,6 @@ a {
     margin: 0 10px;
 }
 
-#header ul li.first {margin-left: 0;}
-#header ul li.last {margin-right: 0;}
-
 .bo-separator {
     background-color: #ddd;
     height: 2px;
