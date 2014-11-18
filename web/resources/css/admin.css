@@ -1,7 +1,7 @@
 
 *{margin:0;padding:0;}
 
-body {background: url("images/admin/background.png") 0 0 repeat-x #999;}
+body {background: url("images/admin/background.jpg") 0 0 repeat;}
 
 body,td,th,div,input {
     font-family: Arial, Helvetica, sans-serif;
@@ -29,45 +29,43 @@ a {
 
 #header {
     font-size: 12px;
-    margin: 20px 0;
     text-align: center;
     width: 100%;
 }
 
 #bo-top {
-    background: url("images/admin/backgroundTitle.png") 0 0 repeat-x;
-    color: #ddd;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    text-align: center;
     font-size: 30px;
-    height: 40px;
+    height: 100px;
     padding: 20px;
     position: relative;
 }
 
 #bo-top span {
-    position: absolute;
-    bottom: 10px;
     font-size: 12px;
-    right: 10px;
+    position: absolute;
+    top: 10px;
+    right: 100px;
+    z-index: 10;
 }
 
-#bo-top span, #bo-top span a {color: #ddd;}
+#bo-top span, #bo-top span a {color: #000;}
 #bo-top span a:hover {text-decoration: underline;}
 
-#header li a {
-    background-color: #007BA8;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    color: #ddd;
-    font-weight:bold;
-    padding: 5px 10px;
+#bo-menu {
+    height: 30px;
+    margin: 0 auto;
+    width: 885px;
 }
 
-#header li a:hover {
-    background-color: #ddd;
-    color: #007BA8;
+#header li a {
+    border: 2px solid #827d81;
+    color: #403e4c;
+    font-weight:bold;
+    padding: 5px 15px;
 }
+
+#header li a:hover, #header li a.activ {background-color: #00acec;}
 
 #header ul li {
     float:left;
@@ -94,15 +92,13 @@ a {
 }
 
 h1 {
-    background-color: #9abbcc;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    color: #403e4c;
     font-size: 20px;
     font-weight: normal;
-    margin: 20px auto 30px;
+    margin: 10px auto;
     padding: 5px 20px;
     text-align: center;
-    width: 700px
+    width: 700px;
 }
 
 
@@ -112,11 +108,11 @@ h1 {
 /************************/
 
 .bo-table {border-collapse: collapse; width: 100%;}
-.bo-table thead tr {background: #9ABBCC;}
+.bo-table thead tr {background: #585858;}
 .bo-table th {padding: 5px;}
 .bo-table tbody tr {background-color: #ddd;}
 .bo-table tbody tr.odd {background-color: #ccc;}
-.bo-table th, .bo-table td {border: 1px solid #eee;}
+.bo-table th, .bo-table td {border: 1px solid #333;}
 .bo-table td.bo-table-id, .bo-table td.bo-table-action, .bo-table td.bo-table-date, .bo-table td.bo-table-field {text-align: center;}
 .bo-table td.bo-table-label {padding: 4px 10px;}
 .bo-table td.bo-table-hidden {display:none;}
