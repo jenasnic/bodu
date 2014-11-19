@@ -30,11 +30,6 @@
 
     <h1>Gestion des bannières</h1>
 
-    <a class="link-button" href="{{ path('bodu_home_bo_banner_edit') }}">
-        <img width="16" height="16" border="0" title="Ajouter une bannière" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
-        <span>Ajouter une bannière</span>
-    </a>
-
     <div class="sep-15"></div>
 
     {# Display all menu found #}
@@ -75,7 +70,9 @@
     {# Form to save menu order #}
     <form action="{{ path('bodu_home_bo_banner_list') }}" method="post">
         <input id="ordered-banner-list" name="ordered-banner-list" type="hidden" value="" />
-        <input type="submit" class="button" value="Enregistrer" />
+        <div class="save-button"><input type="submit" value="" /></div>
     </form>
+
+    <a class="add-button" href="{{ path('bodu_home_bo_banner_edit') }}">Ajouter une bannière</a>
 
 {% endblock %}

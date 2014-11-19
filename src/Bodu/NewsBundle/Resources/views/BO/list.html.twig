@@ -30,11 +30,6 @@
 
     <h1>Gestion des actualités</h1>
 
-    <a class="link-button" href="{{ path('bodu_news_bo_edit') }}">
-        <img width="16" height="16" border="0" title="Ajouter une actu" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
-        <span>Ajouter une actu</span>
-    </a>
-
     <div class="sep-15"></div>
 
     {# Display all news found #}
@@ -75,7 +70,9 @@
     {# Form to save news order #}
     <form action="{{ path('bodu_news_bo_list') }}" method="post">
         <input id="ordered-news-list" name="ordered-news-list" type="hidden" value="" />
-        <input type="submit" class="button" value="Enregistrer" />
+        <div class="save-button"><input type="submit" value="" /></div>
     </form>
+
+    <a class="add-button" href="{{ path('bodu_news_bo_edit') }}">Ajouter une actu</a>
 
 {% endblock %}

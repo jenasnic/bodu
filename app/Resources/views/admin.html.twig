@@ -25,7 +25,7 @@
 
 
             <div id="bo-top">
-                <img src="{{ asset('resources/images/admin/logo.png') }}" alt="Back Office" />
+                <a href="{{ path('bodu_home_bo') }}"><img src="{{ asset('resources/images/admin/logo.png') }}" alt="Back Office" /></a>
                 <span><a href="{{ path('bodu_home_fo') }}">Retour au site</a> | <a href="{{ path('logout') }}">Déconnexion</a></span>
             </div>
             {% include 'layout/menuBO.html.twig' %}

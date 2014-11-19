@@ -11,46 +11,6 @@
 
     <h1>Gestion des diaporamas</h1>
 
-    <div id="slideshow-search" class="field-set">
-
-    {# Form to filter slideshow to display #}
-    <form action="{{ path('bodu_slideshow_bo_list') }}" method="get">
-
-        <div class="left w-40">
-            <label for="slideshow-name">Nom du diaporama</label>
-            <input type="text" id="slideshow-name" name="slideshow-name" class="field-M" />
-        </div>
-
-        <div class="left w-40">
-            <label for="">Page</label>
-            <select id="slideshow-section" name="slideshow-section" class="field-M">
-                <option value="-1">-- Aucune --</option>
-                <option value="0">-- Toutes --</option>
-                {% for  section in sectionList %}
-                    <option value="{{ section.id }}">{{ section.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="clear"></div>
-
-        <div class="right">
-            <input type="submit" class="button" value="Chercher" />
-        </div>
-
-        <div class="clear"></div>
-
-    </form>
-
-    </div>
-
-    <div class="sep-20"></div>
-
-    <a class="link-button" href="{{ path('bodu_slideshow_bo_edit') }}">
-        <img width="16" height="16" border="0" title="Ajouter un diaporama" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
-        <span>Ajouter un diaporama</span>
-    </a>
-
     <div class="sep-15"></div>
 
     {# Display all slideshow found #}
@@ -88,6 +48,47 @@
         </tbody>
 
     </table>
+
+    <div class="sep-15"></div>
+
+    <a class="add-button" href="{{ path('bodu_slideshow_bo_edit') }}">Ajouter un diaporama</a>
+
+    <div class="sep-20"></div>
+
+    <div id="slideshow-search">
+
+        <h2>Chercher un diaporama</h2>
+
+        {# Form to filter slideshow to display #}
+        <form action="{{ path('bodu_slideshow_bo_list') }}" method="get">
+
+            <div class="container">
+
+                <div class="left w-50">
+                    <label for="slideshow-name">Nom du diaporama</label>
+                    <input type="text" id="slideshow-name" name="slideshow-name" class="field-M" />
+                </div>
+
+                <div class="right w-50">
+                    <label for="">Page</label>
+                    <select id="slideshow-section" name="slideshow-section" class="field-M">
+                        <option value="-1">-- Aucune --</option>
+                        <option value="0">-- Toutes --</option>
+                        {% for  section in sectionList %}
+                            <option value="{{ section.id }}">{{ section.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
+            <div class="right"><input type="submit" class="button" value="Chercher" /></div>
+
+        </form>
+
+    </div>
 
     <div class="sep-20"></div>
 

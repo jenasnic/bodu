@@ -10,11 +10,6 @@
 
     <h1>Gestion des skins</h1>
 
-    <a class="link-button" href="{{ path('bodu_skin_bo_edit') }}">
-        <img width="16" height="16" border="0" title="Ajouter un skin" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
-        <span>Ajouter un skin</span>
-    </a>
-
     <div class="sep-15"></div>
 
     {# Display all skin found #}
@@ -50,6 +45,8 @@
 
     </table>
 
-    <div class="sep-20"></div>
+    <div class="sep-15"></div>
+
+    <a class="add-button" href="{{ path('bodu_skin_bo_edit') }}">Ajouter un skin</a>
 
 {% endblock %}

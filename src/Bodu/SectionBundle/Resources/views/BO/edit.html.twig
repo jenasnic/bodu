@@ -90,12 +90,7 @@
 
             <div class="field-set">
 
-                <a class="link-button" href="{{ path('bodu_slideshow_bo_edit') }}">
-                    <img width="16" height="16" border="0" title="Ajouter un diaporama" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
-                    <span>Ajouter un diaporama</span>
-                </a>
-
-                <div class="sep-15"></div>
+                <div class="sep-10"></div>
 
                 {# Display all slideshows linked to section #}
                 <table class="bo-table bo-sortable-table">
@@ -133,13 +128,17 @@
                 {# Hidden field to save slideshow order #}
                 <input id="ordered-slideshow-list" name="ordered-slideshow-list" type="hidden" value="" />
 
+                <div class="sep-10"></div>
+
+                <a class="add-button" href="{{ path('bodu_slideshow_bo_edit') }}">Ajouter un diaporama</a>
+
             </div>
 
             <div class="sep-20"></div>
 
         {% endif %}
 
-        <input type="submit" class="button" value="Enregistrer" />
+        <div class="save-button"><input type="submit" value="" /></div>
 
     </form>
 

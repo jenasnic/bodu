@@ -30,11 +30,6 @@
 
     <h1>Gestion des liens (page Contact)</h1>
 
-    <a class="link-button" href="{{ path('bodu_contact_link_bo_edit') }}">
-        <img width="16" height="16" border="0" title="Ajouter un lien" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
-        <span>Ajouter un lien</span>
-    </a>
-
     <div class="sep-15"></div>
 
     {# Display all link found #}
@@ -72,12 +67,14 @@
 
     </table>
 
-    <div class="sep-20"></div>
+    <div class="sep-15"></div>
 
     {# Form to save link order #}
     <form action="{{ path('bodu_contact_link_bo_list') }}" method="post">
         <input id="ordered-link-list" name="ordered-link-list" type="hidden" value="" />
-        <input type="submit" class="button" value="Enregistrer" />
+        <div class="save-button"><input type="submit" value="" /></div>
     </form>
+
+    <a class="add-button" href="{{ path('bodu_contact_link_bo_edit') }}">Ajouter un lien</a>
 
 {% endblock %}

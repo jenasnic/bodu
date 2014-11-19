@@ -30,11 +30,6 @@
 
     <h1>Gestion des vidéos</h1>
 
-    <a class="link-button" href="{{ path('bodu_video_bo_edit') }}">
-        <img width="16" height="16" border="0" title="Ajouter une vidéo" alt="Ajouter" src="{{ asset('resources/images/admin/add.png') }}" />
-        <span>Ajouter une vidéo</span>
-    </a>
-
     <div class="sep-15"></div>
 
     {# Display all menu found #}
@@ -70,12 +65,14 @@
 
     </table>
 
-    <div class="sep-20"></div>
+    <div class="sep-15"></div>
 
     {# Form to save menu order #}
     <form action="{{ path('bodu_video_bo_list') }}" method="post">
         <input id="ordered-video-list" name="ordered-video-list" type="hidden" value="" />
-        <input type="submit" class="button" value="Enregistrer" />
+        <div class="save-button"><input type="submit" value="" /></div>
     </form>
+
+    <a class="add-button" href="{{ path('bodu_video_bo_edit') }}">Ajouter une vidéo</a>
 
 {% endblock %}
