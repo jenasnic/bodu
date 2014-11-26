@@ -1,6 +1,8 @@
 
 $(document).ready(function() {
 
+    $("#bodu_slideshowbundle_slideshow_description").cleditor({height: 170});
+
     $("#picture-list").sortable({
         update: function(event, ui) {
             $("#ordered-picture-list").val($('#picture-list').sortable('serialize'));
