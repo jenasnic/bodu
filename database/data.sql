@@ -66,7 +66,8 @@ INSERT INTO `news` (`id`, `title`, `content`, `date`, `link`, `size`, `published
 INSERT INTO `skin` (`id`, `name`, `cssFile`) VALUES
 (1, 'Bleu', 'resources/css/skin/blue.css'),
 (2, 'Dark', 'resources/css/skin/dark.css'),
-(3, 'Light', 'resources/css/skin/light.css');
+(3, 'Light', 'resources/css/skin/light.css'),
+(4, 'BO', 'resources/css/skin/bo.css');
 
 -- --------------------------------------------------------
 
