@@ -59,13 +59,17 @@ a {
 }
 
 #bo-menu li a {
+    background: url("images/admin/backgroundFFFFFF.png");
     border: 2px solid #827d81;
     color: #403e4c;
     font-weight: bold;
     padding: 5px 15px;
 }
 
-#bo-menu li a:hover, #bo-menu li a.activ {background-color: #00acec;}
+#bo-menu li a:hover, #bo-menu li a.activ {
+    background: none;
+    background-color: #00acec;
+}
 
 #bo-menu ul li {
     float: left;
@@ -180,9 +184,8 @@ h1 {
 /*********************/
 
 div.field-set {
-    background-color: #DBE2E6;
-    border: 1px solid #78A5BB;
-    border-radius: 10px;
+    background: url("images/admin/backgroundFFFFFF.png");
+    border: 1px solid #484848;
     padding: 20px;
     position: relative;
 }
@@ -201,7 +204,7 @@ span.field-set-title {
 
 .field-set-separator {
     height: 1px;
-    background-color: #78A5BB;
+    background-color: #00acec;
     width: 100%;
     margin: 15px 0;
 }
