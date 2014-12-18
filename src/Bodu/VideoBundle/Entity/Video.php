@@ -38,9 +38,9 @@ class Video
     /**
      * @var string
      *
-     * @ORM\Column(name="vimeoLink", type="text")
+     * @ORM\Column(name="videoIntegration", type="text")
      */
-    private $vimeoLink;
+    private $videoIntegration;
 
     /**
      * @var boolean
@@ -114,26 +114,26 @@ class Video
     }
 
     /**
-     * Set vimeoLink
+     * Set videoIntegration
      *
-     * @param string $vimeoLink
+     * @param string $videoIntegration
      * @return Video
      */
-    public function setVimeoLink($vimeoLink)
+    public function setVideoIntegration($videoIntegration)
     {
-        $this->vimeoLink = $vimeoLink;
+        $this->videoIntegration = $videoIntegration;
 
         return $this;
     }
 
     /**
-     * Get vimeoLink
+     * Get videoIntegration
      *
      * @return string 
      */
-    public function getVimeoLink()
+    public function getVideoIntegration()
     {
-        return $this->vimeoLink;
+        return $this->videoIntegration;
     }
 
     /**

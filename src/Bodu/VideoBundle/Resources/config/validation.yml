@@ -3,6 +3,6 @@ Bodu\VideoBundle\Entity\Video:
         name:
             - NotBlank: 
                  message: "Ce champ est obligatoire"
-        vimeoLink:
+        videoIntegration:
             - NotBlank: 
                  message: "Ce champ est obligatoire"

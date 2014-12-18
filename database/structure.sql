@@ -150,7 +150,7 @@ CREATE TABLE `video` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `vimeoLink` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `videoIntegration` longtext COLLATE utf8_unicode_ci NOT NULL,
   `published` tinyint(1) NOT NULL,
   `rank` int(11) NOT NULL,
   PRIMARY KEY (`id`)

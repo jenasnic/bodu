@@ -45,9 +45,14 @@
 
             <div class="field-set-separator"></div>
 
-            {{ form_label(videoToEdit.vimeoLink, "Lien Vimeo") }}
-            {{ form_widget(videoToEdit.vimeoLink, { 'attr': {'class': 'field-L'} }) }}
-            {{ form_errors(videoToEdit.vimeoLink) }}
+            {{ form_label(videoToEdit.videoIntegration, "Intégration de la vidéo") }}
+            <span class="comment">
+                Permet d'indiquer le flux pour intégrer la vidéo depuis un hébergeur (vimeo, youtube, dailymotion...).<br/>
+                Ce flux est de type : &lt;iframe src="..." ... /&gt;<br/>
+                Ce flux est obtenu depuis la vidéo de l'hébergeur : partager &gt; intégrer<br/>
+            </span>
+            {{ form_widget(videoToEdit.videoIntegration, { 'attr': {'class': 'field-L'} }) }}
+            {{ form_errors(videoToEdit.videoIntegration) }}
 
             <div class="field-set-separator"></div>
 

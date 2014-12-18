@@ -286,11 +286,11 @@ li.video-menu-item.activ {
 .video-item {width: 698px;}
 
 .video-player {
-    border: 4px solid #969696;
-    height: 350px;
-    margin: 0 20px;
-    width: 650px;
+    margin: 0 auto;
+    text-align: center;
 }
+
+.video-player iframe {border: 4px solid #969696;}
 
 .video-description {
     background: url("images/backgroundBlock.png");

@@ -151,9 +151,9 @@ INSERT INTO `picture` (`id`, `slideshow_id`, `name`, `pictureUrl`, `thumbnailUrl
 -- Contenu de la table `video`
 --
 
-INSERT INTO `video` (`id`, `name`, `description`, `vimeoLink`, `published`, `rank`) VALUES
-(1, 'Solar After Effects Experiment', 'Created inside of After Effects without additional 3rd Party plug-ins. From Andrew Kramer', 'http://player.vimeo.com/v2/video/92493111', 1, 1),
-(2, 'Over The Edge', 'Free Adobe After Effects Tutorial. Music: "We''re Going Up" by Tim McMorris. From inlifethrill', 'http://player.vimeo.com/v2/video/54837394', 1, 2),
-(3, 'Spatial Experiment - Particular 2', 'This is the final render of my latest After Effects Tutorial on Trapcode Particular. From Mattias Peresini', 'http://player.vimeo.com/v2/video/11711926', 1, 3);
+INSERT INTO `video` (`id`, `name`, `description`, `videoIntegration`, `published`, `rank`) VALUES
+(1, 'Solar After Effects Experiment', 'Created inside of After Effects without additional 3rd Party plug-ins. From Andrew Kramer', '<iframe width="560" height="315" src="//www.youtube.com/embed/LsstKVAWPTc" frameborder="0" allowfullscreen></iframe>', 1, 1),
+(2, 'Over The Edge', 'Free Adobe After Effects Tutorial. Music: "We''re Going Up" by Tim McMorris. From inlifethrill', '<iframe src="http://player.vimeo.com/v2/video/54837394?title=0&color=00a2dc" width="650" height="350" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>', 1, 2),
+(3, 'Spatial Experiment - Particular 2', 'This is the final render of my latest After Effects Tutorial on Trapcode Particular. From Mattias Peresini', '<iframe src="http://player.vimeo.com/v2/video/11711926?title=0&color=00a2dc" width="650" height="350" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>', 1, 3);
 
 -- --------------------------------------------------------
