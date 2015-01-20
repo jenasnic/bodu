@@ -1,17 +1,17 @@
 bodu_contact_link_fo:
-    pattern:  /contact
+    path:  /contact
     defaults: { _controller: "BoduContactLinkBundle:ContactFO:display" }
 
 bodu_contact_link_bo_list:
-    pattern:  /admin/contactLink/list
+    path:  /admin/contactLink/list
     defaults: { _controller: "BoduContactLinkBundle:ContactLinkBO:listContactLink" }
 
 bodu_contact_link_bo_edit:
-    pattern:  /admin/contactLink/edit/{id}
+    path:  /admin/contactLink/edit/{id}
     defaults: { _controller: "BoduContactLinkBundle:ContactLinkBO:editContactLink", id: 0 }
 
 bodu_contact_link_bo_delete:
-    pattern:  /admin/contactLink/delete/{id}
+    path:  /admin/contactLink/delete/{id}
     defaults: { _controller: "BoduContactLinkBundle:ContactLinkBO:deleteContactLink" }
     requirements:
         id: \d+

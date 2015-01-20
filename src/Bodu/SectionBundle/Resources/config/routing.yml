@@ -1,17 +1,17 @@
 bodu_section_fo_display:
-    pattern:  /r/{id}
+    path:  /r/{id}
     defaults: { _controller: "BoduSectionBundle:SectionFO:display" }
 
 bodu_section_bo_list:
-    pattern:  /admin/section/list
+    path:  /admin/section/list
     defaults: { _controller: "BoduSectionBundle:SectionBO:listSection" }
 
 bodu_section_bo_edit:
-    pattern:  /admin/section/edit/{id}
+    path:  /admin/section/edit/{id}
     defaults: { _controller: "BoduSectionBundle:SectionBO:editSection", id: 0 }
 
 bodu_section_bo_delete:
-    pattern:  /admin/section/delete/{id}
+    path:  /admin/section/delete/{id}
     defaults: { _controller: "BoduSectionBundle:SectionBO:deleteSection" }
     requirements:
         id: \d+
