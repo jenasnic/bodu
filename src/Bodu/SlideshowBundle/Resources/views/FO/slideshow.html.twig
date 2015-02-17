@@ -13,6 +13,8 @@ function initAjaxSlideshow() {
 
     $('#thumbnail-list').slick({
         infinite : true,
+        nextArrow: '<span class="slick-next"></span>',
+        prevArrow: '<span class="slick-prev"></span>',
         slide : 'li',
         slidesToShow : 5,
         vertical : {{ (slideshow.thumbnailPosition == 'left') ? 'true' : 'false' }}
@@ -21,6 +23,8 @@ function initAjaxSlideshow() {
     $('#picture-list').slick({
         centerMode : true,
         centerPadding : '0px',
+        nextArrow: '<span class="slick-next"></span>',
+        prevArrow: '<span class="slick-prev"></span>',
         slide : 'li',
         slidesToShow : 1
     });

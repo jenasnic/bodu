@@ -2,14 +2,17 @@
 $(document).ready(function() {
 
     $('#video-slideshow').slick({
+        arrows: false,
         centerMode : true,
         centerPadding : '0px',
+        cssEase: 'linear',
         fade : true,
-        slidesToShow : 1,
-        onAfterChange : function(slider, currentIndex) {
-            $('.video-description').hide();
-            $('#video-' + currentIndex + ' .video-description').show('blind');
-        }
+        slidesToShow : 1
+    });
+
+    $('#video-slideshow').on('afterChange', function(slider, currentSlide) {
+        $('.video-description').hide();
+        $('#video-' + currentSlide.currentSlide + ' .video-description').show('blind');
     });
 
     // Init action when user select video to see
@@ -24,10 +27,6 @@ $(document).ready(function() {
 
         // Display selected video
         var index = $(this).attr('data-index');
-        $('#video-slideshow').slickGoTo(index);
+        $('#video-slideshow').slick('slickGoTo', index);
     });
-
-    // Select first video per default
-    if ($('.video-menu-item').length > 0)
-        $('.video-menu-item')[0].click();
 });

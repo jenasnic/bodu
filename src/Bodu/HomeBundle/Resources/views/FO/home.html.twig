@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/slick.css') }}" />
 
-    <script type="text/javascript" src="{{ asset('resources/scripts/lib/slick.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/slick.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('resources/scripts/section.js') }}"></script>
 
     {# Define javascript used to initalize slideshow after Ajax call #}
@@ -19,10 +19,13 @@
     $(document).ready(function() {
     
         $('#banner-list').slick({
+            autoplay: true,
             centerMode : true,
             centerPadding : '0px',
             dots : true,
             fade : true,
+            nextArrow: '<span class="slick-next"></span>',
+            prevArrow: '<span class="slick-prev"></span>',
             slide : 'li',
             slidesToShow : 1,
             speed: 500
