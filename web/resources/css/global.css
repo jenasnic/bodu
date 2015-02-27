@@ -31,6 +31,12 @@ a {
     padding: 10px 20px;
 }
 
+#header a.twitter {
+    display: block;
+    float: right;
+    margin-right: 10px;
+}
+
 #menu ul li {
     background: url('images/menuBulletOff.png') no-repeat left bottom;
     cursor: pointer;
