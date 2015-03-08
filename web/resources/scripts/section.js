@@ -55,6 +55,6 @@ function initThumbnailAction() {
     $('.thumbnail-item').on('click', function() {
 
         var index = $(this).attr('data-index');
-        $('#picture-list').slickGoTo(index);
+        $('#picture-list').slick('slickGoTo', index);
     });
 }
