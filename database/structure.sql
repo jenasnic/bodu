@@ -81,6 +81,7 @@ CREATE TABLE `picture` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `pictureUrl` longtext COLLATE utf8_unicode_ci NOT NULL,
   `thumbnailUrl` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `fullScreenUrl` longtext COLLATE utf8_unicode_ci NOT NULL,
   `vertical` tinyint(1) NOT NULL,
   `rank` int(11) NOT NULL,
   PRIMARY KEY (`id`),

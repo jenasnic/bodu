@@ -153,6 +153,11 @@ li.slideshow-item.activ {
     font-style: italic;
 }
 
+#section-popup {
+    display: none;
+    margin: 30px;
+}
+
 
 
 /*********************/
@@ -172,9 +177,6 @@ li.slideshow-item.activ {
 
 #picture-list, .picture-item div.container {height: 481px; width: 570px;}
 .picture-item div.container img {margin: 0 auto;}
-
-
-
 
 #picture-list .slick-prev, #picture-list .slick-next {
     cursor: pointer;

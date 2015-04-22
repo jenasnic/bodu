@@ -52,6 +52,16 @@
             {{ form_widget(pictureToEdit.thumbnailFile) }}
             {{ form_errors(pictureToEdit.thumbnailFile) }}
 
+            <div class="field-set-separator"></div>
+
+            {{ form_label(pictureToEdit.thumbnailFile, "Image plein écran") }}
+            <span class="comment">La taille de l'image utilisée pour le plein écran est libre</span>
+            {% if (pictureToEdit.vars.value.fullScreenUrl) %}
+                <span class="comment">L'image actuellement chargée est : {{ pictureToEdit.vars.value.fullScreenUrl }}</span>
+            {% endif %}
+            {{ form_widget(pictureToEdit.fullScreenFile) }}
+            {{ form_errors(pictureToEdit.fullScreenFile) }}
+
             {{ form_rest(pictureToEdit) }}
 
         </div>

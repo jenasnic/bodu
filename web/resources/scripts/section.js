@@ -40,6 +40,7 @@ function displaySlideshow(slideshowId) {
             $('#section-content').html(msg);
             initAjaxSlideshow();
             initThumbnailAction();
+            initFullScreenAction();
         },
         error: function(msg) {
             alert("Impossible de charger le diaporama");
@@ -56,5 +57,32 @@ function initThumbnailAction() {
 
         var index = $(this).attr('data-index');
         $('#picture-list').slick('slickGoTo', index);
+    });
+}
+
+/**
+ * Allows to initialize action when user double click on picture with fullscreen.
+ */
+function initFullScreenAction() {
+
+    $('img.picture-fullscreen').on('click', function() {
+
+        // Add css style (useful to keep border if exist)
+        $('#section-popup').attr('style', $(this).attr('style'));
+
+        // Display full screen picture as popup
+        $('#section-popup').bPopup({
+            content: 'image',
+            loadUrl: $(this).attr('data-url')
+        });
+
+        // Close popup when clicking on picture
+        // NOTE : Clear popup content to avoid multiple content when re-open...
+        $('#section-popup').on('click', function() {
+            $('#section-popup').bPopup().close();
+            $('#section-popup').html('');
+        })
+
+        return false;
     });
 }

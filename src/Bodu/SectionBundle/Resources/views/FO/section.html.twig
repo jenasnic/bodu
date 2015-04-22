@@ -14,6 +14,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset(section.skin.cssFile) }}" />
     {% endif %}
 
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery.bpopup.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('resources/scripts/lib/slick.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('resources/scripts/section.js') }}"></script>
 
@@ -45,6 +46,7 @@
     </div>
 
     <div class="sep-20"></div>
-    
+
+    <div id="section-popup"></div>
 
 {% endblock %}

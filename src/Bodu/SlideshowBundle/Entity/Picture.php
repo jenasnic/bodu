@@ -43,6 +43,13 @@ class Picture
     private $thumbnailUrl;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="fullScreenUrl", type="text")
+     */
+    private $fullScreenUrl;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="vertical", type="boolean")
@@ -73,6 +80,11 @@ class Picture
      * Additional property used to upload file for thumbnail  (i.e. small picture)
      */
     private $thumbnailFile;
+
+    /**
+     * Additional property used to upload file for thumbnail  (i.e. small picture)
+     */
+    private $fullScreenFile;
 
 
     /**
@@ -155,6 +167,29 @@ class Picture
     }
 
     /**
+     * Set fullScreenUrl
+     *
+     * @param string $fullScreenUrl
+     * @return Picture
+     */
+    public function setFullScreenUrl($fullScreenUrl)
+    {
+        $this->fullScreenUrl = $fullScreenUrl;
+    
+        return $this;
+    }
+
+    /**
+     * Get fullScreenUrl
+     *
+     * @return string
+     */
+    public function getFullScreenUrl()
+    {
+        return $this->fullScreenUrl;
+    }
+
+    /**
      * Set vertical
      *
      * @param boolean $vertical
@@ -166,7 +201,7 @@ class Picture
     
         return $this;
     }
-    
+
     /**
      * Get vertical
      *
@@ -224,7 +259,7 @@ class Picture
     }
 
     /**
-     * Set file
+     * Set picture file
      *
      * @param Symfony\Component\HttpFoundation\File\UploadedFile $pictureFile
      * @return Picture
@@ -247,7 +282,7 @@ class Picture
     }
 
     /**
-     * Set file
+     * Set thumbnail file
      *
      * @param Symfony\Component\HttpFoundation\File\UploadedFile $thumbnailFile
      * @return Picture
@@ -260,12 +295,35 @@ class Picture
     }
 
     /**
-     * Get picture file
+     * Get thumbnail file
      *
      * @return Symfony\Component\HttpFoundation\File\UploadedFile 
      */
     public function getThumbnailFile()
     {
         return $this->thumbnailFile;
+    }
+
+    /**
+     * Set fullScreen file
+     *
+     * @param Symfony\Component\HttpFoundation\File\UploadedFile $fullScreenFile
+     * @return Picture
+     */
+    public function setFullScreenFile($fullScreenFile)
+    {
+        $this->fullScreenFile = $fullScreenFile;
+
+        return $this;
+    }
+
+    /**
+     * Get fullScreen file
+     *
+     * @return Symfony\Component\HttpFoundation\File\UploadedFile 
+     */
+    public function getFullScreenFile()
+    {
+        return $this->fullScreenFile;
     }
 }

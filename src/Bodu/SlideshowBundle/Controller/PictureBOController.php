@@ -142,5 +142,15 @@ class PictureBOController extends Controller
             $picture->getThumbnailFile()->move($absoluteFolderPath . '/thumbnail', $pictureName);
             $picture->setThumbnailUrl($relativeFolderPath . '/thumbnail/' . $pictureName);
         }
+
+        // If full screen picture is defined => process upload
+        if (null !== $picture->getFullScreenFile())
+        {
+            $pictureName = $picture->getFullScreenFile()->getClientOriginalName();
+
+            // Move file in userfiles folder + save new URL
+            $picture->getFullScreenFile()->move($absoluteFolderPath . '/fullscreen', $pictureName);
+            $picture->setFullScreenUrl($relativeFolderPath . '/fullscreen/' . $pictureName);
+        }
     }
 }

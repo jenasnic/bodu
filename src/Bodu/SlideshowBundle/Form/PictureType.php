@@ -20,6 +20,7 @@ class PictureType extends AbstractType
             ->add('rank', 'hidden')
             ->add('pictureFile', 'file', array('required' => false))
             ->add('thumbnailFile', 'file', array('required' => false))
+            ->add('fullScreenFile', 'file', array('required' => false))
         ;
     }
 
