@@ -46,7 +46,7 @@
             <div class="field-set-separator"></div>
 
             {{ form_label(bannerToEdit.pictureFile, "Image") }}
-            <span class="comment">La taille de l'image utilisée pour les bannières est : 900 X 548</span>
+            <span class="comment">La taille de l'image utilisée pour les bannières est libre mais les proportions doivent respecter le format : 900 X 548</span>
             {% if (bannerToEdit.vars.value.pictureUrl) %}
                 <span class="comment">L'image actuellement chargée est : {{ bannerToEdit.vars.value.pictureUrl }}</span>
             {% endif %}

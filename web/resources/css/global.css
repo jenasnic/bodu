@@ -122,6 +122,11 @@ a {
 
 #banner-list .slick-dots li.slick-active button {background: url("images/bannerDotOn.png") no-repeat;}
 
+#home-popup {
+    display: none;
+    margin: 30px;
+}
+
 
 
 /*******************/
