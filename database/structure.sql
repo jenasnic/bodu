@@ -13,9 +13,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 SET foreign_key_checks = 0; 
--- ALTER TABLE `picture` DROP CONSTRAINT `FK_D96676158B14E343`;
--- ALTER TABLE `section` DROP CONSTRAINT `FK_E2CE4373F404637F`;
--- ALTER TABLE `slideshow` DROP CONSTRAINT `FK_E54166B3D823E37A`;
 
 -- --------------------------------------------------------
 
@@ -84,8 +81,7 @@ CREATE TABLE `picture` (
   `fullScreenUrl` longtext COLLATE utf8_unicode_ci NOT NULL,
   `vertical` tinyint(1) NOT NULL,
   `rank` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_D96676158B14E343` (`slideshow_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -97,11 +93,9 @@ CREATE TABLE `picture` (
 DROP TABLE IF EXISTS `section`;
 CREATE TABLE `section` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `skin_id` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_E2CE4373F404637F` (`skin_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -115,6 +109,7 @@ CREATE TABLE `skin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `cssFile` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `activ` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -136,8 +131,7 @@ CREATE TABLE `slideshow` (
   `thicknessValue` int(11) DEFAULT NULL,
   `thumbnailPosition` varchar(55) COLLATE utf8_unicode_ci NOT NULL,
   `rank` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `IDX_E54166B3D823E37A` (`section_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -173,27 +167,3 @@ CREATE TABLE `contactLink` (
   `rank` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `picture`
---
-ALTER TABLE `picture`
-  ADD CONSTRAINT `FK_D96676158B14E343` FOREIGN KEY (`slideshow_id`) REFERENCES `slideshow` (`id`);
-
---
--- Contraintes pour la table `section`
---
-ALTER TABLE `section`
-  ADD CONSTRAINT `FK_E2CE4373F404637F` FOREIGN KEY (`skin_id`) REFERENCES `skin` (`id`);
-
---
--- Contraintes pour la table `slideshow`
---
-ALTER TABLE `slideshow`
-  ADD CONSTRAINT `FK_E54166B3D823E37A` FOREIGN KEY (`section_id`) REFERENCES `section` (`id`);

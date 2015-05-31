@@ -15,12 +15,35 @@ class SkinBOController extends Controller
         return $this->render('BoduSkinBundle:BO:list.html.twig', array('skinList' => $orderedSkinList));
     }
 
+    public function defaultSkinAction()
+    {
+        $request = $this->getRequest();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        // Disallow all skins per default
+        $entityManager->getRepository('BoduSkinBundle:Skin')->disallowDefaultSkin();
+
+        $id = $request->get('skin-id');
+        // Set default skin if exist
+        if ($id > 0) {
+
+            $skin = $entityManager->getRepository('BoduSkinBundle:Skin')->find($id);
+            $skin->setActiv(true);
+
+            $entityManager->persist($skin);
+            $entityManager->flush();
+        }
+
+        $request->getSession()->getFlashBag()->add('bo-log-message', 'Mise à jour du skin par défaut OK');
+        return $this->redirect($this->generateUrl('bodu_skin_bo_list'));
+    }
+
     public function editSkinAction($id)
     {
         $request = $this->getRequest();
         $entityManager = $this->getDoctrine()->getManager();
 
-        $skin = ($id > 0) ? $entityManager->getRepository('BoduSkinBundle:Skin')->find($id) : new Skin;
+        $skin = ($id > 0) ? $entityManager->getRepository('BoduSkinBundle:Skin')->find($id) : new Skin();
 
         // If user has submit form => save skin
         if ($request->getMethod() == 'POST')
@@ -63,22 +86,16 @@ class SkinBOController extends Controller
             {
                 $entityManager = $this->getDoctrine()->getManager();
 
-                // Check if skin is used by section
-                if ($entityManager->getRepository('BoduSkinBundle:Skin')->isUsedBySection($id))
-                    $request->getSession()->getFlashBag()->add('bo-error-message', 'Skin utilisé par une ou plusieurs page(s)');
-                else
+                $skinToDelete = $entityManager->getRepository('BoduSkinBundle:Skin')->find($id);
+
+                // If skin found => delete it
+                if ($skinToDelete != null)
                 {
-                    $skinToDelete = $entityManager->getRepository('BoduSkinBundle:Skin')->find($id);
-
-                    // If skin found => delete it
-                    if ($skinToDelete != null)
-                    {
-                        $entityManager->remove($skinToDelete);
-                        $entityManager->flush();
-                    }
-
-                    $request->getSession()->getFlashBag()->add('bo-log-message', 'Suppression du skin OK');
+                    $entityManager->remove($skinToDelete);
+                    $entityManager->flush();
                 }
+
+                $request->getSession()->getFlashBag()->add('bo-log-message', 'Suppression du skin OK');
             }
             catch (Exception $e)
             {

@@ -22,6 +22,7 @@ class SkinType extends AbstractType
                     'required' => false,
                     'empty_value' => '-- Aucun --',
                     'choices' => $this->getFileList()))
+            ->add('activ', 'checkbox', array('required' => false))
         ;
     }
 

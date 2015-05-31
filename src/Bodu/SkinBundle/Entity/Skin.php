@@ -35,6 +35,13 @@ class Skin
      */
     private $cssFile;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="activ", type="boolean")
+     */
+    private $activ = false;
+
 
     /**
      * Get id
@@ -90,5 +97,28 @@ class Skin
     public function getCssFile()
     {
         return $this->cssFile;
+    }
+
+    /**
+     * Set activ
+     *
+     * @param boolean $activ
+     * @return Skin
+     */
+    public function setActiv($activ)
+    {
+        $this->activ = $activ;
+
+        return $this;
+    }
+
+    /**
+     * Get activ
+     *
+     * @return boolean 
+     */
+    public function getActiv()
+    {
+        return $this->activ;
     }
 }

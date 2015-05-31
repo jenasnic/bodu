@@ -17,12 +17,6 @@ class SectionType extends AbstractType
         $builder
             ->add('name', 'text', array('required' => false))
             ->add('description', 'textarea', array('required' => false))
-            ->add('skin', 'entity', array(
-                    'required' => false,
-                    'empty_value' => '-- Aucun --',
-                    'class' => 'BoduSkinBundle:Skin',
-                    'property' => 'name'
-            ))
         ;
     }
 

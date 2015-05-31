@@ -12,17 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class SkinRepository extends EntityRepository
 {
-    public function isUsedBySection($skinId)
+    public function disallowDefaultSkin()
     {
         try
         {
-            $query = $this->_em->createQuery('SELECT COUNT(se) FROM BoduSectionBundle:Section se JOIN se.skin sk WHERE sk.id = :skinId');
-            $query->setParameter('skinId', $skinId);
-
-            return $query->getSingleScalarResult();
+            $query = $this->_em->createQuery('UPDATE BoduSkinBundle:Skin s SET s.activ=0');
+            return $query->execute();
         }
         catch (Exception $ex) {
-            return '-1';
+            return false;
         }
     }
 }

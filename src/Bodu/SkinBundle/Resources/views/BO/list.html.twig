@@ -12,6 +12,28 @@
 
     <div class="sep-15"></div>
 
+    {% if(skinList|length > 0) %}
+        <div class="field-set">
+            {# Form to set default skin to use #}
+            <form action="{{ path('bodu_skin_bo_default') }}" method="post">
+                <label for="skin-id" class="label-inline">Skin à utiliser sur le Front Office : </label>
+                <select id="skin-id" name="skin-id" class="field-M">
+                    <option value="">-- Aucun --</option>
+                    {% for skin in skinList %}
+                        <option value="{{ skin.id }}" {{ skin.activ ? 'selected="selected"' : '' }}>{{ skin.name }}</option>
+                    {% endfor %}
+                </select>
+                <div class="sep-5"></div>
+                <span class="comment">Permet de définir le skin qui sera appliqué sur toutes les pages du front-office.</span>
+                <div class="save-button">
+                    <input type="submit" value="">
+                </div>
+                <div class="clear"></div>
+            </form>
+        </div>
+        <div class="sep-30"></div>
+    {% endif %}
+
     {# Display all skin found #}
     <table class="bo-table">
 

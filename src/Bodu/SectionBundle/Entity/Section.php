@@ -34,14 +34,6 @@ class Section
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
-    
-    /**
-     * @var Bodu\SkinBundle\Entity\Skin
-     *
-     * @ORM\ManyToOne(targetEntity="Bodu\SkinBundle\Entity\Skin")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $skin;
 
     /**
      * @var ArrayCollection $slideshows
@@ -112,29 +104,6 @@ class Section
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set skin
-     *
-     * @param Bodu\SkinBundle\Entity\Skin $skin
-     * @return Section
-     */
-    public function setSkin($skin)
-    {
-        $this->skin = $skin;
-    
-        return $this;
-    }
-
-    /**
-     * Get skin
-     *
-     * @return Bodu\SkinBundle\Entity\Skin 
-     */
-    public function getSkin()
-    {
-        return $this->skin;
     }
 
     /**

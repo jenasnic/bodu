@@ -2,6 +2,10 @@ bodu_skin_bo_list:
     path:  /admin/skin/list
     defaults: { _controller: "BoduSkinBundle:SkinBO:listSkin" }
 
+bodu_skin_bo_default:
+    path:  /admin/skin/default
+    defaults: { _controller: "BoduSkinBundle:SkinBO:defaultSkin", id: 0 }
+
 bodu_skin_bo_edit:
     path:  /admin/skin/edit/{id}
     defaults: { _controller: "BoduSkinBundle:SkinBO:editSkin", id: 0 }
@@ -11,3 +15,7 @@ bodu_skin_bo_delete:
     defaults: { _controller: "BoduSkinBundle:SkinBO:deleteSkin" }
     requirements:
         id: \d+
+
+bodu_skin_fo:
+    path:  /layout/skin
+    defaults: { _controller: "BoduSkinBundle:SkinFO:display" }

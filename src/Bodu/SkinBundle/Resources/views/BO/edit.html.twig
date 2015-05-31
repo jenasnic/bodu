@@ -30,6 +30,8 @@
             {{ form_widget(skinToEdit.cssFile, { 'attr': {'class': 'field-M'} }) }}
             {{ form_errors(skinToEdit.cssFile) }}
 
+            <div class="hide">{{ form_widget(skinToEdit.activ) }}</div>
+
             {{ form_rest(skinToEdit) }}
 
         </div>
