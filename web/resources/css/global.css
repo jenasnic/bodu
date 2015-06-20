@@ -286,27 +286,26 @@ a.more-link {
 
 a.more-link:hover {background: url("images/seeMoreOn.jpg") no-repeat;}
 
-.contact-title {
+.contact-link {
+    background: url("images/contact/contact.png") no-repeat scroll 5px -3px;
+    margin-left: 10px;
+    padding: 5px 50px;
+}
+
+.contact-link a {
+    color: #828282;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.contact-website {
+    background: url("images/contact/link.png") no-repeat scroll 5px 0;
     color: #e1e1e1;
     font-size: 18px;
     font-weight: bold;
-    padding: 10px 10px 10px 53px;
-    position: relative;
-}
-
-.contact-title img {
-    left: 0;
-    position: absolute;
-    top: 0;
-}
-
-.contact-link {
-    color: #828282;
-    display: block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-left: 80px;
-    text-decoration: underline;
+    margin-left: 10px;
+    padding: 5px 50px;
 }
 
 
