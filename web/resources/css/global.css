@@ -241,6 +241,11 @@ li.slideshow-item.activ {
 /* CSS for news + link (contact page) */
 /**************************************/
 
+#news-list {
+    width: 920px;
+    margin: 0 auto;
+}
+
 .news-item, .link-item {
     background: url("images/backgroundBlock.png") repeat;
     float: left;

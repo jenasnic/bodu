@@ -8,7 +8,7 @@
 
 {% block body %}
 
-<div class="padding-hor-60">
+<div id="news-list">
 
     {% for news in newsList %}
         <div class="news-item {% if (news.size == 'small') %}small{% endif %}">
