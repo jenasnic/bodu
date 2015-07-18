@@ -5,3 +5,4 @@
 !app/logs/.gitkeep
 /build/
 /vendor/
+/web/userfiles/

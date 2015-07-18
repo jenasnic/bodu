@@ -183,6 +183,10 @@ li.slideshow-item.activ {
 #picture-list, .picture-item div.container {height: 481px; width: 570px;}
 .picture-item div.container img {margin: 0 auto;}
 
+/* CSS for full screen button */
+.picture-item div.container {position: relative;}
+span.picture-button {position: absolute;}
+
 #picture-list .slick-prev, #picture-list .slick-next {
     cursor: pointer;
     display: block;

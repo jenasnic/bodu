@@ -58,6 +58,11 @@ function initAjaxSlideshow() {
                     <img src="{{ picture.pictureUrl }}" alt="{{ picture.name }}" style="{{ cssStyleToUse }}"
                             width="{{ picture.vertical ? '320' : '560' }}" height="{{ picture.vertical ? '471' : '374' }}"
                             {% if (picture.fullScreenUrl|length > 0) %}class="picture-fullscreen" data-url="{{ picture.fullScreenUrl }}"{% endif %} />
+                    {% if (picture.fullScreenUrl|length > 0) %}
+                        <span class="picture-button" data-url="{{ picture.fullScreenUrl }}">
+                            <img src="{{ asset('resources/images/fullscreen.png') }}" alt="+" />
+                        </span>
+                    {% endif %}
                 </div>
             </li>
         {% endfor %}
