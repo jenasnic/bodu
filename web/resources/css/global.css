@@ -186,6 +186,8 @@ li.slideshow-item.activ {
 /* CSS for full screen button */
 .picture-item div.container {position: relative;}
 span.picture-button {position: absolute;}
+img.picture-fullscreen {cursor: zoom-in;}
+span.picture-button {cursor: pointer;}
 
 #picture-list .slick-prev, #picture-list .slick-next {
     cursor: pointer;

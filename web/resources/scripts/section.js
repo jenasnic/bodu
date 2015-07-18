@@ -91,9 +91,16 @@ function initFullScreenAction() {
 
         // Display button depending on picture size
         // NOTE : picture container => height: 481px; width: 570px;
+        var fullscreenButton = $(this).next('span.picture-button');
         var bottomPosition = 481 - $(this).height();
         var rightPosition = (570 - $(this).width()) / 2;
-        $(this).next('span.picture-button').css('bottom', bottomPosition);
-        $(this).next('span.picture-button').css('right', rightPosition);
+        $(fullscreenButton).css('bottom', bottomPosition);
+        $(fullscreenButton).css('right', rightPosition);
+
+        // Define action when if user click
+        $(fullscreenButton).on('click', function() {
+            //alert('dsfhsdklfhs');
+            $(this).prev('img.picture-fullscreen').click();
+        });
     });
 }
