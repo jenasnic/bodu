@@ -92,8 +92,8 @@ function initFullScreenAction() {
         // Display button depending on picture size
         // NOTE : picture container => height: 481px; width: 570px;
         var fullscreenButton = $(this).next('span.picture-button');
-        var bottomPosition = 481 - $(this).height();
-        var rightPosition = (570 - $(this).width()) / 2;
+        var bottomPosition = 481 - $(this).height() + 10;
+        var rightPosition = ((570 - $(this).width()) / 2) + 10;
         $(fullscreenButton).css('bottom', bottomPosition);
         $(fullscreenButton).css('right', rightPosition);
 
