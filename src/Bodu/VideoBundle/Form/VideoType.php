@@ -17,7 +17,7 @@ class VideoType extends AbstractType
         $builder
             ->add('name', 'text', array('required' => false))
             ->add('description', 'textarea', array('required' => false))
-            ->add('videoIntegration', 'text', array('required' => false))
+            ->add('videoIntegration', 'textarea', array('required' => false))
             ->add('published', 'checkbox', array('required' => false))
             ->add('rank', 'hidden')
         ;
