@@ -127,6 +127,11 @@ a {
     margin: 30px;
 }
 
+#banner-list span.picture-button {
+    bottom: 10px;
+    right: 10px;
+}
+
 
 
 /*******************/

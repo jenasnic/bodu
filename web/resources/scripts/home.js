@@ -14,12 +14,12 @@ $(document).ready(function() {
         speed: 500
     });
 
-    $('#banner-list img').on('click', function() {
+    $('#banner-list li').on('click', function() {
 
         // Display full screen picture as popup
         $('#home-popup').bPopup({
             content: 'image',
-            loadUrl: $(this).attr('src')
+            loadUrl: $(this).children('img.picture-fullscreen').attr('src')
         });
 
         // Close popup when clicking on picture

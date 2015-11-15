@@ -27,7 +27,10 @@
     {# Browse each picture to build main slideshow #}
     {% for banner in bannerList %}
         <li>
-            <img src="{{ banner.pictureUrl }}" alt="{{ banner.title }}" width="900" height="548" />
+            <img src="{{ banner.pictureUrl }}" alt="{{ banner.title }}" width="900" height="548" class="picture-fullscreen" />
+            <span class="picture-button">
+                <img src="{{ asset('resources/images/fullscreen.png') }}" alt="+" />
+            </span>
         </li>
     {% endfor %}
     </ul>
