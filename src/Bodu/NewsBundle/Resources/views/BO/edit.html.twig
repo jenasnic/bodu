@@ -24,8 +24,6 @@
 
 {% block body %}
 
-    {% form_theme newsToEdit ':forms:custom_errors.html.twig' %}
-
     {% if (newsToEdit.vars.value.id) %}
     <h1>Modification de l'actualité</h1>
     {% else %}
