@@ -1,0 +1,42 @@
+{#
+    Allows to display file manager for website. It allows to add/remove file or folder.
+    NOTE : requires Javascript files 'userFileExplorer.js'.
+    Required :
+    - rootPath : root path defined in configuration through parameter 'jc_user_file.root_path' (as String).
+    - currentPath : current path as String (this path doesn't include base path defined in configuration).
+    - fileList : list of files as SplFileInfo object matching all files contained in current path.
+#}
+
+<div class="file-manager-preview">
+    <img src="{{ asset('resources/images/admin/empty.png') }}" alt="Aperçu" />
+</div>
+
+<input class="file-path" type="hidden" value="{{ currentPath }}" />
+
+<ul>
+
+    {% if (currentPath|length > 0) %}
+        <li class="file-manager-parent">
+            <span class="file-explore">..</span>
+            <input type="hidden" value="{{ currentPath }}" />
+        </li>
+    {% endif %}
+
+    {% for file in fileList %}
+        {% if (file.type == 'dir') %}
+            <li class="file-manager-folder">
+                <span class="file-explore">{{ file.filename }}</span>
+                <span class="file-delete"><img src="{{ asset('resources/images/admin/icons/delete.png') }}" /></span>
+                <span class="file-shortcut">{{ asset('resources/images/admin/empty.png') }}</span>
+                <ul></ul>
+            </li>
+        {% elseif (file.type == 'file') %}
+            <li class="file-manager-file">
+                <span class="file-explore">{{ file.filename }}</span>
+                <span class="file-delete"><img src="{{ asset('resources/images/admin/icons/delete.png') }}" /></span>
+                <span class="file-shortcut">{{ asset(rootPath ~ currentPath) }}/{{ file.filename }}</span>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+</ul>

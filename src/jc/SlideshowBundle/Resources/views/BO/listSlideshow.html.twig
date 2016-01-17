@@ -1,0 +1,69 @@
+{#
+    Allows to list all available slideshows. It allows to add/edit/delete slideshow.
+    Required :
+    - slideshowList : list of all slideshows available (as Slideshow).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block header %}
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery.bpopup.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/admin/slideshowList.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    <h1>Gestion des diaporamas</h1>
+
+    <div class="sep-15"></div>
+
+    {# Display all slideshow found #}
+    <table class="bo-table">
+
+        <thead>
+            <tr>
+                <th class="bo-table-id">ID</th>
+                <th class="bo-table-label">Nom</th>
+                <th class="bo-table-label">Page</th>
+                <th class="bo-table-action">Modifier</th>
+                <th class="bo-table-action">Supprimer</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for slideshow in slideshowList %}
+            <tr{% if loop.index is even %} class="odd"{% endif %}>
+                <td class="bo-table-id">{{ slideshow.id }}</td>
+                <td class="bo-table-label {% if not slideshow.published %}disabled{% endif %}">{{ slideshow.name }}</td>
+                {% set sectionName = (slideshow.section is empty ? '<span class="no-section">- Aucune -</span>' : slideshow.section.name) %}
+                <td class="bo-table-label">{{ sectionName|raw }}</td>
+                <td class="bo-table-action">
+                    <a href="{{ path('jc_slideshow_bo_edit', { 'id': slideshow.id }) }}" >
+                        <img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" />
+                    </a>
+                </td>
+                <td class="bo-table-action">
+                    <a href="{{ path('jc_slideshow_bo_delete', { 'id': slideshow.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
+                        <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" />
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    <div class="sep-15"></div>
+
+    <span id="create-slideshow-button" class="add-button">Ajouter un diaporama</span>
+
+    <!-- Popup to create new slideshow -->
+    <div id="create-slideshow-popup" class="bpopup hide">
+        <label for="slideshow-name">Nom : </label>
+        <input type="text" class="field-M"/>
+        <span class="add-button">Créer</span>
+    </div>
+
+    <div class="sep-20"></div>
+
+{% endblock %}

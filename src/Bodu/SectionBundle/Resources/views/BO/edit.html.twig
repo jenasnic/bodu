@@ -42,8 +42,6 @@
 
 {% block body %}
 
-    {% form_theme sectionToEdit ':forms:custom_errors.html.twig' %}
-
     {% if (sectionToEdit.vars.value.id) %}
     <h1>Modification de la page</h1>
     {% else %}
@@ -104,12 +102,12 @@
                             <td class="bo-table-id">{{ slideshow.id }}</td>
                             <td class="bo-table-label {% if not slideshow.published %}disabled{% endif %}">{{ slideshow.name }}</td>
                             <td class="bo-table-action">
-                                <a href="{{ path('bodu_slideshow_bo_edit', { 'id': slideshow.id }) }}" >
+                                <a href="{{ path('jc_slideshow_bo_edit', { 'id': slideshow.id }) }}" >
                                     <img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" />
                                 </a>
                             </td>
                             <td class="bo-table-action">
-                                <a href="{{ path('bodu_slideshow_bo_delete', { 'id': slideshow.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
+                                <a href="{{ path('jc_slideshow_bo_delete', { 'id': slideshow.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
                                     <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" />
                                 </a>
                             </td>
@@ -124,7 +122,7 @@
 
                 <div class="sep-10"></div>
 
-                <a class="add-button" href="{{ path('bodu_slideshow_bo_edit') }}">Ajouter un diaporama</a>
+                <a class="add-button" href="{{ path('jc_slideshow_bo_edit') }}">Ajouter un diaporama</a>
 
             </div>
 

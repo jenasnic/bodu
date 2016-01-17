@@ -1,0 +1,59 @@
+{#
+    Allows to display file manager for website. It allows to add/remove file or folder.
+    NOTE : Root path is defined in configuration through parameter 'jc_user_file.root_path'.
+    Required :
+    - currentPath : currentPath relative to root path we want to display (as String).
+#}
+
+{% extends "::admin.html.twig" %}
+
+{% block header %}
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/userfile.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/userFileExplorer.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/userFile.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/dropzone.min.js') }}"></script>
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Gestion de la médiathèque</h1>
+
+    <div class="field-set">
+
+        {# Form to upload file #}
+        Télécharger un fichier dans le dossier courant : <span class="full-path-info">{{ (currentPath|length == 0) ? '/' : currentPath }}</span>
+        <div class="sep-5"></div>
+        <form id="userfile-dropzone" action="{{ path('jc_user_file_bo_upload') }}" method="post" enctype="multipart/form-data" class="dropzone">
+            <div class="dz-message">Déposez les fichiers à uploader...</div>
+            <input id="filePath" name="filePath" type="hidden" value="{{ currentPath }}" />
+        </form>
+
+        <div class="sep-5"></div>
+        <div class="field-set-separator"></div>
+        <div class="sep-5"></div>
+
+        {# Form to add folder #}
+        <form action="{{ path('jc_user_file_bo_folder') }}" method="post">
+
+            <input id="folderPath" name="folderPath" type="hidden" value="{{ currentPath }}" />
+            Créer un sous-dossier dans le dossier courant : <span class="full-path-info">{{ (currentPath|length == 0) ? '/' : currentPath }}</span>
+            <div class="sep-5"></div>
+
+            Entrer le nom du sous-dossier : <input type="text" name="folderName" id="folderName">
+            <input type="submit" class="button" value="Créer" />
+
+        </form>
+
+    </div>
+
+    <div class="sep-20"></div>
+
+    <div class="field-set">
+        <div id="user-file-explorer" class="file-manager">
+        </div>
+    </div>
+
+{% endblock %}

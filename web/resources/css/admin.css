@@ -121,6 +121,8 @@ h1 {
 
 #bo-home-list li:hover {font-weight: bold;}
 
+
+
 /************************/
 /* CSS for table (list) */
 /************************/
@@ -218,6 +220,7 @@ span.field-set-title {
 .add-button {
     background: url("images/admin/addButtonOff.png") no-repeat;
     color: #403e4c;
+    cursor: pointer;
     display: inline-block;
     font-size: 14px;
     padding: 10px 10px 10px 40px;
@@ -353,6 +356,153 @@ span.comment {
 
 
 
+/*********************/
+/* CSS for drop zone */
+/*********************/
+
+.file-drop-zone {
+    background: url('images/admin/upload.png') no-repeat 195px 50% #eee;
+    border: none;
+    border-bottom: 1px solid #333;
+    border-right: 1px solid #333;
+    cursor: pointer;
+    min-height: 150px;
+    margin: 0 auto;
+    width: 440px;
+}
+
+.file-drop-zone .dz-message {
+    background-color: #ADD081;
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.file-drop-zone:hover .dz-message {
+    background-color: #86bc49;
+    color: #eee;
+}
+
+.dz-preview {
+    background: url('images/admin/backgroundDZ.png') repeat;
+    display: inline-block;
+    height: 100px;
+    margin: 5px;
+    position: relative;
+    width: 100px;
+}
+
+.dz-preview div {margin: 0;}
+
+.dz-preview .dz-image {
+    height: 100px;
+    left: 0;
+    line-height: 100px;
+    position: absolute;
+    top: 0;
+}
+
+.dz-preview .dz-image img {
+    display: inline-block;
+    max-height: 100px;
+    max-width: 100px;
+    vertical-align: middle;
+}
+
+.dz-preview .dz-details {
+    background: url('images/admin/backgroundDZ.png') repeat;
+    color: #eee;
+    left: 0;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    width: 90px;
+}
+
+.dz-size, .dz-filename {font-size: 10px;}
+
+.dz-success-mark, .dz-error-mark {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+}
+
+.dz-error-message, .dz-error-mark, .dz-success-mark {display: none;}
+
+.dz-processing .dz-progress {
+    bottom: 0;
+    display: block;
+    height: 10px;
+    left: 0;
+    position: absolute;
+    width: 100px;
+}
+
+.dz-processing .dz-progress .dz-upload {
+    background: #ccc;
+    display: block;
+    height: 10px;
+}
+
+.dz-error .dz-error-mark, .dz-error .dz-image, .dz-success .dz-success-mark {display: block;}
+.dz-complete .dz-progress, .dz-error .dz-image img {display: none;}
+
+
+
+/************************/
+/* CSS for file manager */
+/************************/
+
+.file-manager-preview {
+    border: 1px solid #000;
+    float: right;
+    height: 128px;
+    line-height: 124px;
+    text-align: center;
+    width: 128px;
+}
+
+.file-manager-preview img {
+    display: inline-block !important;
+    max-height: 128px;
+    max-width: 128px;
+    vertical-align: middle;
+}
+
+.file-manager {
+    min-height: 130px;
+    min-width: 350px;
+}
+
+.file-manager li {
+    color: #000;
+    cursor: pointer;
+    list-style: none;
+}
+
+.file-manager-folder, .file-manager-parent {
+    background: url("images/admin/folder.png") no-repeat scroll 0 0 transparent;
+    padding: 2px 2px 2px 20px;
+}
+
+.file-manager-file {
+    background: url("images/admin/file.png") no-repeat scroll 0 0 transparent;
+    padding: 2px 2px 2px 20px;
+}
+
+span.file-shortcut  {display: none;}
+span.file-delete {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.full-path-info {font-weight: bold;}
+
+
+
 /******************************/
 /* Specific CSS for slideshow */
 /******************************/
@@ -374,6 +524,7 @@ span.comment {
     background: url("images/admin/validButtonOff.png") no-repeat;
     border: none;
     color: #403e4c;
+    cursor: pointer;
     font-size: 14px;
     padding: 10px 10px 10px 40px;
 }
@@ -394,5 +545,11 @@ span.comment {
 
 #slideshow-border span.error {margin-bottom: 10px;}
 #slideshow-border div.left span.error {display: inline-block;}
+
+#create-slideshow-popup {
+    background-color: #fff;
+    padding: 15px;
+    border: 2px solid #00acec;
+}
 
 

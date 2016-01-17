@@ -4,9 +4,9 @@ namespace Bodu\SectionBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Bodu\SlideshowBundle\Entity\Slideshow;
 use Bodu\SectionBundle\Entity\Section;
 use Bodu\SectionBundle\Form\SectionType;
+use jc\SlideshowBundle\Entity\Slideshow;
 
 class SectionBOController extends Controller
 {

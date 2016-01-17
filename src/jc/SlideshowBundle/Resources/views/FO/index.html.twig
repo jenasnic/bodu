@@ -1,0 +1,26 @@
+{#
+    Display all existing slideshow for front-office.
+    Required :
+    - slideshowList : list of all available slideshow to display (as Slideshow)
+#}
+
+{% extends "::master.html.twig" %}
+
+{% block header %}
+    <script type="text/javascript" src="{{ asset('resources/scripts/slideshow.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    {% if slideshowList is defined %}
+        <ul id="slideshow-list">
+        {% for slideshow in slideshowList %}
+            <li data-id="{{ slideshow.id }}">{{ slideshow.name }}</li>
+        {% endfor %}
+        </ul>
+        <div id="slideshow-content"></div>
+    {% else %}
+        <p>Aucun diaporama à afficher</p>
+    {% endif %}
+
+{% endblock %}

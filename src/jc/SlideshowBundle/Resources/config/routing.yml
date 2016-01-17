@@ -1,0 +1,30 @@
+jc_slideshow_fo_index:
+    path:  /slideshow
+    defaults: { _controller: "jcSlideshowBundle:SlideshowFO:index" }
+jc_slideshow_fo_display:
+    path:  /ajax/slideshow/{id}
+    defaults: { _controller: "jcSlideshowBundle:SlideshowFO:display" }
+    requirements:
+        year: \d+
+
+jc_slideshow_bo_list:
+    path:  /admin/slideshow/list
+    defaults: { _controller: "jcSlideshowBundle:SlideshowBO:listSlideshow" }
+jc_slideshow_bo_create:
+    path:  /admin/slideshow/create
+    defaults: { _controller: "jcSlideshowBundle:SlideshowBO:createSlideshow" }
+jc_slideshow_bo_edit:
+    path:  /admin/slideshow/edit/{id}
+    defaults: { _controller: "jcSlideshowBundle:SlideshowBO:editSlideshow", id: 0 }
+jc_slideshow_bo_delete:
+    path:  /admin/slideshow/delete/{id}
+    defaults: { _controller: "jcSlideshowBundle:SlideshowBO:deleteSlideshow" }
+    requirements:
+        id: \d+
+
+jc_slideshow_bo_picture_upload:
+    path:  /admin/slideshow/picture/upload
+    defaults: { _controller: "jcSlideshowBundle:PictureBO:uploadPicture" }
+jc_slideshow_bo_picture_delete:
+    path:  /admin/slideshow/picture/delete
+    defaults: { _controller: "jcSlideshowBundle:PictureBO:deletePicture" }

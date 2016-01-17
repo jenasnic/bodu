@@ -5,80 +5,25 @@
 var global = {
 
     basePath : "/app_dev.php",
-    opacityScreenId : "global-opacity-screen",
 
-    /**
-     * Display a dark background over the pages
-     * @param onClick function to call when the opacity background is clicked
-     */
-    showOpacityScreen : function(onClick) {
-
-        // Create div for opacity screen
-        var screen = $("<div id=\"" + this.opacityScreenId + "\">");
-
-        // Set function to run when it is clicked
-        if (onClick)
-            screen.click(onClick);
-
-        // Add element in document and display it
-        $(document.body).append(screen);
-        screen.fadeIn();
+    cleditorConfig : {
+        controls: "bold italic underline strikethrough | font size color | removeformat | bullets numbering | "
+                + "outdent indent | alignleft center alignright justify | link unlink | source",
+        height: '250',
+        colors: 'FFF 999 606C6C 383E3E 000 2696D5 002554 F7FF11 FB9407 F00 24FF19 FF09C2',
     },
 
-    /**
-     * Hides the opacity screen if present in the page
-     */
-    hideOpacityScreen : function() {
-
-        var screen = $("#" + this.opacityScreenId);
-
-        // Hide screen and remove it from document
-        if (screen) {
-
-            screen.fadeOut();
-            screen.remove();
-        }
-    },
-
-    /**
-     * Allows to display HTML element as modal window with opacity background.
-     * WARNING : This fonction requires HTML element 'global-opacity-screen' in window (included in our template).
-     * @param popupElement HTML element we want to display as modal window.
-     * @param closeOnClick TRUE to close HTML element when clicking on opacity background, FALSE either.
-     */
-    displayAsPopup : function(popupElement, closeOnClick) {
-
-        // Create div for opacity screen
-        var screen = $('#global-opacity-screen');
-
-        // Set function to run when it is clicked
-        if (closeOnClick) {
-
-            screen.on('click', function() {
-                popupElement.hide();
-                screen.fadeOut();
-            });
-        }
-
-        // Display background
-        screen.fadeIn();
-
-        // Get size of popup element to center modal window on screen
-        var winH = $(window).height();
-        var winW = $(window).width();
-        popupElement.css('top',  winH/2-popupElement.height()/2);
-        popupElement.css('left', winW/2-popupElement.width()/2);
-
-        popupElement.show();
-    },
-
-    /**
-     * Hides the opacity screen used for popup (see above).
-     * WARNING : HTML element (i.e. popup) displayed as modal window won't be closed here => do this in appropriate event...
-     */
-    hidePopupBackground : function() {
-        $('#global-opacity-screen').fadeOut();
-    },
+    dropzoneTemplate : "<div class=\"dz-preview dz-file-preview\">"
+            + "<div class=\"dz-image\"><img data-dz-thumbnail /></div>"
+            + "<div class=\"dz-details\">"
+            + "<div class=\"dz-size\"><span data-dz-size></span></div>"
+            + "<div class=\"dz-filename\"><span data-dz-name></span></div>"
+            + "</div>"
+            + "<div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>"
+            + "<div class=\"dz-error-message\"><span data-dz-errormessage></span></div>"
+            + "<div class=\"dz-success-mark\"><img src=\"/resources/images/admin/uploadOK.png\" /></div>"
+            + "<div class=\"dz-error-mark\"><img src=\"/resources/images/admin/uploadKO.png\" /></div>"
+            + "</div>",
 
     /**
      * Cancel event default action
@@ -166,6 +111,9 @@ $.fn.extend({
 
         // Apply function to each selected element
         this.each(function() {
+
+            if ($(this).height() <= size)
+                return;
 
             // Add expand link after element
             var linkElementFlux = '<span class="custom-expand">' + (display ? lessText : moreText) + '</span>';

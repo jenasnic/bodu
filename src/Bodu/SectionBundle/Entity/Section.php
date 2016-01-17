@@ -38,7 +38,7 @@ class Section
     /**
      * @var ArrayCollection $slideshows
      *
-     * @ORM\OneToMany(targetEntity="Bodu\SlideshowBundle\Entity\Slideshow", mappedBy="section")
+     * @ORM\OneToMany(targetEntity="jc\SlideshowBundle\Entity\Slideshow", mappedBy="section")
      * @ORM\OrderBy({"rank" = "ASC"})
      */
     private $slideshows;
@@ -109,10 +109,10 @@ class Section
     /**
      * Add slideshow to section
      *
-     * @param Bodu\SlideshowBundle\Entity\Slideshow $slideshow
+     * @param jc\SlideshowBundle\Entity\Slideshow $slideshow
      * @return Section
      */
-    public function addSlideshow(\Bodu\SlideshowBundle\Entity\Slideshow $slideshow)
+    public function addSlideshow(\jc\SlideshowBundle\Entity\Slideshow $slideshow)
     {
         $this->slideshows[] = $slideshow;
         return $this;
@@ -121,9 +121,9 @@ class Section
     /**
      * Remove slideshow from section
      *
-     * @param Bodu\SlideshowBundle\Entity\Slideshow $slideshow
+     * @param jc\SlideshowBundle\Entity\Slideshow $slideshow
      */
-    public function removeSlideshow(\Bodu\SlideshowBundle\Entity\Slideshow $slideshow)
+    public function removeSlideshow(\jc\SlideshowBundle\Entity\Slideshow $slideshow)
     {
         $this->slideshows->removeElement($slideshow);
     }

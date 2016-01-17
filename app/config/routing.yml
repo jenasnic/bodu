@@ -27,15 +27,19 @@ bodu_skin:
     resource: "@BoduSkinBundle/Resources/config/routing.yml"
     prefix:   /
 
-bodu_slideshow:
-    resource: "@BoduSlideshowBundle/Resources/config/routing.yml"
-    prefix:   /
-
 bodu_video:
     resource: "@BoduVideoBundle/Resources/config/routing.yml"
     prefix:   /
 
 bodu_contact_link:
     resource: "@BoduContactLinkBundle/Resources/config/routing.yml"
+    prefix:   /
+
+jc_slideshow:
+    resource: "@jcSlideshowBundle/Resources/config/routing.yml"
+    prefix:   /
+
+jc_userfile:
+    resource: "@jcUserFileBundle/Resources/config/routing.yml"
     prefix:   /
 

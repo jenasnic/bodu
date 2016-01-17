@@ -1,0 +1,17 @@
+jc\SlideshowBundle\Entity\Picture:
+    properties:
+        name:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"
+            - Length:
+                max: 255
+                maxMessage: "Ce champ est limité à 255 caractères"
+
+jc\SlideshowBundle\Entity\Slideshow:
+    properties:
+        name:
+            - NotBlank: 
+                 message: "Ce champ est obligatoire"
+            - Length:
+                max: 255
+                maxMessage: "Ce champ est limité à 255 caractères"

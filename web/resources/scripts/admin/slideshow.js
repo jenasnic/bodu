@@ -1,40 +1,26 @@
 
 $(document).ready(function() {
 
-    $("#bodu_slideshowbundle_slideshow_description").cleditor({height: 170});
-
-    $("#picture-list").sortable({
-        update: function(event, ui) {
-            $("#ordered-picture-list").val($('#picture-list').sortable('serialize'));
-        }
+    $('#slideshow-list li').on('click', function() {
+        reloadSlideshow($(this).attr('data-id'));
     });
-
-    $("#picture-list").disableSelection();
-
-    $('#bodu_slideshowbundle_slideshow_activBorder').on('change', function(event) {
-        global.cancelEvent(event);
-        selectBorder();
-    });
-
-    $('#bodu_slideshowbundle_slideshow_borderColor').ColorPicker({
-        onSubmit: function(hsb, hex, rgb, el) {
-            $(el).val(hex);
-            $(el).ColorPickerHide();
-        },
-        onBeforeShow: function () {
-            $(this).ColorPickerSetColor(this.value);
-        }
-    });
-
-    selectBorder();
 });
 
-function selectBorder() {
+function reloadSlideshow(id) {
 
-    var isActiv = $('#bodu_slideshowbundle_slideshow_activBorder').is(':checked');
+    var ajaxBaseUrl = global.basePath + '/ajax/slideshow/' + id;
 
-    if (isActiv)
-        $('#slideshow-border').show();
-    else
-        $('#slideshow-border').hide();
+    $.ajax({
+        url: ajaxBaseUrl,
+        type: 'POST',
+        //data: {id: id},
+        timeout: 10000,
+        success: function(msg) {
+            $('#slideshow-content').html(msg);
+        },
+        error: function(msg) {
+            alert("Impossible de charger le diaporama");
+            $('#slideshow-content').html("Erreur");
+        }
+    });
 }

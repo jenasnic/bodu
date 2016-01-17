@@ -128,3 +128,4 @@
 /***************/
 
 a.link { text-decoration: underline !important; }
+.clickable {cursor: pointer;}

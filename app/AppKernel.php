@@ -20,11 +20,12 @@ class AppKernel extends Kernel
             new Bodu\HomeBundle\BoduHomeBundle(),
             new Bodu\NewsBundle\BoduNewsBundle(),
             new Bodu\SkinBundle\BoduSkinBundle(),
-            new Bodu\SlideshowBundle\BoduSlideshowBundle(),
             new Bodu\SectionBundle\BoduSectionBundle(),
             new Bodu\SecurityBundle\BoduSecurityBundle(),
             new Bodu\VideoBundle\BoduVideoBundle(),
             new Bodu\ContactLinkBundle\BoduContactLinkBundle(),
+            new jc\SlideshowBundle\jcSlideshowBundle(),
+            new jc\UserFileBundle\jcUserFileBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
