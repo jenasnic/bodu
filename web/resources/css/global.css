@@ -174,19 +174,20 @@ li.slideshow-item.activ {
 /* CSS for slideshow */
 /*********************/
 
-#slideshow-container {width: 760px;}
+#slideshow-container {
+    padding: 5px;
+    width: 760px;
+}
+
 #slideshow-container ul {margin: 0; padding: 0;}
 
-/* CSS for horizontal thumbnails on top */
-#slideshow-container.top #slideshow-thumbnail {margin: 0 auto; width: 575px;}
-#slideshow-container.top #slideshow-picture {margin: 20px auto; width: 575px;}
+#picture-list, .picture-item div.container {height: 550px; width: 700px;}
 
-/* CSS for vertical thumbnails on left */
-#slideshow-container.left #slideshow-thumbnail {float:left; width: 110px;}
-#slideshow-container.left #slideshow-picture {float: left; padding: 5px 5px 0 45px; width: 600px;}
-
-#picture-list, .picture-item div.container {height: 481px; width: 570px;}
-.picture-item div.container img {margin: 0 auto;}
+.picture-item div.container img {
+    max-height: 550px;
+    max-width: 680px;
+    margin: 0 auto;
+}
 
 /* CSS for full screen button */
 .picture-item div.container {position: relative;}
@@ -209,40 +210,6 @@ img.picture-fullscreen {cursor: zoom-in;}
 #picture-list .slick-next {
     background: url("images/slideshow/slideshowNext.png") no-repeat;
     right: -30px;
-}
-
-#thumbnail-list .slick-prev, #thumbnail-list .slick-next {
-    cursor: pointer;
-    display: block;
-    height: 24px;
-    position: absolute;
-    top: 30px;
-    width: 14px;
-}
-
-#thumbnail-list {width: 585px;}
-#thumbnail-list .slick-prev {background: url("images/slideshow/thumbnailHorizontalPrevious.png") no-repeat;}
-#thumbnail-list .slick-next {background: url("images/slideshow/thumbnailHorizontalNext.png") no-repeat;}
-#thumbnail-list .slick-prev {left: -20px;}
-#thumbnail-list .slick-next {right: -10px;}
-#thumbnail-list .thumbnail-item {padding: 0;}
-
-#slideshow-container.left #thumbnail-list .slick-prev, #slideshow-container.left #thumbnail-list .slick-next {
-    height: 14px;
-    top: 430px;
-    width: 24px;
-}
-
-#slideshow-container.left #thumbnail-list {width: 110px;}
-#slideshow-container.left #thumbnail-list .slick-prev {background: url("images/slideshow/thumbnailVerticalPrevious.png") no-repeat;}
-#slideshow-container.left #thumbnail-list .slick-next {background: url("images/slideshow/thumbnailVerticalNext.png") no-repeat;}
-#slideshow-container.left #thumbnail-list .slick-prev {left: 20px;}
-#slideshow-container.left #thumbnail-list .slick-next {right: 20px;}
-
-#slideshow-container.left #thumbnail-list .thumbnail-item {
-    height: 71px;
-    padding: 5px 0;
-    width: 110px;
 }
 
 

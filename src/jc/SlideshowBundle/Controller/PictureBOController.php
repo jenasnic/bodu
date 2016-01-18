@@ -20,7 +20,7 @@ class PictureBOController extends Controller {
             $picture = new Picture();
 
             // Set slideshow + rank
-            $slideshowId = $request->request->get('slideshow-id');
+            $slideshowId = $request->request->get('slideshowId');
 
             $slideshow = $entityManager->getRepository('jcSlideshowBundle:Slideshow')->find($slideshowId);
             $picture->setSlideshow($slideshow);

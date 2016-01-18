@@ -4,7 +4,6 @@ namespace jc\SlideshowBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Form\FormError;
 use jc\SlideshowBundle\Entity\Slideshow;
 use jc\SlideshowBundle\Form\SlideshowType;
 use Symfony\Component\HttpFoundation\JsonResponse;

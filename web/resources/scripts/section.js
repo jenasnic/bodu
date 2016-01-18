@@ -36,11 +36,9 @@ function displaySlideshow(slideshowId) {
         timeout: 10000,
         success: function(msg) {
 
-            // Add new content and initialize it (carousel + slideshow)
+            // Add new content and initialize it (slideshow)
             $('#section-content').html(msg);
-            initAjaxSlideshow();
-            initThumbnailAction();
-            initFullScreenAction();
+            initSlideshow();
         },
         error: function(msg) {
             alert("Impossible de charger le diaporama");
@@ -49,15 +47,20 @@ function displaySlideshow(slideshowId) {
 }
 
 /**
- * Allows to initialize action when user click on thumbnails.
+ * Allows to initialize slideshow after reloading it through AJAX.
  */
-function initThumbnailAction() {
+function initSlideshow() {
 
-    $('.thumbnail-item').on('click', function() {
-
-        var index = $(this).attr('data-index');
-        $('#picture-list').slick('slickGoTo', index);
+    $('#picture-list').slick({
+        centerMode : true,
+        centerPadding : '0px',
+        nextArrow: '<span class="slick-next"></span>',
+        prevArrow: '<span class="slick-prev"></span>',
+        slide : 'li',
+        slidesToShow : 1
     });
+
+    initFullScreenAction();
 }
 
 /**
@@ -65,7 +68,7 @@ function initThumbnailAction() {
  */
 function initFullScreenAction() {
 
-    $('img.picture-fullscreen').each(function() {
+    $('#picture-list img').each(function() {
 
         // Define action when user click on button
         $(this).on('click', function() {
@@ -76,7 +79,7 @@ function initFullScreenAction() {
             // Display full screen picture as popup
             $('#section-popup').bPopup({
                 content: 'image',
-                loadUrl: $(this).attr('data-url')
+                loadUrl: $(this).attr('src')
             });
 
             // Close popup when clicking on picture
@@ -92,15 +95,14 @@ function initFullScreenAction() {
         // Display button depending on picture size
         // NOTE : picture container => height: 481px; width: 570px;
         var fullscreenButton = $(this).next('span.picture-button');
-        var bottomPosition = 481 - $(this).height() + 10;
-        var rightPosition = ((570 - $(this).width()) / 2) + 10;
+        var bottomPosition = 550 - $(this).height() + 10;
+        var rightPosition = ((700 - $(this).width()) / 2) + 10;
         $(fullscreenButton).css('bottom', bottomPosition);
         $(fullscreenButton).css('right', rightPosition);
 
-        // Define action when if user click
+        // Define action if user click => same as picture click
         $(fullscreenButton).on('click', function() {
-            //alert('dsfhsdklfhs');
-            $(this).prev('img.picture-fullscreen').click();
+            $(this).prev('img').click();
         });
     });
 }

@@ -1,28 +1,22 @@
 
 $(document).ready(function() {
 
-    $("#bodu_slideshowbundle_slideshow_description").cleditor({height: 170});
+    $("#jc_slideshowbundle_slideshow_description").cleditor({height: 170});
 
     // Set picture list sortable
     $('#picture-list').sortable({
-        update: function(event, ui) {
-            $("#ordered-picture-list").val($('#picture-list').sortable('serialize'));
-        }
+        update: function(event, ui) {updatePicturesRank();}
     });
 
     // Use dropzone to upload slideshow's pictures
     $('#slideshow-dropzone').dropzone({
         previewTemplate: global.dropzoneTemplate,
-        sending: function(file, xhr, formData) {formData.append('slideshow-id', $('#slideshow-id').val());},
+        sending: function(file, xhr, formData) {formData.append('slideshowId', $('#slideshow-id').val());},
         success: function(file, response) {addFileToList(file, response);}
     });
 
     // Define action when user remove picture from list
     $('#picture-list .delete-picture').on('click', function() {deletePicture($(this));});
-
-    // Define actions when user submit form
-    // NOTE : this button is outside form element...
-    $('#slideshow-valid-button').on('click', function() {$('#slideshow-form').submit();});
 
     // Display/hide border properties configuration when activate/deactivate border
     $('#jc_slideshowbundle_slideshow_activBorder').on('change', function(event) {
@@ -55,8 +49,23 @@ function addFileToList(file, response) {
 
         // Create new row for specified file
         var row = $('#row-template tbody tr').clone();
-        row.find('input.picture-id').val(response.id);
-        row.find('input.picture-name').val(response.name);
+
+        var inputId = row.find('input.picture-id');
+        var inputRank = row.find('input.picture-rank');
+        var inputName = row.find('input.picture-name');
+
+        // Update fields values
+        inputId.val(response.id);
+        inputRank.val(response.rank);
+        inputName.val(response.name);
+
+        // Set id/name for POST (when submitting form)
+        inputId.attr("id", "picture-id-" + response.id);
+        inputId.attr("name", "picture-id-" + response.id);
+        inputRank.attr("id", "picture-rank-" + response.id);
+        inputRank.attr("name", "picture-rank-" + response.id);
+        inputName.attr("id", "picture-name-" + response.id);
+        inputName.attr("name", "picture-name-" + response.id);
 
         // Add event for remove button
         row.find('.delete-picture').on('click', function() {deletePicture($(this));})
@@ -102,6 +111,21 @@ function deletePicture(button) {
     }
 }
 
+/**
+ * Allows to update rank field for pictures (after user change sort...).
+ */
+function updatePicturesRank() {
+
+    // Get all pictures to set rank
+    var pictureList = $("#picture-list").children("tr");
+
+    for (var i=0; i<pictureList.length; i++)
+        $(pictureList[i]).find(".picture-rank").val(i+1);
+}
+
+/**
+ * Allows to show/hide border configuration when activate/deactivate border
+ */
 function selectBorder() {
 
     var isActiv = $('#jc_slideshowbundle_slideshow_activBorder').is(':checked');
