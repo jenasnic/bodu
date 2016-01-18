@@ -1,7 +1,0 @@
-parameters:
-#    bodu_slideshow.example.class: Bodu\SlideshowBundle\Example
-
-services:
-#    bodu_slideshow.example:
-#        class: %bodu_slideshow.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
