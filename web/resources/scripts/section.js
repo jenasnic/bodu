@@ -93,10 +93,12 @@ function initFullScreenAction() {
         });
 
         // Display button depending on picture size
-        // NOTE : picture container => height: 481px; width: 570px;
+        // NOTE 1 : picture container => height: 550px; width: 700px;
+        // NOTE 2 : max picture border size => 5px;
+        var pictureSize = getPictureSize($(this), 690, 540);
         var fullscreenButton = $(this).next('span.picture-button');
-        var bottomPosition = 550 - $(this).height() + 10;
-        var rightPosition = ((700 - $(this).width()) / 2) + 10;
+        var bottomPosition = 550 - pictureSize.height + 10;
+        var rightPosition = ((700 - pictureSize.width) / 2) + 10;
         $(fullscreenButton).css('bottom', bottomPosition);
         $(fullscreenButton).css('right', rightPosition);
 
@@ -105,4 +107,33 @@ function initFullScreenAction() {
             $(this).prev('img').click();
         });
     });
+}
+
+/**
+ * Allows to calculate new picture size depending on specified max width/height
+ * @param imgElement Element picture we want to calculate true size
+ * @param maxWidth Maximum authorized width
+ * @param maxHeight Maximum authorized height
+ * @returns Size element with both properties width and height.
+ */
+function getPictureSize(imgElement, maxWidth, maxHeight) {
+
+    var width = parseInt(imgElement.attr('data-width'));
+    var height = parseInt(imgElement.attr('data-height'));
+
+    // Check max width
+    if (width > maxWidth) {
+
+        height = Math.round(maxWidth / (width / height));
+        width = maxWidth;
+    }
+
+    // Check max heigth
+    if (height > maxHeight) {
+
+        width = Math.round((width * maxHeight) / height);
+        height = maxHeight;
+    }
+
+    return {width: width, height: height};
 }

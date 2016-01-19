@@ -1,2 +1,8 @@
 parameters:
     jc_slideshow.root_path: /userfiles/slideshow
+services:
+    jc_slideshow.twig.pictureProperties:
+        class: jc\SlideshowBundle\Twig\PicturePropertiesExtension
+        arguments: [ '%kernel.root_dir%' ]
+        tags:
+            - { name: twig.extension }

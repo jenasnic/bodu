@@ -14,7 +14,8 @@
     {% for picture in slideshow.pictures %}
         <li class="picture-item">
             <div class="container">
-                <img src="{{ picture.pictureUrl }}" alt="{{ picture.name }}" style="{{ cssStyleToUse }}" class="" />
+                <img src="{{ picture.pictureUrl }}" alt="{{ picture.name }}" style="{{ cssStyleToUse }}" class="picture-fullscreen"
+                    data-width="{{ pictureWidth(picture.pictureUrl) }}" data-height="{{ pictureHeight(picture.pictureUrl) }}" />
                 <span class="picture-button">
                     <img src="{{ asset('resources/images/fullscreen.png') }}" alt="+" />
                 </span>

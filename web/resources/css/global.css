@@ -184,8 +184,8 @@ li.slideshow-item.activ {
 #picture-list, .picture-item div.container {height: 550px; width: 700px;}
 
 .picture-item div.container img {
-    max-height: 550px;
-    max-width: 680px;
+    max-height: 540px;
+    max-width: 690px;
     margin: 0 auto;
 }
 
