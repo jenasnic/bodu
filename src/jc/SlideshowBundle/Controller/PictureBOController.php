@@ -36,15 +36,18 @@ class PictureBOController extends Controller {
             if (!is_dir($absoluteFolderPath))
                 mkdir($absoluteFolderPath);
 
-            // Move file into appropriate folder
-            $file->move($absoluteFolderPath, $file->getClientOriginalName());
-
-            $picture->setPictureUrl($relativeFolderPath . '/' . $file->getClientOriginalName());
-
             // For picture's name => use file name without extension
-            $name = $file->getClientOriginalName();
-            $name = substr($name, 0, strrpos($name, '.'));
+            $originalName = $file->getClientOriginalName();
+            $dotIndex = strrpos($originalName, '.');
+            $name = substr($originalName, 0, $dotIndex);
+            $extension = substr($originalName, $dotIndex + 1);
+
+            // For picture's file => use unique name and move file into appropriate folder
+            $uniqueFileName = $this->getUniqueFileNameForPicture($absoluteFolderPath, $extension);
+            $file->move($absoluteFolderPath, $uniqueFileName);
+
             $picture->setName($name);
+            $picture->setPictureUrl($relativeFolderPath . '/' . $uniqueFileName);
 
             // Save new picture
             $entityManager->persist($picture);
@@ -90,5 +93,16 @@ class PictureBOController extends Controller {
                 return new JsonResponse(array('success' => false, 'message' => 'Erreur lors de la suppression de l\'image'));
             }
         }
+    }
+
+    private function getUniqueFileNameForPicture($slideshowPath, $extension) {
+
+        $i = 1;
+        do {
+            $fileName = 'picture_' . sprintf("%'.03d", $i++) . '.' . $extension;
+        }
+        while (file_exists($slideshowPath . '/' . $fileName));
+
+        return $fileName;
     }
 }
