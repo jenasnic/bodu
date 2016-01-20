@@ -38,7 +38,7 @@ function displaySlideshow(slideshowId) {
 
             // Add new content and initialize it (slideshow)
             $('#section-content').html(msg);
-            initSlideshow();
+            $('#picture-list img.picture-fullscreen').first().on('load', function() {initSlideshow();});
         },
         error: function(msg) {
             alert("Impossible de charger le diaporama");
@@ -52,6 +52,7 @@ function displaySlideshow(slideshowId) {
 function initSlideshow() {
 
     $('#picture-list').slick({
+        adaptiveHeight: true,
         centerMode : true,
         centerPadding : '0px',
         nextArrow: '<span class="slick-next"></span>',
@@ -97,7 +98,7 @@ function initFullScreenAction() {
         // NOTE 2 : max picture border size => 5px;
         var pictureSize = getPictureSize($(this), 690, 540);
         var fullscreenButton = $(this).next('span.picture-button');
-        var bottomPosition = 550 - pictureSize.height + 10;
+        var bottomPosition = 10;
         var rightPosition = ((700 - pictureSize.width) / 2) + 10;
         $(fullscreenButton).css('bottom', bottomPosition);
         $(fullscreenButton).css('right', rightPosition);

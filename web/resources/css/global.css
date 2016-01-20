@@ -181,12 +181,21 @@ li.slideshow-item.activ {
 
 #slideshow-container ul {margin: 0; padding: 0;}
 
-#picture-list, .picture-item div.container {height: 550px; width: 700px;}
+#picture-list, .picture-item div.container {width: 700px;}
 
 .picture-item div.container img {
     max-height: 540px;
     max-width: 690px;
     margin: 0 auto;
+}
+
+.picture-number {
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+    width: 700px;
 }
 
 /* CSS for full screen button */
