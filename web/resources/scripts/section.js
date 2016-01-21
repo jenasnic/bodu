@@ -62,6 +62,11 @@ function initSlideshow() {
     });
 
     initFullScreenAction();
+
+    // After slide changed => update picture number
+    $('#picture-list').on('afterChange', function(slick, currentSlide) {
+        $('#picture-number span').html(currentSlide.currentSlide + 1);
+    });
 }
 
 /**
@@ -69,7 +74,7 @@ function initSlideshow() {
  */
 function initFullScreenAction() {
 
-    $('#picture-list img').each(function() {
+    $('#picture-list img.picture-fullscreen').each(function() {
 
         // Define action when user click on button
         $(this).on('click', function() {
@@ -105,7 +110,7 @@ function initFullScreenAction() {
 
         // Define action if user click => same as picture click
         $(fullscreenButton).on('click', function() {
-            $(this).prev('img').click();
+            $(this).prev('img.picture-fullscreen').click();
         });
     });
 }

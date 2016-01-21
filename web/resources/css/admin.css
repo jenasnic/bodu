@@ -151,7 +151,7 @@ h1 {
 /* Specific CSS for sortable table */
 
 .bo-sortable-table th, .bo-sortable-table td {border: none;}
-.bo-sortable-table tr {border: 1px dotted #333;}
+.bo-sortable-table tr {border: 1px dotted #333; cursor: move;}
 .bo-sortable-table tbody tr {background-color: #ddd;}
 
 .bo-sortable-table tbody .sortable-header-row {
@@ -372,7 +372,7 @@ span.comment {
 }
 
 .file-drop-zone .dz-message {
-    background-color: #ADD081;
+    background-color: #00ACEC;
     color: #333;
     font-size: 12px;
     font-weight: bold;
@@ -381,10 +381,7 @@ span.comment {
     text-transform: uppercase;
 }
 
-.file-drop-zone:hover .dz-message {
-    background-color: #86bc49;
-    color: #eee;
-}
+.file-drop-zone:hover .dz-message {color: #eee;}
 
 .dz-preview {
     background: url('images/admin/backgroundDZ.png') repeat;
