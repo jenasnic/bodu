@@ -9,7 +9,7 @@
 
 <ul>
 {% for menu in menuList %}
-    <li class="{{ (menu.url == rootCurrentPath or menu.url == rootUri) ? 'activ' : '' }}">
+    <li class="{{ (menu.url == rootCurrentPath or menu.url == rootUri) ? 'activ' : '' }}" style="width: {{ menu.calculatedWidth }}px;">
         <a href="{{ menu.url }}">{{ menu.name }}</a>
     </li>
 {% endfor %}

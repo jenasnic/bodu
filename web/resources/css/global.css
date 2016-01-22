@@ -43,9 +43,8 @@ a {
     float: left;
     height: 12px;
     list-style: none;
-    margin: 0 0 0 17px;
+    margin: 0 0 0 15px;
     padding: 0 0 0 20px;
-    width: 100px;
 }
 
 #menu ul li.activ {background: url('images/menuBulletOn.png') no-repeat left bottom;}

@@ -42,6 +42,8 @@ class Menu
      */
     private $rank;
 
+    private $evaluatedWeight;
+    private $calculatedWidth;
 
     /**
      * Set id
@@ -133,5 +135,51 @@ class Menu
     public function getRank()
     {
         return $this->rank;
+    }
+
+    /**
+     * Set evaluated weight
+     *
+     * @param integer $evaluatedWeight
+     * @return Menu
+     */
+    public function setEvaluatedWeight($evaluatedWeight)
+    {
+        $this->evaluatedWeight = $evaluatedWeight;
+
+        return $this;
+    }
+
+    /**
+     * Get evaluated weight
+     *
+     * @return integer 
+     */
+    public function getEvaluatedWeight()
+    {
+        return $this->evaluatedWeight;
+    }
+
+    /**
+     * Set calculated width
+     *
+     * @param integer $calculatedWidth
+     * @return Menu
+     */
+    public function setCalculatedWidth($calculatedWidth)
+    {
+        $this->calculatedWidth = $calculatedWidth;
+
+        return $this;
+    }
+
+    /**
+     * Get calculated width
+     *
+     * @return integer 
+     */
+    public function getCalculatedWidth()
+    {
+        return $this->calculatedWidth;
     }
 }
