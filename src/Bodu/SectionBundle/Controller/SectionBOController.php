@@ -46,7 +46,7 @@ class SectionBOController extends Controller
                             // Browse each slideshow and update rank if necessary
                             for ($i = 0; $i < count($newOrderedList); $i++)
                             {
-                                $slideshowToUpdate = $entityManager->getRepository('BoduSlideshowBundle:Slideshow')->find($newOrderedList[$i]);
+                                $slideshowToUpdate = $entityManager->getRepository('jcSlideshowBundle:Slideshow')->find($newOrderedList[$i]);
                                 if ($slideshowToUpdate->getRank() != ($i + 1))
                                 {
                                     $slideshowToUpdate->setRank($i + 1);
