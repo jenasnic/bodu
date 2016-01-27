@@ -11,18 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery-ui-1.10.4.custom.css') }}" />
 
     <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-ui-1.10.4.custom.min.js') }}"></script>
-    <script type="text/javascript">
-
-        $(document).ready(function() {
-            $("#menu-list").sortable({
-                update: function(event, ui) {
-                    $("#ordered-menu-list").val($('#menu-list').sortable('serialize'));
-                }
-            });
-            $("#menu-list").disableSelection();
-        });
-
-    </script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/admin/menu.js') }}"></script>
 
 {% endblock %}
 
@@ -67,9 +56,22 @@
 
     <div class="sep-20"></div>
 
+    <span class="comment">Ajustement manuel de la taille des éléments du menu pour le front office</span>
+    <div id="bo-preview-menu">
+        <ul>
+        {% for menu in menuList %}
+            <li style="width: {{ menu.width }}px;" data-id="{{ menu.id }}">{{ menu.name }}</li>
+        {% endfor %}
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+    <div class="sep-20"></div>
+
     {# Form to save menu order #}
     <form action="{{ path('bodu_menu_bo_list') }}" method="post">
         <input id="ordered-menu-list" name="ordered-menu-list" type="hidden" value="" />
+        <input id="width-menu-list" name="width-menu-list" type="hidden" value="" />
         <div class="save-button"><input type="submit" value="" /></div>
     </form>
 

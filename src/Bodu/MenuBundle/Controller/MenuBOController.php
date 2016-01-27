@@ -14,7 +14,7 @@ class MenuBOController extends Controller
         $request = $this->getRequest();
         $entityManager = $this->getDoctrine()->getManager();
 
-        // If user has submit form => save new menu order (if necessary)
+        // If user has submit form => save new menu order and menu width (if necessary)
         if ($request->getMethod() == 'POST')
         {
             try
@@ -38,8 +38,30 @@ class MenuBOController extends Controller
                     }
                 }
 
+                // Get field with new width
+                $newWidthList = $request->request->get('width-menu-list');
+
+                if ($newWidthList != null)
+                {
+                    $newWidthList = explode(';', $newWidthList);
+
+                    // Browse each menu and update width if necessary
+                    foreach ($newWidthList as $newWidthItem)
+                    {
+                        // NOTE : Each width item are composed as follow : [ID]:[width]
+                        $newWidthItem = explode(':', $newWidthItem);
+
+                        $menuToUpdate = $entityManager->getRepository('BoduMenuBundle:Menu')->find($newWidthItem[0]);
+                        if ($menuToUpdate->getWidth() != $newWidthItem[1])
+                        {
+                            $menuToUpdate->setWidth($newWidthItem[1]);
+                            $entityManager->persist($menuToUpdate);
+                        }
+                    }
+                }
+
                 $entityManager->flush();
-                $request->getSession()->getFlashBag()->add('bo-log-message', 'Classement des menus OK');
+                $request->getSession()->getFlashBag()->add('bo-log-message', 'Classement et redimensionnement des menus OK');
             }
             catch (Exception $e)
             {
@@ -69,9 +91,12 @@ class MenuBOController extends Controller
 
                 if ($form->isValid())
                 {
-                    // For new menu => set rank
-                    if ($menu->getId() == null || $menu->getId() == 0)
+                    // For new menu => set rank and default width
+                    if ($menu->getId() == null || $menu->getId() == 0) {
+
                         $menu->setRank($entityManager->getRepository('BoduMenuBundle:Menu')->getMaxRank() + 1);
+                        $menu->setWidth(110);
+                    }
 
                     $entityManager->persist($menu);
                     $entityManager->flush();

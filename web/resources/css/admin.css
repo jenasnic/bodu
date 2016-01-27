@@ -550,3 +550,36 @@ span.file-delete {
 }
 
 
+
+/**********************************/
+/* Specific CSS to configure menu */
+/**********************************/
+
+#bo-preview-menu {
+    background: url("images/backgroundMain.jpg") 0 0 repeat;
+    padding: 10px 0 15px 0;
+    width: 960px;
+}
+
+#bo-preview-menu ul li {
+    background: url('images/menuBulletOff.png') no-repeat left 5px;
+    cursor: pointer;
+    float: left;
+    height: 18px;
+    list-style: none;
+    margin: 0 0 0 15px;
+    padding: 0 0 0 20px;
+}
+
+#bo-preview-menu ul li.activ {background: url('images/menuBulletOn.png') no-repeat left bottom;}
+
+#bo-preview-menu ul li {
+    color: #fff;
+    font-size: 14px;
+}
+
+#bo-preview-menu ul li:hover {
+    background: url('images/admin/backgroundFFFFFF.png') 0 0 repeat;
+    color: #333;
+    z-font-weight: bold;
+}

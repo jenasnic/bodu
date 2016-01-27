@@ -17,6 +17,7 @@ class MenuType extends AbstractType
         $builder
             ->add('name', 'text', array('required' => false))
             ->add('url', 'text', array('required' => false))
+            ->add('width', 'hidden')
             ->add('rank', 'hidden')
         ;
     }
