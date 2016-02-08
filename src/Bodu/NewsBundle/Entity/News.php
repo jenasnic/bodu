@@ -71,6 +71,13 @@ class News
     private $pictureUrl;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="picturePosition", type="string", length=55)
+     */
+    private $picturePosition;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="rank", type="integer")
@@ -271,6 +278,29 @@ class News
     public function getPictureUrl()
     {
         return $this->pictureUrl;
+    }
+
+    /**
+     * Set picturePosition
+     *
+     * @param string $picturePosition
+     * @return News
+     */
+    public function setPicturePosition($picturePosition)
+    {
+        $this->picturePosition = $picturePosition;
+
+        return $this;
+    }
+
+    /**
+     * Get picturePosition
+     *
+     * @return string
+     */
+    public function getPicturePosition()
+    {
+        return $this->picturePosition;
     }
 
     /**

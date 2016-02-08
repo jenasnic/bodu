@@ -32,6 +32,13 @@ class NewsType extends AbstractType
                     'empty_value' => false
             ))
             ->add('published', 'checkbox', array('required' => false))
+            ->add('picturePosition', 'choice', array(
+                    'required' => false,
+                    'empty_value' => false,
+                    'choices' => array('left' => 'Gauche', 'right' => 'Droite'),
+                    'expanded'  => true,
+                    'multiple'  => false
+            ))
             ->add('pictureUrl', 'hidden', array('required' => false))
             ->add('rank', 'hidden')
             ->add('pictureFile', 'file', array('required' => false))

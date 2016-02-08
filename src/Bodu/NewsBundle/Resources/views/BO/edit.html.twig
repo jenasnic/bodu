@@ -67,6 +67,13 @@
             {{ form_widget(newsToEdit.size) }}
             {{ form_errors(newsToEdit.size) }}
 
+            <div class="sep-20"></div>
+
+            {{ form_label(newsToEdit.picturePosition, "Position de l'image") }}
+            <span class="comment">Permet de positionner l'image de l'acutalité à gauche ou à droite.</span>
+            {{ form_widget(newsToEdit.picturePosition) }}
+            {{ form_errors(newsToEdit.picturePosition) }}
+
             <div class="field-set-separator"></div>
 
             {{ form_widget(newsToEdit.published) }}
