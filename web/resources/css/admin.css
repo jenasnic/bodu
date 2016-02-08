@@ -360,7 +360,7 @@ span.comment {
 /* CSS for drop zone */
 /*********************/
 
-.file-drop-zone {
+.dropzone {
     background: url('images/admin/upload.png') no-repeat 195px 50% #eee;
     border: none;
     border-bottom: 1px solid #333;
@@ -371,7 +371,7 @@ span.comment {
     width: 440px;
 }
 
-.file-drop-zone .dz-message {
+.dropzone .dz-message {
     background-color: #00ACEC;
     color: #333;
     font-size: 12px;
@@ -381,7 +381,7 @@ span.comment {
     text-transform: uppercase;
 }
 
-.file-drop-zone:hover .dz-message {color: #eee;}
+.dropzone:hover .dz-message {color: #eee;}
 
 .dz-preview {
     background: url('images/admin/backgroundDZ.png') repeat;

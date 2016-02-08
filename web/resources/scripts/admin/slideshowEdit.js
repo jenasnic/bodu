@@ -8,12 +8,12 @@ $(document).ready(function() {
         update: function(event, ui) {updatePicturesRank();}
     });
 
-    // Use dropzone to upload slideshow's pictures
-    $('#slideshow-dropzone').dropzone({
-        previewTemplate: global.dropzoneTemplate,
-        sending: function(file, xhr, formData) {formData.append('slideshowId', $('#slideshow-id').val());},
-        success: function(file, response) {addFileToList(file, response);}
-    });
+    // Define dropzone properties to upload slideshow's pictures
+    Dropzone.options.slideshowDropzone = {
+            dictDefaultMessage: 'Déposer les images du diaporama ici',
+            sending: function(file, xhr, formData) {formData.append('slideshowId', $('#slideshow-id').val());},
+            success: function(file, response) {addFileToList(file, response);}
+    };
 
     // Define action when user remove picture from list
     $('#picture-list .delete-picture').on('click', function() {deletePicture($(this));});
