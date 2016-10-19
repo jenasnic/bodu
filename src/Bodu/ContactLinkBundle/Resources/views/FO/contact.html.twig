@@ -25,49 +25,21 @@
     <div class="sep-30"></div>
 
     <div class="padding-hor-20">
-
-        {# Display odd link in left column #}
-        <div class="link-container">
-        {% for link in linkList %}
-            {% if loop.index is odd %}
-                <div class="link-item">
-                    <h2>{{ link.title }}</h2>
-                    {% if (link.pictureUrl) %}
-                        <div class="link-picture left">
-                            <img src="{{ link.pictureUrl }}" alt="-" width="160" height="80" />
-                        </div>
-                    {% endif %}
-                    <div class="link-content">
-                        {{ link.content|raw }}
-                    </div>
-                    <div class="clear"></div>
-                    {% if (link.link) %}<a href="{{ link.link }}" target="_blank" class="more-link" ></a>{% endif %}
+    {% for link in linkList %}
+        <div class="link-item">
+            <h2>{{ link.title }}</h2>
+            {% if (link.pictureUrl) %}
+                <div class="link-picture left">
+                    <img src="{{ link.pictureUrl }}" alt="-" width="160" height="80" />
                 </div>
             {% endif %}
-        {% endfor %}
+            <div class="link-content">
+                {{ link.content|raw }}
+            </div>
+            <div class="clear"></div>
+            {% if (link.link) %}<a href="{{ link.link }}" target="_blank" class="more-link" ></a>{% endif %}
         </div>
-
-        {# Display even link in left column #}
-        <div class="link-container">
-        {% for link in linkList %}
-            {% if loop.index is even %}
-                <div class="link-item">
-                    <h2>{{ link.title }}</h2>
-                    {% if (link.pictureUrl) %}
-                        <div class="link-picture left">
-                            <img src="{{ link.pictureUrl }}" alt="-" width="160" height="80" />
-                        </div>
-                    {% endif %}
-                    <div class="link-content">
-                        {{ link.content|raw }}
-                    </div>
-                    <div class="clear"></div>
-                    {% if (link.link) %}<a href="{{ link.link }}" target="_blank" class="more-link" ></a>{% endif %}
-                </div>
-            {% endif %}
-        {% endfor %}
-        </div>
-
+    {% endfor %}
     </div>
 
     <div class="sep-20"></div>

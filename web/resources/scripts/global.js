@@ -13,6 +13,18 @@ var global = {
         colors: 'FFF 999 606C6C 383E3E 000 2696D5 002554 F7FF11 FB9407 F00 24FF19 FF09C2',
     },
 
+    dropzoneTemplate : "<div class=\"dz-preview dz-file-preview\">"
+            + "<div class=\"dz-image\"><img data-dz-thumbnail /></div>"
+            + "<div class=\"dz-details\">"
+            + "<div class=\"dz-size\"><span data-dz-size></span></div>"
+            + "<div class=\"dz-filename\"><span data-dz-name></span></div>"
+            + "</div>"
+            + "<div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>"
+            + "<div class=\"dz-error-message\"><span data-dz-errormessage></span></div>"
+            + "<div class=\"dz-success-mark\"><img src=\"/resources/images/admin/uploadOK.png\" /></div>"
+            + "<div class=\"dz-error-mark\"><img src=\"/resources/images/admin/uploadKO.png\" /></div>"
+            + "</div>",
+
     /**
      * Cancel event default action
      * @param event

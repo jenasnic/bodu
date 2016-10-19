@@ -241,8 +241,8 @@ img.picture-fullscreen {cursor: zoom-in;}
     width: 880px;
 }
 
-.link-item, .news-item.small {width: 420px;}
-.link-item {margin: 0 0 30px 0;}
+.news-item.small {width: 420px;}
+.link-item {width: 380px;}
 
 .news-item h2, .link-item h2 {
     background: url("images/backgroundBlock.png") repeat;
@@ -273,12 +273,6 @@ a.more-link {
 }
 
 a.more-link:hover {background: url("images/seeMoreOn.jpg") no-repeat;}
-
-.link-container {
-    float: left;
-    padding-left: 20px;
-    width: 430px;
-}
 
 .contact-link {
     background: url("images/contact/contact.png") no-repeat scroll 5px -3px;
