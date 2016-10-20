@@ -1,0 +1,51 @@
+
+/************************/
+/* CSS for file manager */
+/************************/
+
+#userfile-reset {cursor: pointer;}
+
+.file-manager-preview {
+    border: 1px solid #000;
+    float: right;
+    height: 128px;
+    line-height: 124px;
+    text-align: center;
+    width: 128px;
+}
+
+.file-manager-preview img {
+    display: inline-block !important;
+    max-height: 128px;
+    max-width: 128px;
+    vertical-align: middle;
+}
+
+.file-manager {
+    min-height: 130px;
+    min-width: 350px;
+}
+
+.file-manager li {
+    color: #000;
+    cursor: pointer;
+    list-style: none;
+}
+
+.file-manager-folder, .file-manager-parent {
+    background: url("images/admin/folder.png") no-repeat scroll 0 0 transparent;
+    padding: 2px 2px 2px 20px;
+}
+
+.file-manager-file {
+    background: url("images/admin/file.png") no-repeat scroll 0 0 transparent;
+    padding: 2px 2px 2px 20px;
+}
+
+span.file-shortcut  {display: none;}
+span.file-delete {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.full-path-info {font-weight: bold;}

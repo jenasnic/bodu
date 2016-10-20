@@ -1,9 +1,8 @@
 Allows to manage slideshow for website.
 
-This bundle requires database 'slideshow' and 'picture' (see SQL in 'Resources/public/database' directory).
+1/ Update database and create both table 'slideshow' and 'picture' using SQL script in 'Resources/public/database'.
 
-Each slideshow defines pictures which can be sorted.
+2/ Add scripts (in 'Resources/public/js' directory) in website's resources ('/web/resources/js')
+NOTE : Use script 'Resources/public/js/slideshow.js' to load slideshow using ajax.
 
-Pictures are uploaded in specific folder '/userfiles/slideshow'. You can change this path in 'Resources/config/services.yml' file.
-
-NOTE : Add script 'Resources/public/js/slideshow.js' in website's resources ('/web/resources/js') and include this script to load slideshow using ajax.
+NOTE : Pictures are uploaded in specific folder '/userfiles/slideshow'. You can change this path in 'Resources/config/services.yml' file.

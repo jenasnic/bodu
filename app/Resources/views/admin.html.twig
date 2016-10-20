@@ -7,10 +7,13 @@
     <title>{% block title %}Back-office{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('resources/images/favicon.ico') }}" />
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery-ui-1.12.1.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/common.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/admin.css') }}" />
 
-    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-1.11.1.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-ui-1.12.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('resources/scripts/global.js') }}"></script>
 
     {% block header %}{% endblock %}

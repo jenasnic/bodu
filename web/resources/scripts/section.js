@@ -1,4 +1,18 @@
 
+/**
+ * Set belows values to adjust fullscreen icon depending on picture max size and container :
+ *     - pictureMaxWidth : max width in CSS for picture in slideshow
+ *     - pictureMaxHeight : max height in CSS for picture in slideshow
+ *     - pictureContainerWidth : picture container width in CSS (can be greater than picture width)
+ *     - pictureVerticalOffset : offset to adjust fullscreen icon vertically
+ *     - pictureHorizontalOffset : offset to adjust fullscreen icon horizontally
+ */
+var pictureMaxWidth = 690;
+var pictureMaxHeight = 540;
+var pictureContainerWidth = 700;
+var pictureVerticalOffset = 39;
+var pictureHorizontalOffset = 10;
+
 $(document).ready(function() {
 
     // Init action when user select sildeshow to see
@@ -38,7 +52,7 @@ function displaySlideshow(slideshowId) {
 
             // Add new content and initialize it (slideshow)
             $('#section-content').html(msg);
-            $('#picture-list img.picture-fullscreen').first().on('load', function() {initSlideshow();});
+            initSlideshow();
         },
         error: function(msg) {
             alert("Impossible de charger le diaporama");
@@ -53,8 +67,6 @@ function initSlideshow() {
 
     $('#picture-list').slick({
         adaptiveHeight: true,
-        centerMode : true,
-        centerPadding : '0px',
         nextArrow: '<span class="slick-next"></span>',
         prevArrow: '<span class="slick-prev"></span>',
         slide : 'li',
@@ -62,6 +74,12 @@ function initSlideshow() {
     });
 
     initFullScreenAction();
+
+    // Initialize min size depending on current element
+    // NOTE : Use to fix bug when using adaptive height and picture not fully loaded
+    var activPictureElementSize = getPictureSize($('#picture-list .slick-active img'), pictureMaxWidth, pictureMaxHeight);
+    var borderSize = parseInt($('#picture-list').attr('data-border'));
+    $('#picture-list .slick-list').height(activPictureElementSize.height + 2*borderSize);
 
     // After slide changed => update picture number
     $('#picture-list').on('afterChange', function(slick, currentSlide) {
@@ -99,18 +117,18 @@ function initFullScreenAction() {
         });
 
         // Display button depending on picture size
-        // NOTE 1 : picture container => height: 550px; width: 700px;
-        // NOTE 2 : max picture border size => 5px;
-        var pictureSize = getPictureSize($(this), 690, 540);
+        // NOTE 1 : check picture container width/height
+        // NOTE 2 : check picture border if exist
+        var pictureSize = getPictureSize($(this), pictureMaxWidth, pictureMaxHeight);
         var fullscreenButton = $(this).next('span.picture-button');
-        var bottomPosition = 10;
-        var rightPosition = ((700 - pictureSize.width) / 2) + 10;
-        $(fullscreenButton).css('bottom', bottomPosition);
+        var topPosition = pictureSize.height - pictureVerticalOffset;
+        var rightPosition = ((pictureContainerWidth - pictureSize.width) / 2) + pictureHorizontalOffset;
+        $(fullscreenButton).css('top', topPosition);
         $(fullscreenButton).css('right', rightPosition);
 
         // Define action if user click => same as picture click
         $(fullscreenButton).on('click', function() {
-            $(this).prev('img.picture-fullscreen').click();
+            $(this).prev('img').click();
         });
     });
 }

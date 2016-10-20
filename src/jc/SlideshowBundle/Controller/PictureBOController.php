@@ -2,16 +2,20 @@
 
 namespace jc\SlideshowBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use jc\SlideshowBundle\Entity\Picture;
 use jc\SlideshowBundle\Entity\Slideshow;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class PictureBOController extends Controller {
 
-    public function uploadPictureAction() {
+    /**
+     * @Route("/admin/slideshow/picture/upload", name="jc_slideshow_bo_picture_upload")
+     */
+    public function uploadPictureAction(Request $request) {
 
-        $request = $this->getRequest();
         $entityManager = $this->getDoctrine()->getManager();
 
         try {
@@ -21,7 +25,6 @@ class PictureBOController extends Controller {
 
             // Set slideshow + rank
             $slideshowId = $request->request->get('slideshowId');
-
             $slideshow = $entityManager->getRepository('jcSlideshowBundle:Slideshow')->find($slideshowId);
             $picture->setSlideshow($slideshow);
             $picture->setRank($entityManager->getRepository('jcSlideshowBundle:Picture')->getMaxRankForSlideshow($slideshow) + 1);
@@ -29,8 +32,8 @@ class PictureBOController extends Controller {
             // Process file upload
             $file = $request->files->get('file');
 
-            $relativeFolderPath = $this->container->getParameter('jc_slideshow.root_path') . '/slideshow_' . $slideshowId;
-            $absoluteFolderPath = $this->container->getParameter('kernel.root_dir') . '/../web' . $relativeFolderPath;
+            $relativeFolderPath = $this->getParameter('jc_slideshow.root_path') . '/slideshow_' . $slideshowId;
+            $absoluteFolderPath = $this->getParameter('kernel.root_dir') . '/../web' . $relativeFolderPath;
 
             // Create folder if necessary
             if (!is_dir($absoluteFolderPath))
@@ -53,16 +56,19 @@ class PictureBOController extends Controller {
             $entityManager->persist($picture);
             $entityManager->flush();
 
-            return new JsonResponse(array('success' => true, 'id' => $picture->getId(), 'name' => $picture->getName(), 'rank' => $picture->getRank()));
+            return new JsonResponse(array('success' => true, 'id' => $picture->getId(), 'name' => $picture->getName(),
+                    'rank' => $picture->getRank(), 'url' => $picture->getPictureUrl()));
         }
         catch (Exception $e) {
             return new JsonResponse(array('success' => false, 'message' => 'Erreur lors de la création de l\'image'));
         }
     }
 
-    public function deletePictureAction() {
+    /**
+     * @Route("/admin/slideshow/picture/delete", name="jc_slideshow_bo_picture_delete")
+     */
+    public function deletePictureAction(Request $request) {
 
-        $request = $this->getRequest();
         $pictureId = $request->request->get('pictureId');
 
         if ($pictureId > 0) {
@@ -75,7 +81,7 @@ class PictureBOController extends Controller {
                 // If picture found => delete it
                 if ($pictureToDelete != null) {
 
-                    $pictureFileToDelete = $this->container->getParameter('kernel.root_dir') . '/../web' . $pictureToDelete->getPictureUrl();
+                    $pictureFileToDelete = $this->getParameter('kernel.root_dir') . '/../web' . $pictureToDelete->getPictureUrl();
 
                     $entityManager->remove($pictureToDelete);
                     $entityManager->flush();

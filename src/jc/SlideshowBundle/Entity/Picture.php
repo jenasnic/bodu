@@ -110,7 +110,7 @@ class Picture
     /**
      * Set rank
      *
-     * @param string $rank
+     * @param integer $rank
      * @return Picture
      */
     public function setRank($rank)

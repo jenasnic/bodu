@@ -10,9 +10,10 @@
 {% block header %}
 
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/userfile.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/dropzone.css') }}" />
 
-    <script type="text/javascript" src="{{ asset('resources/scripts/userFileExplorer.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('resources/scripts/userFile.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/admin/userFileExplorer.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/admin/userFile.js') }}"></script>
     <script type="text/javascript" src="{{ asset('resources/scripts/lib/dropzone.min.js') }}"></script>
 
 {% endblock %}
@@ -25,7 +26,8 @@
 
         {# Form to upload file #}
         Télécharger un fichier dans le dossier courant : <span class="full-path-info">{{ (currentPath|length == 0) ? '/' : currentPath }}</span>
-        <div class="sep-5"></div>
+        <img id="userfile-reset" src="{{ asset('resources/images/admin/clear.png') }}" class="right" alt="Reset" />
+        <div class="sep-20"></div>
         <form id="userfile-dropzone" action="{{ path('jc_user_file_bo_upload') }}" method="post" enctype="multipart/form-data" class="dropzone">
             <div class="dz-message">Déposez les fichiers à uploader...</div>
             <input id="filePath" name="filePath" type="hidden" value="{{ currentPath }}" />

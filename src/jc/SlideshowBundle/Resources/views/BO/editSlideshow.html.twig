@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery.cleditor.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/jquery-ui-1.10.4.custom.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/colorpicker.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/dropzone.css') }}" />
 
     <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery-ui-1.10.4.custom.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('resources/scripts/lib/jquery.cleditor.min.js') }}"></script>
@@ -90,7 +91,7 @@
 
         <div class="field-set">
 
-            <div id="slideshow-dropzone" action="{{ path('jc_slideshow_bo_picture_upload') }}" class="file-drop-zone">
+            <div id="slideshow-dropzone" action="{{ path('jc_slideshow_bo_picture_upload') }}" class="dropzone">
                 <div class="dz-message">Déposez les images du diaporama...</div>
             </div>
 
@@ -101,7 +102,8 @@
 
                 <thead>
                     <tr>
-                        <th class="bo-table-label">Image</th>
+                        <th class="bo-table-picture">Image</th>
+                        <th class="bo-table-label">Nom</th>
                         <th class="bo-table-action"><img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" /></th>
                     </tr>
                 </thead>
@@ -109,6 +111,7 @@
                 <tbody id="picture-list">
                 {% for picture in slideshowToEdit.vars.value.pictures %}
                     <tr id="picture-list-{{ picture.id }}">
+                        <td class="bo-table-picture"><img src="{{ picture.pictureUrl }}" alt="{{ picture.name }}" /></td>
                         <td class="bo-table-label">
                             <input type="hidden" id="picture-id-{{ picture.id }}"  name="picture-id-{{ picture.id }}" value="{{ picture.id }}" class="picture-id" />
                             <input type="hidden" id="picture-rank-{{ picture.id }}"  name="picture-rank-{{ picture.id }}" value="{{ picture.rank }}" class="picture-rank" />
@@ -140,6 +143,7 @@
     <table id="row-template" class="hide">
         <tbody>
             <tr>
+                <td class="bo-table-picture"><img src="{{ asset('resources/images/admin/empty.png') }}" alt="" /></td>
                 <td class="bo-table-label">
                     <input type="hidden" value="" class="picture-id" />
                     <input type="hidden" value="" class="picture-rank" />

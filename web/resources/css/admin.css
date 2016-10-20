@@ -137,6 +137,9 @@ h1 {
 .bo-table td.bo-table-label {padding: 4px 10px;}
 .bo-table td.bo-table-hidden {display:none;}
 
+.bo-table td.bo-table-picture {padding: 3px; text-align: center;}
+.bo-table td.bo-table-picture img {max-width: 30px; max-height: 30px;}
+
 .bo-table tfoot tr {
     background-color: #999;
     font-weight: bold;

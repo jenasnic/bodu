@@ -36,10 +36,9 @@ bodu_contact_link:
     prefix:   /
 
 jc_slideshow:
-    resource: "@jcSlideshowBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@jcSlideshowBundle/Controller/"
+    type:     annotation
 
 jc_userfile:
-    resource: "@jcUserFileBundle/Resources/config/routing.yml"
-    prefix:   /
-
+    resource: "@jcUserFileBundle/Controller/"
+    type:     annotation

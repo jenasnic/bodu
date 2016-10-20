@@ -1,18 +1,27 @@
 
 $(document).ready(function() {
 
+    refreshExplorer();
+
+    // Configure drop zone for upload
+    $('#userfile-dropzone').dropzone({
+        autoProcessQueue: true,
+        queuecomplete: function() {refreshExplorer();}
+    });
+
+    $('#userfile-reset').on('click', function() {
+        Dropzone.forElement("#userfile-dropzone").removeAllFiles(true);
+    });
+});
+
+function refreshExplorer() {
+
     var currentPath = $('#filePath').val();
     $('#user-file-explorer').fileUserExplorer({
         filePath: currentPath,
         afterReload: reloadFilePathInfo
     });
-
-    // Configure drop zone for upload
-    Dropzone.options.userfileDropzone = {
-        autoProcessQueue: true,
-        previewTemplate : global.dropzoneTemplate
-    };
-});
+}
 
 /**
  * Allows to refresh path info when browsing file explorer.

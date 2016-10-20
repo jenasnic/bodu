@@ -2,25 +2,33 @@
 
 namespace jc\SlideshowBundle\Controller;
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Filesystem\Filesystem;
 use jc\SlideshowBundle\Entity\Slideshow;
 use jc\SlideshowBundle\Form\SlideshowType;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class SlideshowBOController extends Controller {
 
+    /**
+     * @Route("/admin/slideshow/list", name="jc_slideshow_bo_list")
+     */
     public function listSlideshowAction() {
 
         $slideshowList = $this->getDoctrine()->getManager()->getRepository('jcSlideshowBundle:Slideshow')->findBy(array(), array('rank' => 'asc'));
         return $this->render('jcSlideshowBundle:BO:listSlideshow.html.twig', array('slideshowList' => $slideshowList));
     }
 
-    public function createSlideshowAction() {
+    /**
+     * @Route("/admin/slideshow/create", name="jc_slideshow_bo_create")
+     */
+    public function createSlideshowAction(Request $request) {
 
         try {
 
-            $name = $this->getRequest()->request->get('name');
+            $name = $request->request->get('name');
 
             // Create new slideshow with specified name
             $entityManager = $this->getDoctrine()->getManager();
@@ -40,13 +48,15 @@ class SlideshowBOController extends Controller {
             return new JsonResponse(array('success' => true, 'redirectUrl' => $redirectUrl, 'id' => $id));
         }
         catch (Exception $e) {
-            return new JsonResponse(array('success' => false, 'message' => 'Erreur lors de la création du diaporama'));
+            return new JsonResponse(array('success' => false, 'message' => 'Erreur lors de la création'));
         }
     }
 
-    public function editSlideshowAction($id) {
+    /**
+     * @Route("/admin/slideshow/edit/{id}", defaults={"id" = 0}, name="jc_slideshow_bo_edit")
+     */
+    public function editSlideshowAction(Request $request, $id) {
 
-        $request = $this->getRequest();
         $entityManager = $this->getDoctrine()->getManager();
 
         $slideshow = $entityManager->getRepository('jcSlideshowBundle:Slideshow')->find($id);
@@ -57,17 +67,17 @@ class SlideshowBOController extends Controller {
             try {
 
                 $form = $this->createForm(new SlideshowType(), $slideshow);
-                $form->bind($request);
+                $form->handleRequest($request);
 
                 if ($form->isValid()) {
 
                     // Process pictures
-                    $this->processPictures($slideshow);
+                    $this->processPictures($request, $slideshow);
 
                     $entityManager->persist($slideshow);
                     $entityManager->flush();
 
-                    $request->getSession()->getFlashBag()->add('bo-log-message', 'Sauvegarde de la course OK');
+                    $request->getSession()->getFlashBag()->add('bo-log-message', 'Sauvegarde OK');
 
                     return $this->redirect($this->generateUrl('jc_slideshow_bo_list'));
                 }
@@ -75,7 +85,7 @@ class SlideshowBOController extends Controller {
                     $request->getSession()->getFlashBag()->add('bo-warning-message', 'Certains champs ne sont pas remplis correctement');
             }
             catch (Exception $e) {
-                $request->getSession()->getFlashBag()->add('bo-error-message', 'Erreur lors de la sauvegarde de la course');
+                $request->getSession()->getFlashBag()->add('bo-error-message', 'Erreur lors de la sauvegarde');
             }
         }
         else
@@ -84,7 +94,10 @@ class SlideshowBOController extends Controller {
         return $this->render('jcSlideshowBundle:BO:editSlideshow.html.twig', array('slideshowToEdit' => $form->createView()));
     }
 
-    public function deleteSlideshowAction($id) {
+    /**
+     * @Route("/admin/slideshow/delete/{id}", requirements={"id" = "\d+"}, name="jc_slideshow_bo_delete")
+     */
+    public function deleteSlideshowAction(Request $request, $id) {
 
         if ($id > 0) {
 
@@ -96,8 +109,8 @@ class SlideshowBOController extends Controller {
                 // If slideshow found => delete it
                 if ($slideshowToDelete != null) {
 
-                    $relativeFolderPath = $this->container->getParameter('jc_slideshow.root_path') . '/slideshow_' . $id;
-                    $folderToDelete = $this->container->getParameter('kernel.root_dir') . '/../web' . $relativeFolderPath;
+                    $relativeFolderPath = $this->getParameter('jc_slideshow.root_path') . '/slideshow_' . $id;
+                    $folderToDelete = $this->getParameter('kernel.root_dir') . '/../web' . $relativeFolderPath;
 
                     // NOTE : All pictures linked to slideshow will be removed
                     $entityManager->remove($slideshowToDelete);
@@ -110,11 +123,11 @@ class SlideshowBOController extends Controller {
                         $fileSystem->remove($folderToDelete);
                     }
 
-                    $this->getRequest()->getSession()->getFlashBag()->add('bo-log-message', 'Suppression de la course OK');
+                    $request->getSession()->getFlashBag()->add('bo-log-message', 'Suppression OK');
                 }
             }
             catch (Exception $e) {
-                $this->getRequest()->getSession()->getFlashBag()->add('bo-error-message', 'Erreur lors de la suppression de la course');
+                $request->getSession()->getFlashBag()->add('bo-error-message', 'Erreur lors de la suppression');
             }
         }
 
@@ -126,9 +139,7 @@ class SlideshowBOController extends Controller {
      * Allows to process slideshow's pictures to update name or/and rank.
      * @param Slideshow $slideshow slideshow we want to update pictures name/rank
      */
-    private function processPictures($slideshow) {
-
-        $request = $this->getRequest();
+    private function processPictures(Request $request, $slideshow) {
 
         foreach ($slideshow->getPictures() as $pictureToUpdate) {
 

@@ -10,7 +10,6 @@ $(document).ready(function() {
 
     // Use dropzone to upload slideshow's pictures
     $('#slideshow-dropzone').dropzone({
-        previewTemplate: global.dropzoneTemplate,
         sending: function(file, xhr, formData) {formData.append('slideshowId', $('#slideshow-id').val());},
         success: function(file, response) {addFileToList(file, response);}
     });
@@ -53,11 +52,13 @@ function addFileToList(file, response) {
         var inputId = row.find('input.picture-id');
         var inputRank = row.find('input.picture-rank');
         var inputName = row.find('input.picture-name');
+        var pictureItem = row.find('td.bo-table-picture img');
 
         // Update fields values
         inputId.val(response.id);
         inputRank.val(response.rank);
         inputName.val(response.name);
+        pictureItem.attr("src", response.url);
 
         // Set id/name for POST (when submitting form)
         inputId.attr("id", "picture-id-" + response.id);

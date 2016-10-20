@@ -8,7 +8,7 @@
 #}
 
 <div class="file-manager-preview">
-    <img src="{{ asset('resources/images/admin/empty.png') }}" alt="Aperçu" />
+    <img src="{{ asset('resources/images/empty.png') }}" alt="Aperçu" />
 </div>
 
 <input class="file-path" type="hidden" value="{{ currentPath }}" />
@@ -26,14 +26,14 @@
         {% if (file.type == 'dir') %}
             <li class="file-manager-folder">
                 <span class="file-explore">{{ file.filename }}</span>
-                <span class="file-delete"><img src="{{ asset('resources/images/admin/icons/delete.png') }}" /></span>
-                <span class="file-shortcut">{{ asset('resources/images/admin/empty.png') }}</span>
+                <span class="file-delete"><img src="{{ asset('resources/images/admin/delete.png') }}" /></span>
+                <span class="file-shortcut">{{ asset('resources/images/empty.png') }}</span>
                 <ul></ul>
             </li>
         {% elseif (file.type == 'file') %}
             <li class="file-manager-file">
                 <span class="file-explore">{{ file.filename }}</span>
-                <span class="file-delete"><img src="{{ asset('resources/images/admin/icons/delete.png') }}" /></span>
+                <span class="file-delete"><img src="{{ asset('resources/images/admin/delete.png') }}" /></span>
                 <span class="file-shortcut">{{ asset(rootPath ~ currentPath) }}/{{ file.filename }}</span>
             </li>
         {% endif %}

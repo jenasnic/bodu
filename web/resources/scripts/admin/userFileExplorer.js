@@ -5,6 +5,7 @@ $.fn.extend({
      * @param option List of options to initialize explorer :
      * <ul>
      * <li>filePath : default file path to load (as String).</li>
+     * <li>dropzoneId : jQuery identifier of dropzone to reset (optional.</li>
      * <li>afterReload(explorer, result) : callback function to call after explorer has reload (result : TRUE in case of successful reloading, FALSE either).</li>
      * <li>onFileClick(item, explorer) : callback function to call when user click on file item. Return FALSE to avoid further process, TRUE either.</li>
      * <li>onFolderClick(item, explorer) : callback function to call when user click on folder item. Return FALSE to avoid further process, TRUE either.</li>

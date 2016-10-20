@@ -9,7 +9,7 @@
 
     {% set cssStyleToUse = slideshow.activBorder ? 'border: ' ~ slideshow.thicknessValue ~ 'px solid #' ~ slideshow.borderColor ~';' : '' %}
 
-    <ul id="picture-list">
+    <ul id="picture-list" data-border="{{ slideshow.activBorder ? slideshow.thicknessValue : 0  }}">
     {# Browse each picture to build main slideshow #}
     {% for picture in slideshow.pictures %}
         <li class="picture-item">
