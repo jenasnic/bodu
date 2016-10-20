@@ -1,10 +1,10 @@
 DELEGATES_PREFERENCE=delegateValidatorList
 USER_BUILD_PREFERENCE=enabledBuildValidatorList
 USER_MANUAL_PREFERENCE=enabledManualValidatorList
-USER_PREFERENCE=overrideGlobalPreferencestruedisableAllValidationfalseversion1.2.501.v201311151800
+USER_PREFERENCE=overrideGlobalPreferencestruedisableAllValidationfalseversion1.2.700.v201508251749
 eclipse.preferences.version=1
 override=true
 suspend=false
 vals/org.eclipse.wst.xml.core.xml/global=FF03
-vals/org.eclipse.wst.xsd.core.xsd/groups=0107include0107fileext03xsdF0107exclude0204file120doctrine-mapping.xsdF0104file116services-1.0.xsdF01
+vals/org.eclipse.wst.xsd.core.xsd/groups=0107include0107fileext03xsdF0107exclude0304file120doctrine-mapping.xsdF0104file116services-1.0.xsdF0104file118xliff-core-2.0.xsdF01
 vf.version=3
