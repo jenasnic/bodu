@@ -8,15 +8,13 @@
 
 {% block header %}
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('resources/css/lib/dropzone.css') }}" />
+
+    <script type="text/javascript" src="{{ asset('resources/scripts/lib/dropzone.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('resources/scripts/admin/banner.js') }}"></script>
     <script type="text/javascript">
 
         $(document).ready(function() {
-            $("#banner-list").sortable({
-                update: function(event, ui) {
-                    $("#ordered-banner-list").val($('#banner-list').sortable('serialize'));
-                }
-            });
-            $("#banner-list").disableSelection();
         });
 
     </script>
@@ -29,47 +27,65 @@
 
     <div class="sep-15"></div>
 
-    {# Display all menu found #}
-    <table class="bo-table bo-sortable-table">
-
-        <thead>
-            <tr>
-                <th class="bo-table-id">ID</th>
-                <th class="bo-table-label">Libellé</th>
-                <th class="bo-table-action">Modifier</th>
-                <th class="bo-table-action">Supprimer</th>
-            </tr>
-        </thead>
-
-        <tbody id="banner-list">
-        {% for banner in bannerList %}
-            <tr id="banner-list-{{ banner.id }}">
-                <td class="bo-table-id">{{ banner.id }}</td>
-                <td class="bo-table-label">{{ banner.title }}</td>
-                <td class="bo-table-action">
-                    <a href="{{ path('bodu_home_bo_banner_edit', { 'id': banner.id }) }}" >
-                        <img src="{{ asset('resources/images/admin/edit.png') }}" width="16" height="16" border="0" alt="Modifier" title="Modifier" />
-                    </a>
-                </td>
-                <td class="bo-table-action">
-                    <a href="{{ path('bodu_home_bo_banner_delete', { 'id': banner.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
-                        <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" />
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-
-    </table>
+    <div id="banner-dropzone" action="{{ path('bodu_home_bo_banner_upload') }}" class="dropzone">
+        <div class="dz-message">Déposez les images du diaporama...</div>
+    </div>
 
     <div class="sep-20"></div>
 
-    {# Form to save menu order #}
     <form action="{{ path('bodu_home_bo_banner_list') }}" method="post">
-        <input id="ordered-banner-list" name="ordered-banner-list" type="hidden" value="" />
+
+        {# Display all banner from home page #}
+        <table class="bo-table bo-sortable-table">
+
+            <thead>
+                <tr>
+                    <th class="bo-table-picture">Image</th>
+                    <th class="bo-table-label">Nom</th>
+                    <th class="bo-table-action"><img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" /></th>
+                </tr>
+            </thead>
+
+            <tbody id="banner-list">
+            {% for banner in bannerList %}
+                <tr id="banner-list-{{ banner.id }}">
+                    <td class="bo-table-picture"><img src="{{ banner.pictureUrl }}" alt="{{ banner.title }}" /></td>
+                    <td class="bo-table-label">
+                        <input type="hidden" id="banner-rank-{{ banner.id }}"  name="banner-rank-{{ banner.id }}" value="{{ banner.rank }}" class="banner-rank" />
+                        <input type="text" id="banner-title-{{ banner.id }}"  name="banner-title-{{ banner.id }}" value="{{ banner.title }}" class="banner-title field-L" />
+                    </td>
+                    <td class="bo-table-action">
+                        <a href="{{ path('bodu_home_bo_banner_delete', { 'id': banner.id }) }}" onclick="return confirm('Confirmer la suppression ?');" >
+                            <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0" alt="Supprimer" title="Supprimer" />
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+        <div class="sep-20"></div>
+
         <div class="save-button"><input type="submit" value="" /></div>
+
     </form>
 
-    <a class="add-button" href="{{ path('bodu_home_bo_banner_edit') }}">Ajouter une photo</a>
+    <!-- Define template to create new row (when uploading new pictures using dropzone) -->
+    <table id="row-template" class="hide">
+        <tbody>
+            <tr>
+                <td class="bo-table-picture"><img src="{{ asset('resources/images/admin/empty.png') }}" alt="" /></td>
+                <td class="bo-table-label">
+                    <input type="hidden" value="" class="banner-rank" />
+                    <input type="text" value="" class="banner-title field-L" />
+                </td>
+                <td class="bo-table-action">
+                    <img src="{{ asset('resources/images/admin/delete.png') }}" width="16" height="16" border="0"
+                            alt="Supprimer" title="Supprimer" class="clickable delete-picture" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 {% endblock %}

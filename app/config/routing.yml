@@ -8,8 +8,8 @@ logout:
     pattern: /logout
 
 bodu_home:
-    resource: "@BoduHomeBundle/Resources/config/routing.yml"
-    prefix:   /
+    resource: "@BoduHomeBundle/Controller/"
+    type:     annotation
 
 bodu_menu:
     resource: "@BoduMenuBundle/Resources/config/routing.yml"
