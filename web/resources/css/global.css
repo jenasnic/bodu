@@ -242,7 +242,10 @@ img.picture-fullscreen {cursor: zoom-in;}
 }
 
 .news-item.small {width: 420px;}
-.link-item {width: 380px;}
+.link-item {width: 435px;}
+
+.left .link-item {margin: 0 15px 20px 30px;}
+.right .link-item {margin: 0 30px 20px 15px;}
 
 .news-item h2, .link-item h2 {
     background: url("images/backgroundBlock.png") repeat;
